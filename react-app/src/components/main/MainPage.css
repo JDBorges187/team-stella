@@ -20,11 +20,12 @@
   height: 100%;
   width: 100%;
   display: grid;
-  grid-template: 1fr 4fr / 1fr 5fr;
+  grid-template: 1fr 4fr 1fr / 1fr 5fr;
   gap: 5px;
   grid-template-areas:
     "featured featured"
-    "filter products";
+    "filter products"
+    "footer footer";
 }
 
 .featured {
@@ -42,4 +43,9 @@
 
 .products div {
   padding: 15px;
+}
+
+.footer {
+  border: 2px solid purple;
+  grid-area: footer;
 }

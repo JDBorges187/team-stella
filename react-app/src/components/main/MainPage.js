@@ -4,6 +4,7 @@ import dark from "../../pictures/dark-racing.jpg";
 import Featured from "./Featured";
 import Filter from "./Filter";
 import ProductGrid from "./ProductGrid";
+import Footer from "./Footer";
 import "./MainPage.css";
 const MainPage = () => {
   return (
@@ -15,6 +16,7 @@ const MainPage = () => {
         <Featured />
         <Filter />
         <ProductGrid />
+        <Footer />
       </div>
     </div>
   );
