@@ -1,0 +1,14 @@
+.main-banner {
+  height: 500px;
+}
+
+.main {
+  height: calc(100vh - 75px);
+  /* border: 1px solid red; */
+}
+
+.main-banner-img {
+  height: 500px;
+  width: 100%;
+  object-fit: cover;
+}
