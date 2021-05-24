@@ -24,6 +24,10 @@
     padding: 50px;
 }
 
+.checkout-form-container{
+    margin: 20px;
+}
+
 .checkout-list{
     list-style: none;
 }
