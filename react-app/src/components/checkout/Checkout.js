@@ -5,7 +5,6 @@ import CheckoutList from './CheckoutList'
 const Checkout = () => {
     return (
         <>
-            <h1>Checkout Page</h1>
             <div className='checkout-main-container'>
                 <div className='checkout-center-container'>
                     <div className='checkout-left-container'>
