@@ -6,12 +6,12 @@ const Checkout = () => {
     return (
         <>
             <h1>Checkout Page</h1>
-            <div className='checkout_main_container'>
-                <div className='checkout_center_container'>
-                    <div className='checkout_left_container'>
+            <div className='checkout-main-container'>
+                <div className='checkout-center-container'>
+                    <div className='checkout-left-container'>
                         <CheckoutForm />
                     </div>
-                    <div className='checkout_right_container'>
+                    <div className='checkout-right-container'>
                         <CheckoutList />
                     </div>
                 </div>
