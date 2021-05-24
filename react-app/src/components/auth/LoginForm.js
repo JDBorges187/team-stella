@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Redirect } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
 import { login } from "../../store/session";
 
 const LoginForm = () => {
@@ -57,6 +57,9 @@ const LoginForm = () => {
           onChange={updatePassword}
         />
         <button type="submit">Login</button>
+      </div>
+      <div>
+          <Link to="/sign-up">Create an Account</Link>
       </div>
     </form>
   );
