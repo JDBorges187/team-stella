@@ -1,11 +1,12 @@
 import React from 'react'
+import CheckoutItem from './CheckoutItem'
 
 const CheckoutList = () => {
     return (
         <>
             <ul className='checkout-list'>
-                <li>Product 1</li>
-                <li>Product 2</li>
+                <li><CheckoutItem name='Product 1' price={20.00}/></li>
+                <li><CheckoutItem name='Product 2' price={25.00}/></li>
             </ul>
 
             <div className='divider'/>

@@ -36,6 +36,20 @@
     margin-top: 5px;
 }
 
+/* Single Product div in Checkout List */
+.checkout-list_item{
+    display: flex;
+}
+
+.checkout-item_image{
+    top: 2;
+    bottom: 2;
+    left: 2;
+    right: 2;
+    position: absolute;
+    background-color: #e0e0e0;
+}
+
 .divider{
     background-color: rgba(175,175,175,.34);
     height: 1px;
@@ -43,6 +57,8 @@
     margin-top: 20px;
     margin-bottom: 20px;
 }
+
+/* Right Price display */
 
 .price-display{
     width: 100%;

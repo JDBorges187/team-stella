@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import {useHistory} from 'react-router-dom'
 
+//Form is mostly just for show, db functionality would be a bonus?
 const CheckoutForm = () => {
     const [errors, setErrors] = useState([]);
     const history = useHistory();
