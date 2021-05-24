@@ -1,12 +1,28 @@
-from app.models import db, Product
+from app.models import db, Product, Category
 
 # Adds a demo user, you can add other users here if you want
 def seed_products():
 
-    test1 = Product(name='Car', price=2550.01,
-                description='A car.', image='put url here')
+    category1 = Category(name="Vehicle")
+    product1 = Product(name='Car', price=2550.01,
+                description='A car.', image='put url here',
+                categoryId=1)
 
-    db.session.add(test1)
+    category2 = Category(name="Hat")
+    product2 = Product(name='Racing Cap', price=85.99,
+                description='A cap.', image='put url here',
+                categoryId=2)
+
+    product3 = Product(name='Sun Visor', price=55.99,
+                description='A visor.', image='put url here',
+                categoryId=2)
+
+    db.session.add(category1)
+    db.session.add(product1)
+
+    db.session.add(category2)
+    db.session.add(product2)
+    db.session.add(product3)
 
     db.session.commit()
 
@@ -16,4 +32,5 @@ def seed_products():
 # the auto incrementing primary key
 def undo_products():
     db.session.execute('TRUNCATE products RESTART IDENTITY CASCADE;')
+    db.session.execute('TRUNCATE categories RESTART IDENTITY CASCADE;')
     db.session.commit()
