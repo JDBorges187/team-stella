@@ -15,12 +15,12 @@
 }
 
 .container-grid {
-  background-color: lightblue;
+  background-color: rgb(228, 246, 250);
   /* height: calc(100vh - 475px); */
   height: 100%;
   width: 100%;
   display: grid;
-  grid-template: 1fr 4fr 1fr / 1fr 5fr;
+  grid-template: 1fr 5fr 1fr / 1fr 5fr;
   gap: 5px;
   grid-template-areas:
     "featured featured"
@@ -48,4 +48,39 @@
 .footer {
   border: 2px solid purple;
   grid-area: footer;
+}
+
+.card-container {
+  border: 1px solid lightcoral;
+  height: 300px;
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 5px;
+}
+
+.card-image {
+  border: 1px solid red;
+  height: 60%;
+}
+
+.card-title {
+  border: 1px solid red;
+}
+
+.card-price {
+  border: 1px solid red;
+}
+
+.card-container div {
+  margin: 3px;
+}
+
+.products {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 10px;
+  justify-content: space-between;
 }

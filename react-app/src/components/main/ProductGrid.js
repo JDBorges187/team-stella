@@ -1,9 +1,14 @@
 import React from "react";
+import ProductCard from "./ProductCard";
 
 const ProductGrid = () => {
   return (
     <div className="products">
-      <div>GRID</div>
+      <ProductCard />
+      <ProductCard />
+      <ProductCard />
+      <ProductCard />
+      <ProductCard />
     </div>
   );
 };
