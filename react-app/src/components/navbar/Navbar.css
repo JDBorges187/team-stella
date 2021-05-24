@@ -5,6 +5,8 @@ nav {
   padding: 10px;
   background-color: midnightblue;
   margin-bottom: 10px;
+  min-width: 275px;
+  height: 75px;
 }
 
 .nav-links {
@@ -37,13 +39,19 @@ nav {
   margin-left: 5px;
 }
 
+@media screen and (max-width: 558px) {
+  .nav-search {
+    display: none;
+  }
+}
 .nav-search-input {
   font-size: 16px;
   padding: 5px;
+  width: 250px;
 }
 
 .nav-logo-h1 {
-  font-size: 32px;
+  font-size: 36px;
 }
 
 .nav-links-btn {
@@ -51,7 +59,7 @@ nav {
   background: midnightblue;
   border: none;
   padding: 10px;
-  font-size: 16px;
+  font-size: 18px;
 }
 
 button {
