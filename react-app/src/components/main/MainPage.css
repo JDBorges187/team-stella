@@ -1,5 +1,6 @@
 .main-banner {
-  height: 500px;
+  height: 400px;
+  width: 100%;
 }
 
 .main {
@@ -8,7 +9,37 @@
 }
 
 .main-banner-img {
-  height: 500px;
+  height: 400px;
   width: 100%;
   object-fit: cover;
+}
+
+.container-grid {
+  background-color: lightblue;
+  /* height: calc(100vh - 475px); */
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template: 1fr 4fr / 1fr 5fr;
+  gap: 5px;
+  grid-template-areas:
+    "featured featured"
+    "filter products";
+}
+
+.featured {
+  border: 2px solid red;
+  grid-area: featured;
+}
+.filter {
+  border: 2px solid yellow;
+  grid-area: filter;
+}
+.products {
+  border: 2px solid orange;
+  grid-area: products;
+}
+
+.products div {
+  padding: 15px;
 }
