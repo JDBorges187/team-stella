@@ -9,6 +9,7 @@ import UsersList from "./components/UsersList";
 import User from "./components/User";
 import Cart from "./components/navbar/Cart";
 import Account from "./components/navbar/Account";
+import MainPage from "./components/main/MainPage";
 import { authenticate } from "./store/session";
 
 function App() {
@@ -50,7 +51,7 @@ function App() {
           <User />
         </ProtectedRoute>
         <Route path="/" exact={true}>
-          <h1>My Home Page</h1>
+          <MainPage />
         </Route>
       </Switch>
     </BrowserRouter>
