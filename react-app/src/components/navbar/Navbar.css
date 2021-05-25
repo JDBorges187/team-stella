@@ -4,9 +4,11 @@ nav {
   align-items: center;
   padding: 10px;
   background-color: midnightblue;
-  margin-bottom: 10px;
+  /* margin-bottom: 10px; */
   min-width: 275px;
   height: 75px;
+  position: sticky;
+  position: -webkit-sticky;
 }
 
 .nav-links {
