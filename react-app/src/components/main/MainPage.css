@@ -100,6 +100,25 @@
   grid-area: products;
 }
 
+.products-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.product-pages {
+  display: flex;
+  list-style: none;
+  /* border: 1px solid black; */
+}
+
+.product-pages li {
+  margin: 5px;
+  padding: 5px;
+  /* border: 1px solid blue; */
+  cursor: pointer;
+}
+
 .products div {
   padding: 15px;
 }
