@@ -1,0 +1,71 @@
+
+.pdt-dtl__display {
+    display: grid;
+    grid-template-columns: 55% 45%;
+    width: 60%;
+    /* height: 500px; */
+    margin: 35px auto;
+    /* border-style: solid; */
+    min-height: 500px;
+}
+
+.pdt-dtl__img{
+    border: 1px solid lightslategray;
+    width: 100%;
+    height: 100%;
+    padding: 0%;
+    object-fit: contain;
+    box-sizing: content-box;
+}
+
+.pdt-dtl__main-info{
+    display: grid;
+    grid-template-rows: fit-content(15%) 8% 7% 7% 20% 10% 10% 8%;
+    grid-row-gap: 5px;
+    margin: 25px 0px 25px 25px;
+    /* border-style: solid; */
+    padding: 0 10px;
+}
+
+.pdt-dtl__name{
+    font-size: 25px;
+    margin-bottom: 10px;
+    word-wrap:break-word;
+    height: auto;
+    align-self: end;
+}
+
+.pdt-dtl__label{
+    align-self: end;
+}
+
+.pdt-dtl__price{
+    font-size: 21px;
+}
+
+.pdt-dtl__policies{
+    align-self: end;
+}
+.pdt-dtl__stock{
+    font-size: 14px;
+    align-self: end;
+}
+
+.pdt-dtl__add-to-cart{
+    background-color: white;
+    font-weight: bold;
+    color: black;
+    border-style: 1px solid black;
+}
+
+.pdt-dtl__buy-it-now{
+    background-color: midnightblue;
+    font-weight: bold;
+    color: white;
+    border: none;
+}
+
+.pdt-dtl__shipping-time{
+    font-size: 13px;
+    align-self: center;
+}

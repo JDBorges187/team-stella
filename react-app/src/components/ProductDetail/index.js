@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { getOneProduct } from '../../store/products';
@@ -35,19 +35,20 @@ const ProductDetail = () => {
                 </div>
                 <div className="pdt-dtl__main-info">
                     <div className="pdt-dtl__name">{product.name}</div>
-                    <div className="pdt-dtl__price">{product.price}</div>
+                    <div className="pdt-dtl__label">Price</div>
+                    <div className="pdt-dtl__price">{`$${product.price.toFixed(2)}`}</div>
                     <div className="pdt-dtl__stock">In stock now!</div>
                     <div className="pdt-dtl__policies">
                         <p>Free shipping</p>
                         <p>Free returns</p>
                         <p>Secure payments</p>
                     </div>
-                    <div className="pdt-dtl__add-to-cart">
-
-                    </div>
-                    <div className="pdt-dtl__buy-it-now">
-
-                    </div>
+                    <button className="pdt-dtl__add-to-cart">
+                        Add to cart
+                    </button>
+                    <button className="pdt-dtl__buy-it-now">
+                        Buy it now
+                    </button>
                     <div className="pdt-dtl__shipping-time">
                         Ships in 1-3 business days
                     </div>
@@ -59,3 +60,5 @@ const ProductDetail = () => {
         </div>
     );
 };
+
+export default ProductDetail;
