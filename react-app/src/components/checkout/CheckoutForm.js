@@ -3,7 +3,7 @@ import {useHistory} from 'react-router-dom'
 
 //Form is mostly just for show, db functionality would be a bonus?
 const CheckoutForm = () => {
-    const [errors, setNewErrors] = useState([]);
+    const [errors, setErrors] = useState([]);
     const [address, setAddress] = useState("");
     const [city, setCity] = useState("")
     const [country, setCountry] = useState("")
@@ -31,18 +31,17 @@ const CheckoutForm = () => {
         else if(!parseInt(zipcode, 10)){
             newErrors.push('Zip code must be a number.')
         }
-        console.log("NewErrors", newErrors);
-        // errors = newErrors;
-        setNewErrors(newErrors);
-        console.log("After set", errors)
+        // setErrors(newErrors);    //I have no idea why this doesn't work
+        return newErrors;
     }
 
     const submitCheckout = (e) => {
         e.preventDefault();
-        checkErrors();
-        console.log("Errors", errors);
-        if(errors.length === 0){
+        let newErrors = checkErrors();
+        if(newErrors.length === 0){
             history.push('/')
+        } else{
+            setErrors(newErrors);
         }
     }
 
@@ -58,8 +57,8 @@ const CheckoutForm = () => {
                 <h2>Shipping Address</h2>
                 <form onSubmit={submitCheckout} className='checkout-form'>
                     <div>
-                        {errors.map((error) => (
-                            <div className='error-div'>{error}</div>
+                        {errors.map((error, idx) => (
+                            <div className='error-div' key={idx}>{error}</div>
                             ))}
                     </div>
                     <div className='checkout-form-row'>
