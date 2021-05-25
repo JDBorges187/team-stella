@@ -20,6 +20,9 @@ const ProductDetail = () => {
     // if (!product) {
     //     return null;
     // }
+    const openAddReview = (e) => {
+        e.preventDefault();
+    }
 
     const product = {
         name: 'Replica Monster Energy Yamaha Team 2021 T-shirt',
@@ -59,10 +62,11 @@ const ProductDetail = () => {
                 <p className="pdt-dtl__desc">{product.description}</p>
             </div>
             <div className="pdt-dtl__review-container">
-                <h2>Reviews</h2>
+                <h2>User Reviews</h2>
                 <ReviewCard title='Review1' username='User1' desc='Good' rating={5}/>
                 <ReviewCard title='Review2' username='User2' desc='Bad' rating={1}/>
                 <ReviewCard title='Review3' username='User3' desc='Mediocre' rating={3}/>
+                <button onClick={openAddReview} className='pdt-dtl_add-review-button'>Add Review</button>
             </div>
         </div>
     );
