@@ -28,6 +28,29 @@
     margin: 20px;
 }
 
+.checkout-form {
+    width: 100%;
+}
+
+.checkout-form-row{
+    margin-top: 10px;
+    height: 50px;
+    width: 100%;
+    display: flex;
+}
+
+.checkout-form-row input{
+    flex-grow: 1;
+    border: 1px solid #414141;
+    border-radius: 5px;
+    padding: 10px;
+    margin-right: 10px;
+}
+
+.error-div{
+    color: red;
+}
+
 /* Left side CSS */
 
 .checkout-form-buttons{
