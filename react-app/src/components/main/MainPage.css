@@ -4,7 +4,7 @@
 }
 
 .main {
-  height: calc(100vh - 75px);
+  /* height: calc(100vh - 75px); */
   /* border: 1px solid red; */
 }
 
@@ -20,12 +20,14 @@
   height: 100%;
   width: 100%;
   display: grid;
-  grid-template: 1fr 5fr 1fr / 1fr 5fr;
+  grid-template: 220px auto 100px / 1fr 5fr;
   gap: 5px;
   grid-template-areas:
     "featured featured"
     "filter products"
     "footer footer";
+
+  min-width: 1050px;
 }
 
 .featured {
@@ -35,6 +37,7 @@
 .filter {
   border: 2px solid yellow;
   grid-area: filter;
+  min-height: 400px;
 }
 .products {
   border: 2px solid orange;
@@ -82,5 +85,5 @@
   flex-direction: row;
   flex-wrap: wrap;
   padding: 10px;
-  justify-content: space-between;
+  justify-content: space-around;
 }
