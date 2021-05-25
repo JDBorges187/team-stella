@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { getOneProduct } from '../../store/products';
@@ -6,7 +6,7 @@ import ReviewCard from './ReviewCard'
 import './ProductDetail.css';
 
 const ProductDetail = () => {
-
+    const [addReview, setAddReview] = useState(false);
     // const { id } = useParams();
 
     // const dispatch = useDispatch();
@@ -20,8 +20,27 @@ const ProductDetail = () => {
     // if (!product) {
     //     return null;
     // }
+
     const openAddReview = (e) => {
         e.preventDefault();
+        setAddReview(true);
+    }
+
+    let addReviewSection = (<button onClick={openAddReview} className='pdt-dtl_add-review-button'>Add Review</button>);
+
+    if(!addReview){
+        addReviewSection = <button onClick={openAddReview} className='pdt-dtl_add-review-button'>Add Review</button>;
+    }
+    else{
+        console.log("Enter here?")
+        addReviewSection = (
+            <form>
+                <input type='text'
+                placeholder='Add review here' />
+                <button type='submit'>Submit Review</button>
+                <button onClick={() => setAddReview(false)}>Cancel</button>
+            </form>
+        )
     }
 
     const product = {
@@ -66,7 +85,7 @@ const ProductDetail = () => {
                 <ReviewCard title='Review1' username='User1' desc='Good' rating={5}/>
                 <ReviewCard title='Review2' username='User2' desc='Bad' rating={1}/>
                 <ReviewCard title='Review3' username='User3' desc='Mediocre' rating={3}/>
-                <button onClick={openAddReview} className='pdt-dtl_add-review-button'>Add Review</button>
+                {addReviewSection}
             </div>
         </div>
     );
