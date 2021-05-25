@@ -52,8 +52,10 @@ const CheckoutForm = () => {
                         <label htmlFor='zip'>Zipcode</label>
                         <input name='zip' type='text' value={zipcode} onChange={e => setZipcode(e.target.value)}/>
                     </div>
-                    <button type='submit'>Checkout</button>
-                    <button onClick={returnCart}>Return to Cart</button>
+                    <div className='checkout-form-buttons'>
+                        <button className='checkout-button' type='submit'>Checkout</button>
+                        <button className='return-cart-button' onClick={returnCart}>Return to Cart</button>
+                    </div>
                 </form>
             </div>
         </>
