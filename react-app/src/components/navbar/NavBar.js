@@ -27,7 +27,7 @@ const NavBar = () => {
             className="nav-search-input"
           />
           <button id="nav-search-btn" className="nav-btn" type="button">
-            <i class="fas fa-search"></i>
+            <i className="fas fa-search"></i>
           </button>
         </div>
       </div>
