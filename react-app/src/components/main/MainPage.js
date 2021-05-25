@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import motorcycle from "../../pictures/fast-moto.jpg";
 import fans from "../../pictures/moto-fans.jpg";
 import Featured from "./Featured";
@@ -7,6 +8,12 @@ import ProductGrid from "./ProductGrid";
 import Footer from "./Footer";
 import "./MainPage.css";
 const MainPage = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    // dispatch(getAllProducts());
+  }, [dispatch]);
+
   return (
     <div className="main">
       <div className="main-banner">
