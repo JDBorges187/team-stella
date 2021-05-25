@@ -6,12 +6,13 @@ import Featured from "./Featured";
 import Filter from "./Filter";
 import ProductGrid from "./ProductGrid";
 import Footer from "./Footer";
+import { getAllProducts } from "../../store/products";
 import "./MainPage.css";
 const MainPage = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    // dispatch(getAllProducts());
+    dispatch(getAllProducts());
   }, [dispatch]);
 
   return (
