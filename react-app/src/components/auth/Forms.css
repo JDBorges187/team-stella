@@ -1,0 +1,21 @@
+.form-holder {
+    /* background: red; */
+    display: flex;
+    justify-content: center;
+}
+
+.auth-form {
+    /* background: black; */
+    width: 470px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form-title {
+    margin: 20px 0;
+}
+
+input, label {
+    display: block;
+}
