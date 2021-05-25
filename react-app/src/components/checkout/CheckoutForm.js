@@ -11,10 +11,38 @@ const CheckoutForm = () => {
     const [zipcode, setZipcode] = useState("")
     const history = useHistory();
 
+    const checkErrors = () => {
+        let newErrors = [];
+        if(address.length === 0){
+            newErrors.push('Please input an address.')
+        }
+        if(city.length === 0){
+            newErrors.push('Please input a city.')
+        }
+        if(country.length === 0){
+            newErrors.push('Please input a country.')
+        }
+        if(state.length === 0){
+            newErrors.push('Please input a state.')
+        }
+        if(zipcode.length === 0){
+            newErrors.push('Please input a zip code.')
+        }
+        else if(!parseInt(zipcode, 10)){
+            newErrors.push('Zip code must be a number.')
+        }
+        // setErrors(newErrors);    //I have no idea why this doesn't work
+        return newErrors;
+    }
+
     const submitCheckout = (e) => {
         e.preventDefault();
-        setErrors([]);
-        history.push('/')
+        let newErrors = checkErrors();
+        if(newErrors.length === 0){
+            history.push('/')
+        } else{
+            setErrors(newErrors);
+        }
     }
 
     const returnCart = (e) => {
@@ -26,31 +54,30 @@ const CheckoutForm = () => {
         <>
             <h1>Checkout Page</h1>
             <div className='checkout-form-container'>
-                <form onSubmit={submitCheckout}>
+                <h2>Shipping Address</h2>
+                <form onSubmit={submitCheckout} className='checkout-form'>
                     <div>
-                        {errors.map((error) => (
-                            <div>{error}</div>
+                        {errors.map((error, idx) => (
+                            <div className='error-div' key={idx}>{error}</div>
                             ))}
                     </div>
-                    <div>
-                        <label htmlFor='address'>Address</label>
-                        <input name='address' type='text' value={address} onChange={e => setAddress(e.target.value)}/>
+                    <div className='checkout-form-row'>
+                        {/* <label htmlFor='address'>Address</label> */}
+                        <input name='address' type='text' value={address} onChange={e => setAddress(e.target.value)} placeholder='Address'/>
                     </div>
-                    <div>
-                        <label htmlFor='city'>City</label>
-                        <input name='city' type='text' value={city} onChange={e => setCity(e.target.value)}/>
+                    <div className='checkout-form-row'>
+                        {/* <label htmlFor='city'>City</label> */}
+                        <input name='city' type='text' value={city} onChange={e => setCity(e.target.value)} placeholder='City'/>
                     </div>
-                    <div>
-                        <label htmlFor='country'>Country</label>
-                        <input name='country' type='text' value={country} onChange={e => setCountry(e.target.value)}/>
+                    <div className='checkout-form-row'>
+                        {/* <label htmlFor='country'>Country</label> */}
+                        <input name='country' type='text' value={country} onChange={e => setCountry(e.target.value)} placeholder='Country'/>
                     </div>
-                    <div>
-                        <label htmlFor='state'>State</label>
-                        <input name='state' type='text' value={state} onChange={e => setState(e.target.value)}/>
-                    </div>
-                    <div>
-                        <label htmlFor='zip'>Zipcode</label>
-                        <input name='zip' type='text' value={zipcode} onChange={e => setZipcode(e.target.value)}/>
+                    <div className='checkout-form-row'>
+                        {/* <label htmlFor='state'>State</label> */}
+                        <input name='state' type='text' value={state} onChange={e => setState(e.target.value)} placeholder='State'/>
+                        {/* <label htmlFor='zip'>Zipcode</label> */}
+                        <input name='zip' type='text' value={zipcode} onChange={e => setZipcode(e.target.value)} placeholder='Zipcode'/>
                     </div>
                     <div className='checkout-form-buttons'>
                         <button className='checkout-button' type='submit'>Checkout</button>
