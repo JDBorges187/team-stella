@@ -7,6 +7,8 @@ import './ProductDetail.css';
 
 const ProductDetail = () => {
     const [addReview, setAddReview] = useState(false);
+    const [review, setReview] = useState('');
+    const [rating, setRating] = useState('Select a rating');
     // const { id } = useParams();
 
     // const dispatch = useDispatch();
@@ -26,6 +28,14 @@ const ProductDetail = () => {
         setAddReview(true);
     }
 
+    const submitComment = (e) => {
+        e.preventDefault();
+        //Send to db
+        console.log("Review: ", review);
+        setReview('');
+        setAddReview(false);
+    }
+
     let addReviewSection = (<button onClick={openAddReview} className='pdt-dtl_add-review-button'>Add Review</button>);
 
     if(!addReview){
@@ -33,10 +43,23 @@ const ProductDetail = () => {
     }
     else{
         addReviewSection = (
-                <form className='pdt-dtl_add-review-form'>
+                <form className='pdt-dtl_add-review-form' onSubmit={submitComment}>
                     <textarea
                         className='pdt-dtl_add-review-form textarea'
+                        value={review}
+                        onChange={(e) => setReview(e.target.value)}
                         placeholder='Add review here' />
+                    <select
+                    className='pdt-dtl_add-review-rating'
+                    value={rating}
+                    onChange={(e) => setRating(e.target.value)}>
+                        <option>Select a rating</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
                     <div className='review-form_btn-row'>
                         <button className='review-form_submit-btn' type='submit'>Submit Review</button>
                         <button onClick={() => setAddReview(false)}>Cancel</button>

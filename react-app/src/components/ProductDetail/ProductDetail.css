@@ -113,6 +113,10 @@
     background-color: white;
 }
 
+.pdt-dtl_add-review-rating{
+    margin-top: 10px;
+}
+
 .review-form_btn-row{
     width: 100%;
     display: flex;
