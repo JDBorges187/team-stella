@@ -32,6 +32,7 @@ const ProductDetail = () => {
         e.preventDefault();
         //Send to db
         console.log("Review: ", review);
+        console.log("Rating: ", rating)
         setReview('');
         setAddReview(false);
     }
@@ -62,7 +63,7 @@ const ProductDetail = () => {
                     </select>
                     <div className='review-form_btn-row'>
                         <button className='review-form_submit-btn' type='submit'>Submit Review</button>
-                        <button onClick={() => setAddReview(false)}>Cancel</button>
+                        <button className='review-form_cancel-btn' onClick={() => setAddReview(false)}>Cancel</button>
                     </div>
                 </form>
         )

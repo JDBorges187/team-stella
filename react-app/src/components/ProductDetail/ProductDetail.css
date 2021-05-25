@@ -124,7 +124,17 @@
 
 .review-form_submit-btn{
     margin-right: 10px;
+    background-color: midnightblue;
+    color: white;
+    border-radius: 5px;
 }
+
+.review-form_cancel-btn{
+    background-color: white;
+    border-radius: 5px;
+    border: none;
+}
+
 .review-form_btn-row button{
     margin-top: 10px;
     flex-grow: 1;
