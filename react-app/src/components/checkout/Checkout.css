@@ -1,0 +1,134 @@
+.checkout-main-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.checkout-center-container{
+    height: 1500px;
+    width: 70%;
+    display: flex;
+}
+
+.checkout-left-container{
+    width: 60%;
+    height: 100%;
+    background-color: antiquewhite;
+    padding: 50px;
+}
+
+.checkout-right-container{
+    width: 40%;
+    height: 100%;
+    background-color: #f0f0f0;
+    padding: 50px;
+}
+
+.checkout-form-container{
+    margin: 20px;
+}
+
+/* Left side CSS */
+
+.checkout-form-buttons{
+    margin-top: 10px;
+}
+
+.checkout-button{
+    background-color: #2b2b2b;
+    /* padding: 10px 20px; */
+    color: white;
+    /* border: 1px solid #2b2b2b; */
+    border-radius: 5px;
+    margin-top: 5px;
+    margin-right: 5px;
+    font-weight: bold;
+    font-size: 20px;
+    height: 50px;
+    width: 200px;
+    box-sizing: border-box;
+}
+
+.return-cart-button{
+    background-color: #e7e7e7;
+    padding: 10px 10px;
+    border-radius: 5px;
+    height: 45px;
+}
+
+/* Right side CSS */
+
+.checkout-list{
+    list-style: none;
+}
+
+.checkout-list li{
+    margin-top: 10px;
+
+}
+
+/* Single Product div in Checkout List */
+.checkout-list_item{
+    display: flex;
+    height: 65px;
+    align-items: center;
+}
+
+.checkout-item_image{
+    height: 60px;
+    width: 60px;
+    background-color: #e0e0e0;
+    position: relative;
+    border: 1px rgba(0,0,0,.1) solid;
+}
+
+.checkout-item_quantity{
+    position: absolute;
+    right: -.75em;
+    top: -.75em;
+    z-index: 2;
+    background-color: #888888;
+    height: 1.5em;
+    width: 1.5em;
+    border-radius: 1.75em;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 500;
+}
+
+.checkout-item_name{
+    margin-left: 20px;
+    flex-grow: 1;
+}
+
+.divider{
+    background-color: rgba(175,175,175,.34);
+    height: 1px;
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+/* Right Price display */
+
+.price-display{
+    width: 100%;
+}
+
+.price-display tr{
+    display: flex;
+    align-items: center;
+}
+
+.price-display th{
+    display: flex;
+    justify-content: flex-start;
+}
+
+.price-display td{
+    flex-grow: 1;
+    display: flex;
+    justify-content: flex-end;
+}

@@ -9,6 +9,8 @@ import UsersList from "./components/UsersList";
 import User from "./components/User";
 import Cart from "./components/navbar/Cart";
 import Account from "./components/navbar/Account";
+import ProductDetail from "./components/ProductDetail";
+import Checkout from "./components/checkout/Checkout";
 import MainPage from "./components/main/MainPage";
 import { authenticate } from "./store/session";
 
@@ -44,6 +46,9 @@ function App() {
         <Route path="/account" exact={true}>
           <Account />
         </Route>
+        <Route path="/checkout" exact={true}>
+          <Checkout />
+        </Route>
         <ProtectedRoute path="/users" exact={true}>
           <UsersList />
         </ProtectedRoute>
@@ -52,6 +57,9 @@ function App() {
         </ProtectedRoute>
         <Route path="/" exact={true}>
           <MainPage />
+        </Route>
+        <Route path="/products/:id" exact={true}>
+          <ProductDetail />
         </Route>
       </Switch>
     </BrowserRouter>
