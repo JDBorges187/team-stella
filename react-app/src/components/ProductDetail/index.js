@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { getOneProduct } from '../../store/products';
+import ReviewCard from './ReviewCard'
 import './ProductDetail.css';
 
 const ProductDetail = () => {
@@ -56,6 +57,12 @@ const ProductDetail = () => {
             </div>
             <div className="pdt-dtl__xtra-info">
                 <p className="pdt-dtl__desc">{product.description}</p>
+            </div>
+            <div className="pdt-dtl__review-container">
+                <h2>Reviews</h2>
+                <ReviewCard title='Review1' username='User1' desc='Good' rating={5}/>
+                <ReviewCard title='Review2' username='User2' desc='Bad' rating={1}/>
+                <ReviewCard title='Review3' username='User3' desc='Mediocre' rating={3}/>
             </div>
         </div>
     );
