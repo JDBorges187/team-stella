@@ -3,7 +3,7 @@ import {useHistory} from 'react-router-dom'
 
 //Form is mostly just for show, db functionality would be a bonus?
 const CheckoutForm = () => {
-    const [errors, setErrors] = useState([]);
+    const [errors, setNewErrors] = useState([]);
     const [address, setAddress] = useState("");
     const [city, setCity] = useState("")
     const [country, setCountry] = useState("")
@@ -11,10 +11,39 @@ const CheckoutForm = () => {
     const [zipcode, setZipcode] = useState("")
     const history = useHistory();
 
+    const checkErrors = () => {
+        let newErrors = [];
+        if(address.length === 0){
+            newErrors.push('Please input an address.')
+        }
+        if(city.length === 0){
+            newErrors.push('Please input a city.')
+        }
+        if(country.length === 0){
+            newErrors.push('Please input a country.')
+        }
+        if(state.length === 0){
+            newErrors.push('Please input a state.')
+        }
+        if(zipcode.length === 0){
+            newErrors.push('Please input a zip code.')
+        }
+        else if(!parseInt(zipcode, 10)){
+            newErrors.push('Zip code must be a number.')
+        }
+        console.log("NewErrors", newErrors);
+        // errors = newErrors;
+        setNewErrors(newErrors);
+        console.log("After set", errors)
+    }
+
     const submitCheckout = (e) => {
         e.preventDefault();
-        setErrors([]);
-        history.push('/')
+        checkErrors();
+        console.log("Errors", errors);
+        if(errors.length === 0){
+            history.push('/')
+        }
     }
 
     const returnCart = (e) => {
@@ -30,7 +59,7 @@ const CheckoutForm = () => {
                 <form onSubmit={submitCheckout} className='checkout-form'>
                     <div>
                         {errors.map((error) => (
-                            <div>{error}</div>
+                            <div className='error-div'>{error}</div>
                             ))}
                     </div>
                     <div className='checkout-form-row'>

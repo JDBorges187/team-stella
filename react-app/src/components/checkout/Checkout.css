@@ -47,6 +47,10 @@
     margin-right: 10px;
 }
 
+.error-div{
+    color: red;
+}
+
 /* Left side CSS */
 
 .checkout-form-buttons{
