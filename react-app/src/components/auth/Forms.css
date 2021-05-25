@@ -18,4 +18,17 @@
 
 input, label {
     display: block;
+    padding: 8px 0;
+    width: 370px;
+}
+
+.form-btn {
+    background: midnightblue;
+    color: white;
+    margin: 15px;
+    padding: 7px 0;
+    font-weight: 700;
+    font-size: 16px;
+    width: 370px;
+    min-width: 90px;
 }

@@ -9,12 +9,9 @@ import UsersList from "./components/UsersList";
 import User from "./components/User";
 import Cart from "./components/navbar/Cart";
 import Account from "./components/navbar/Account";
-<<<<<<< HEAD
 import ProductDetail from "./components/ProductDetail"
-=======
 import Checkout from "./components/checkout/Checkout"
 import MainPage from "./components/main/MainPage";
->>>>>>> main
 import { authenticate } from "./store/session";
 
 function App() {
