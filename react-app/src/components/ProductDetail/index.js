@@ -32,14 +32,16 @@ const ProductDetail = () => {
         addReviewSection = <button onClick={openAddReview} className='pdt-dtl_add-review-button'>Add Review</button>;
     }
     else{
-        console.log("Enter here?")
         addReviewSection = (
-            <form>
-                <input type='text'
-                placeholder='Add review here' />
-                <button type='submit'>Submit Review</button>
-                <button onClick={() => setAddReview(false)}>Cancel</button>
-            </form>
+                <form className='pdt-dtl_add-review-form'>
+                    <textarea
+                        className='pdt-dtl_add-review-form textarea'
+                        placeholder='Add review here' />
+                    <div className='review-form_btn-row'>
+                        <button className='review-form_submit-btn' type='submit'>Submit Review</button>
+                        <button onClick={() => setAddReview(false)}>Cancel</button>
+                    </div>
+                </form>
         )
     }
 

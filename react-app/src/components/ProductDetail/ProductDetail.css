@@ -95,3 +95,34 @@
     font-weight: 500;
     font-size: 16px;
 }
+
+.pdt-dtl_add-review-form{
+    margin: 0 auto;
+    padding: 10px;
+    background-color: rgb(213, 213, 255);
+    width: 60%;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+}
+
+.pdt-dtl_add-review-form textarea{
+    width: 100%;
+    font-size: 16px;
+    font-family: 'Times New Roman';
+    background-color: white;
+}
+
+.review-form_btn-row{
+    width: 100%;
+    display: flex;
+}
+
+.review-form_submit-btn{
+    margin-right: 10px;
+}
+.review-form_btn-row button{
+    margin-top: 10px;
+    flex-grow: 1;
+    padding: 5px;
+}
