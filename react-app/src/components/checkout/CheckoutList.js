@@ -1,11 +1,18 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import CheckoutItem from './CheckoutItem';
-import {useSelector} from 'react-redux';
+import {useSelector, useDispatch} from 'react-redux';
+import { getAllProducts } from "../../store/products";
 
 //Will want to get list of products from redux store
 const CheckoutList = () => {
     const cart = useSelector((state) => state.cart);
     const products = useSelector((state) => state.products);
+
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(getAllProducts());
+    }, [dispatch]);
 
     const itemKeys = (cart !== null) ? Object.keys(cart) : [];
 
