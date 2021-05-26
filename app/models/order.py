@@ -8,3 +8,9 @@ class Order(db.Model):
     userId = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
 
     order_items = db.relationship("OrderItem", backref="order", lazy=True)
+
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "userId": self.userId,
+        }
