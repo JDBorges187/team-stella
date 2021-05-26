@@ -25,6 +25,7 @@ const CheckoutList = () => {
                     console.log(product);
                     return (<li key={idx}>
                         <CheckoutItem
+                            image={product.image}
                             name={product.name}
                             quantity={cart[item]}
                             price={product.price * cart[item]}/>

@@ -1,9 +1,10 @@
 import React from 'react';
 
-const CheckoutItem = ({name, quantity, price}) => {
+const CheckoutItem = ({image, name, quantity, price}) => {
     return (
         <div className='checkout-list_item'>
             <div className='checkout-item_image'>
+                {image}
                 <span className='checkout-item_quantity'>{quantity}</span>
             </div>
 
