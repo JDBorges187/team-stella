@@ -6,27 +6,27 @@ import './ProductDetail.css';
 
 const ProductDetail = () => {
 
-    const { id } = useParams();
-    console.log("********************");
-    console.log(id);
-    const dispatch = useDispatch();
+    // const { id } = useParams();
+    // console.log("********************");
+    // console.log(id);
+    // const dispatch = useDispatch();
 
-    useEffect(() => {
-        dispatch(getOneProduct(id));
-    }, [dispatch, id]);
+    // useEffect(() => {
+    //     dispatch(getOneProduct(id));
+    // }, [dispatch, id]);
 
-    const product = useSelector(state => state.products[id]);
+    // const product = useSelector(state => state.products[id]);
 
-    if (!product) {
-        return null;
-    }
-
-    // const product = {
-    //     name: 'Replica Monster Energy Yamaha Team 2021 T-shirt',
-    //     price: 56.00,
-    //     description: 'Official replica of the polo shirt that will be worn by the Yamaha Monster Energy Team and its official riders: the Spanish Maverick Viñales and the Frenchman Fabio Quartararo in the 2021 season. It is made of technical fabric.',
-    //     image: 'https://res.cloudinary.com/dpf7crjn5/image/upload/v1621893530/test%20data/teamMonsterShirt_d1mhot.jpg',
+    // if (!product) {
+    //     return null;
     // }
+
+    const product = {
+        name: 'Replica Monster Energy Yamaha Team 2021 T-shirt',
+        price: 56.00,
+        description: 'Official replica of the polo shirt that will be worn by the Yamaha Monster Energy Team and its official riders: the Spanish Maverick Viñales and the Frenchman Fabio Quartararo in the 2021 season. It is made of technical fabric.',
+        image: 'https://res.cloudinary.com/dpf7crjn5/image/upload/v1621893530/test%20data/teamMonsterShirt_d1mhot.jpg',
+    }
 
 
     const showHideDesc = (infoClass, arrowClass, buttonClass) =>{
