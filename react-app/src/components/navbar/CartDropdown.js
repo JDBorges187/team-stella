@@ -62,21 +62,23 @@ const CartDropdown = () => {
                 return (
                   <div className="cart-dropdown-item" key={key}>
                     {`${products[key].name}`}
-                    <button
-                      style={{ padding: 3 }}
-                      onClick={() => addOne(products[key])}
-                      className="add-one"
-                    >
-                      +
-                    </button>
-                    <span>{value}</span>
-                    <button
-                      style={{ padding: 3 }}
-                      onClick={() => removeOne(products[key])}
-                      className="remove-one"
-                    >
-                      -
-                    </button>
+                    <div>
+                      <button
+                        style={{ padding: 6 }}
+                        onClick={() => addOne(products[key])}
+                        className="add-one"
+                      >
+                        &#8593;
+                      </button>
+                      <span style={{ padding: 6 }}>{value}</span>
+                      <button
+                        style={{ padding: 6 }}
+                        onClick={() => removeOne(products[key])}
+                        className="remove-one"
+                      >
+                        &#8595;
+                      </button>
+                    </div>
                     <span>{`$${(products[key].price * value).toFixed(
                       2
                     )}`}</span>
@@ -84,7 +86,14 @@ const CartDropdown = () => {
                 );
               })}
             </div>
-            <span style={{ color: "blue" }}>{totalCost.toFixed(2)}</span>
+            <div className="total-cost-container">
+              <span
+                style={{
+                  color: "blue",
+                  padding: 4,
+                }}
+              >{`Total: $${totalCost.toFixed(2)}`}</span>
+            </div>
           </div>
         </div>
       )}
