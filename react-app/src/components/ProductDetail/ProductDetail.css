@@ -141,6 +141,14 @@
     padding: 5px;
 }
 
+.review-rating-picker{
+    display: flex;
+}
+
+.review-rating-picker input{
+    opacity: 0%;
+}
+
 .fa-star{
     color: rgb(255, 167, 66);
 }

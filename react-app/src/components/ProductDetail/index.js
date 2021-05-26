@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { getOneProduct } from '../../store/products';
 import ReviewCard from './ReviewCard'
+import StarSpan from './StarSpan'
 import './ProductDetail.css';
 
 const ProductDetail = () => {
@@ -50,7 +51,8 @@ const ProductDetail = () => {
                         value={review}
                         onChange={(e) => setReview(e.target.value)}
                         placeholder='Add review here' />
-                    <select
+                    <StarSpan mutable={true} rating={5}/>
+                    {/* <select
                     className='pdt-dtl_add-review-rating'
                     value={rating}
                     onChange={(e) => setRating(e.target.value)}>
@@ -60,7 +62,7 @@ const ProductDetail = () => {
                         <option>3</option>
                         <option>4</option>
                         <option>5</option>
-                    </select>
+                    </select> */}
                     <div className='review-form_btn-row'>
                         <button className='review-form_submit-btn' type='submit'>Submit Review</button>
                         <button className='review-form_cancel-btn' onClick={() => setAddReview(false)}>Cancel</button>
