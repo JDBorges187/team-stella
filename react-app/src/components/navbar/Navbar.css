@@ -93,7 +93,7 @@ button {
   width: 360px;
   background-color: white;
   animation-name: open;
-  animation-duration: 1s;
+  animation-duration: 0.5s;
   animation-fill-mode: forwards;
   overflow: hidden;
 }
@@ -109,7 +109,7 @@ button {
 
 .cart-close {
   animation-name: close;
-  animation-duration: 1s;
+  animation-duration: 0.5s;
   animation-fill-mode: forwards;
   overflow: hidden;
 }
