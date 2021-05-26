@@ -1,5 +1,5 @@
 from flask import Blueprint
-from app.models import Product
+from app.models import Product, Review
 
 product_routes = Blueprint("products", __name__)
 
@@ -16,7 +16,9 @@ def get_product(id):
     return {"product": product.to_dict()}
 
 #/api/products/<id>/reviews
+#id refers to productId
 @product_routes.route('/<id>/reviews')
 def get_product_reviews(id):
-    # reviews = Product.query.get(id)
-    pass
+    reviews = Review.query.filter(Review.productId == id).all()
+    # print(dir(reviews.product_reviews))
+    return {"reviews": [review.to_dict() for review in reviews]}
