@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { getOneProduct } from '../../store/products';
+import { addCartItem } from '../../store/cart'
 import ReviewCard from './ReviewCard'
 import StarSpan from './StarSpan'
 import './ProductDetail.css';
@@ -10,20 +11,22 @@ const ProductDetail = () => {
     const [addReview, setAddReview] = useState(false);
     const [review, setReview] = useState('');
     const [rating, setRating] = useState(3);
-    // const { id } = useParams();
-    // console.log("********************");
-    // console.log(id);
-    // const dispatch = useDispatch();
 
-    // useEffect(() => {
-    //     dispatch(getOneProduct(id));
-    // }, [dispatch, id]);
+    const dispatch = useDispatch();
 
-    // const product = useSelector(state => state.products[id]);
+    const { id } = useParams();
+    console.log("********************");
+    console.log(id);
 
-    // if (!product) {
-    //     return null;
-    // }
+    useEffect(() => {
+        dispatch(getOneProduct(id));
+    }, [dispatch, id]);
+
+    const product = useSelector(state => state.products[id]);
+
+    if (!product) {
+        return null;
+    }
 
     const openAddReview = (e) => {
         e.preventDefault();
@@ -78,13 +81,17 @@ const ProductDetail = () => {
         )
     }
 
-    const product = {
-        name: 'Replica Monster Energy Yamaha Team 2021 T-shirt',
-        price: 56.00,
-        description: 'Official replica of the polo shirt that will be worn by the Yamaha Monster Energy Team and its official riders: the Spanish Maverick Viñales and the Frenchman Fabio Quartararo in the 2021 season. It is made of technical fabric.',
-        image: 'https://res.cloudinary.com/dpf7crjn5/image/upload/v1621893530/test%20data/teamMonsterShirt_d1mhot.jpg',
-    }
+    // const product = {
+    //     id: 1,
+    //     name: 'Replica Monster Energy Yamaha Team 2021 T-shirt',
+    //     price: 56.00,
+    //     description: 'Official replica of the polo shirt that will be worn by the Yamaha Monster Energy Team and its official riders: the Spanish Maverick Viñales and the Frenchman Fabio Quartararo in the 2021 season. It is made of technical fabric.',
+    //     image: 'https://res.cloudinary.com/dpf7crjn5/image/upload/v1621893530/test%20data/teamMonsterShirt_d1mhot.jpg',
+    // }
 
+    const onPurchase = () => {
+        dispatch(addCartItem(product));
+    };
 
     const showHideDesc = (infoClass, arrowClass, buttonClass) =>{
         let chev = document.querySelector(arrowClass);
@@ -100,7 +107,6 @@ const ProductDetail = () => {
             chev.style.transform = "rotate(-360deg)";
             btn.style.borderBottom = "1px solid darkgray"
         }
-
     }
 
     return (
@@ -119,7 +125,7 @@ const ProductDetail = () => {
                         <p>Free returns</p>
                         <p>Secure payments</p>
                     </div>
-                    <button className="pdt-dtl__add-to-cart">
+                    <button onClick={ onPurchase } className="pdt-dtl__add-to-cart">
                         Add to cart
                     </button>
                     <button className="pdt-dtl__buy-it-now">
@@ -141,14 +147,14 @@ const ProductDetail = () => {
                     <i className="fas fa-chevron-down pdt-dtl__reviews-chevron"></i>
                 </button>
                 <div className="pdt-dtl__reviews">
-                    Some reviews...
+                   <div className="pdt-dtl__review-container">
+                    <h2>User Reviews</h2>
+                    {reviewSection}
+                    {addReviewSection}
+                    </div>
                 </div>
             </div>
-            <div className="pdt-dtl__review-container">
-                <h2>User Reviews</h2>
-                {reviewSection}
-                {addReviewSection}
-            </div>
+
         </div>
     );
 };
