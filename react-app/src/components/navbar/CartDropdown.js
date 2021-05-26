@@ -30,7 +30,12 @@ const CartDropdown = () => {
         <div className="close-cart-dropdown" onClick={closeCartDropdown}>
           <div className="cart-dropdown" onClick={(e) => e.stopPropagation()}>
             {Object.entries(cart).map(([key, value]) => {
-              return <div key={key}>{`${products[key].name} = ${value}`}</div>;
+              return (
+                <div className="cart-dropdown-item" key={key}>
+                  {`${products[key].name} = ${value}`}
+                  <span>{products[key].price}</span>
+                </div>
+              );
             })}
           </div>
         </div>

@@ -3,7 +3,6 @@ import { useDispatch } from "react-redux";
 import { addCartItem } from "../../store/cart";
 
 const ProductCard = ({ product }) => {
-  // TODO add a add to cart button for testing purpose, should remove later
   const dispatch = useDispatch();
   const onPurchase = () => {
     dispatch(addCartItem(product));

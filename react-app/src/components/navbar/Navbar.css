@@ -87,9 +87,16 @@ button {
 .cart-dropdown {
   position: absolute;
   top: 75px;
-  right: 0px;
+  right: 10px;
   border-radius: 3px;
   height: 500px;
   width: 400px;
   background-color: white;
+}
+
+.cart-dropdown-item {
+  display: flex;
+  padding: 10px;
+  border: 1px solid gray;
+  justify-content: space-between;
 }
