@@ -69,3 +69,99 @@
     font-size: 13px;
     align-self: center;
 }
+
+.pdt-dtl__review-container{
+    margin: 20px auto;
+    padding: 20px;
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+}
+
+.pdt-dtl_review-card{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+    padding-top: 10px;
+    border-top: 2px solid #8d8d8d;
+}
+
+.pdt-dtl_add-review-button{
+    margin: 0 auto;
+    padding: 5px 30px;
+    background-color: midnightblue;
+    color: white;
+    font-weight: 500;
+    font-size: 16px;
+}
+
+.pdt-dtl_add-review-form{
+    margin: 0 auto;
+    padding: 10px;
+    background-color: rgb(213, 213, 255);
+    width: 60%;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+}
+
+.pdt-dtl_add-review-textarea{
+    width: 100%;
+    font-size: 16px;
+    font-family: 'Times New Roman';
+    background-color: white;
+}
+
+.pdt-dtl_add-review-rating{
+    margin-top: 10px;
+}
+
+.review-form_btn-row{
+    width: 100%;
+    display: flex;
+}
+
+.review-form_submit-btn{
+    margin-right: 10px;
+    background-color: midnightblue;
+    color: white;
+    border-radius: 5px;
+}
+
+.review-form_cancel-btn{
+    background-color: white;
+    border-radius: 5px;
+    border: none;
+}
+
+.review-form_btn-row button{
+    margin-top: 10px;
+    flex-grow: 1;
+    padding: 5px;
+}
+
+.review-rating-display{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    font-size: 20px;
+}
+
+.review-rating-picker{
+    margin-top: 10px;
+    display: flex;
+    font-size: 20px;
+}
+
+.review-rating-label{
+    margin-right: 5px;
+}
+
+.review-rating-picker i{
+    transition: opacity 1s ease-out;
+}
+
+.fa-star{
+    color: rgb(255, 167, 66);
+}
