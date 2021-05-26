@@ -1,5 +1,6 @@
 const ADD_ITEM = "cart/ADD_ITEM";
 const REMOVE_ITEM = "cart/REMOVE_ITEM";
+const CLEAR_CART = "cart/CLEAR_CART"
 
 const storage = window.sessionStorage;
 
@@ -16,6 +17,12 @@ export const removeCartItem = (item) => {
     item,
   };
 };
+
+export const clearCart = () => {
+  return {
+    type: CLEAR_CART
+  }
+}
 
 let initialState = {};
 if (storage.getItem('cart')){
@@ -50,6 +57,11 @@ const CartReducer = (state = initialState, action) => {
           [itemID]: count - 1,
         };
       }
+    }
+
+    case CLEAR_CART: {
+      storage.removeItem("cart");
+      return {};
     }
 
     default:

@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import {useHistory} from 'react-router-dom';
 import "./Navbar.css";
 import usePrevious from "../../utilities/usePrevious";
-import { addCartItem, removeCartItem } from "../../store/cart";
+import { addCartItem, removeCartItem, clearCart } from "../../store/cart";
 
 const CartDropdown = () => {
   const dispatch = useDispatch();
@@ -59,6 +59,10 @@ const CartDropdown = () => {
     history.push('/checkout')
   }
 
+  const clearShoppingCart = () => {
+    dispatch(clearCart())
+  }
+
   return (
     <>
       {cartDropdownVisible && (
@@ -100,6 +104,7 @@ const CartDropdown = () => {
             <span style={{ color: "blue" }}>
               {totalCost.toFixed(2)}
               <button onClick={goToCheckout}>Checkout</button>
+              <button onClick={clearShoppingCart}>Clear</button>
             </span>
           </div>
         </div>
