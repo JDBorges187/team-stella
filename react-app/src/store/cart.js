@@ -1,6 +1,8 @@
 const ADD_ITEM = "cart/ADD_ITEM";
 const REMOVE_ITEM = "cart/REMOVE_ITEM";
 
+const storage = window.sessionStorage;
+
 export const addCartItem = (item) => {
   return {
     type: ADD_ITEM,
@@ -20,6 +22,7 @@ const CartReducer = (state = {}, action) => {
     case ADD_ITEM: {
       const itemID = action.item.id.toString();
       const count = state[itemID] || 0;
+      storage.setItem("cart", JSON.stringify({...state, [itemID]: count + 1}));
       return {
         ...state,
         [itemID]: count + 1,
@@ -31,10 +34,12 @@ const CartReducer = (state = {}, action) => {
       const count = state[itemID];
       if (count === 1) {
         delete state[itemID];
+        storage.setItem("cart", JSON.stringify(state));
         return {
           ...state,
         };
       } else {
+        storage.setItem("cart", JSON.stringify({...state, [itemID]: count - 1}));
         return {
           ...state,
           [itemID]: count - 1,
