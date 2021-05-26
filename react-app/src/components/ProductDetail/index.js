@@ -1,11 +1,15 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { getOneProduct } from '../../store/products';
+import ReviewCard from './ReviewCard'
+import StarSpan from './StarSpan'
 import './ProductDetail.css';
 
 const ProductDetail = () => {
-
+    const [addReview, setAddReview] = useState(false);
+    const [review, setReview] = useState('');
+    const [rating, setRating] = useState(3);
     // const { id } = useParams();
     // console.log("********************");
     // console.log(id);
@@ -20,6 +24,59 @@ const ProductDetail = () => {
     // if (!product) {
     //     return null;
     // }
+
+    const openAddReview = (e) => {
+        e.preventDefault();
+        setAddReview(true);
+    }
+
+    const submitComment = (e) => {
+        e.preventDefault();
+        //Send to db
+        console.log("Review: ", review);
+        console.log("Rating: ", rating)
+        setReview('');
+        setAddReview(false);
+    }
+
+    let reviewSection = (
+        <>
+        <ReviewCard title='Review1' username='User1' desc='Good' rating={5}/>
+        <ReviewCard title='Review2' username='User2' desc='Bad' rating={1}/>
+        <ReviewCard title='Review3' username='User3' desc='Mediocre' rating={3}/>
+        </>
+    )
+
+    let addReviewSection = (<button onClick={openAddReview} className='pdt-dtl_add-review-button'>Add Review</button>);
+
+    if(!addReview){
+        addReviewSection = <button onClick={openAddReview} className='pdt-dtl_add-review-button'>Add Review</button>;
+    }
+    else{
+        addReviewSection = (
+                <form className='pdt-dtl_add-review-form' onSubmit={submitComment}>
+                    {/* <input
+                        type='text'
+                        className='pdt-dtl_add-review-form'
+                        placeholder='Add title here'
+                        /> */}
+                    <textarea
+                        className='pdt-dtl_add-review-textarea'
+                        value={review}
+                        onChange={(e) => setReview(e.target.value)}
+                        placeholder='Add review here' />
+                    <StarSpan mutable={true} rating={rating} setRating={setRating}/>
+                    <div className='review-form_btn-row'>
+                        <button className='review-form_submit-btn' type='submit'>Submit Review</button>
+                        <button className='review-form_cancel-btn'
+                        onClick={() => {
+                            setAddReview(false);
+                            setRating(5);
+                        }}>Cancel</button>
+                    </div>
+                </form>
+        )
+    }
 
     const product = {
         name: 'Replica Monster Energy Yamaha Team 2021 T-shirt',
@@ -86,6 +143,11 @@ const ProductDetail = () => {
                 <div className="pdt-dtl__reviews">
                     Some reviews...
                 </div>
+            </div>
+            <div className="pdt-dtl__review-container">
+                <h2>User Reviews</h2>
+                {reviewSection}
+                {addReviewSection}
             </div>
         </div>
     );

@@ -16,8 +16,8 @@
   margin: 20px 0;
 }
 
-input,
-label {
+.auth-form-input,
+.auth-form-label {
   display: block;
   padding: 8px 0;
   width: 370px;
