@@ -1,14 +1,13 @@
-import React from 'react';
-
+import React, {useState} from 'react';
 
 const StarSpan = ({mutable, rating, setRating}) => {
+    const [tempRating, setTempRating] = useState(rating);
     let starArray = [false, false, false, false, false];
     starArray.fill(true, 0, rating);
     if(!mutable){
         return (
-            <span>
+            <span className='review-rating-display'>
                 {starArray.map((filled, idx) => {
-                    console.log(filled);
                     if(filled){
                         return <i key={idx} className="fas fa-star" />;
                     }
@@ -21,12 +20,22 @@ const StarSpan = ({mutable, rating, setRating}) => {
     // //For add review section
     return (
         <span className='review-rating-picker'>
+            <span className='review-rating-label'>Rating: </span>
             {starArray.map((filled, idx) => {
-                    if(filled){
-                        return <i key={idx} className="fas fa-star" onClick={() => setRating(idx + 1)}></i>;
-                    }
-                    return <i key={idx} className="far fa-star" onClick={() => setRating(idx + 1)}></i>
-                })}
+                return <i key={idx}
+                className={"fa-star "  + (tempRating > idx ? "fas" : "far")}
+                onClick={() => {
+                    setRating(idx + 1);
+                    setTempRating(idx + 1);
+                }}
+                onMouseEnter={() => {
+                    setTempRating(idx + 1);
+                }}
+                onMouseLeave={() => {
+                    setTempRating(rating);
+                }}
+                />;
+            })}
         </span>
     )
 }

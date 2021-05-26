@@ -141,32 +141,26 @@
     padding: 5px;
 }
 
-.review-rating-picker{
+.review-rating-display{
+    margin-top: 10px;
+    margin-bottom: 10px;
     display: flex;
+    font-size: 20px;
 }
 
-.review-rating-picker input{
-    opacity: 0%;
+.review-rating-picker{
+    margin-top: 10px;
+    display: flex;
+    font-size: 20px;
 }
 
-.review-rating-picker label{
-    position: relative;
+.review-rating-label{
+    margin-right: 5px;
 }
 
-.review-rating-picker:not > label:before{
-    content         : '';
-    display         : block;
-    width           : 1.5em;
-    height          : 1.5em;
-    opacity         : 0;
-    transition      : opacity 0.2s linear;
-  }
-
-  .review-rating-picker:not(old) > label:hover:before,
-  .review-rating-picker:not(old) > label:hover ~ label:before,
-  .review-rating-picker:not(:hover) > :checked ~ label:before{
-    opacity : 1;
-  }
+.review-rating-picker i{
+    transition: opacity 1s ease-out;
+}
 
 .fa-star{
     color: rgb(255, 167, 66);
