@@ -5,13 +5,46 @@ import { useSelector } from "react-redux";
 
 const ProductGrid = () => {
   const products = useSelector((state) => state.products.list);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [numberOfPages, setNumberOfPages] = useState(1);
+  const [displayProducts, setDisplayProducts] = useState(products);
+  const productsPerPage = 12;
+
+  useEffect(() => {
+    setDisplayProducts(products);
+  }, [products]);
+
+  useEffect(() => {
+    setNumberOfPages(Math.ceil(displayProducts.length / productsPerPage));
+  }, [displayProducts]);
+
+  const lastProductIndex = currentPage * productsPerPage;
+  const firstProductIndex = lastProductIndex - productsPerPage;
+
+  const currentProducts = displayProducts.slice(
+    firstProductIndex,
+    lastProductIndex
+  );
 
   return (
-    <div className="products">
-      {products.map((product) => {
-        return <ProductCard key={product.id} product={product} />;
-      })}
-    </div>
+    <>
+      <div className="products-container">
+        <div className="products">
+          {currentProducts.map((product) => {
+            return <ProductCard key={product.id} product={product} />;
+          })}
+        </div>
+        <ul className="product-pages">
+          {[...Array(numberOfPages)].map((e, i) => {
+            return (
+              <li key={i} onClick={() => setCurrentPage(i + 1)}>
+                {i + 1}
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+    </>
   );
 };
 
