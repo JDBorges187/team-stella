@@ -9,7 +9,7 @@ import './ProductDetail.css';
 const ProductDetail = () => {
     const [addReview, setAddReview] = useState(false);
     const [review, setReview] = useState('');
-    const [rating, setRating] = useState(5);
+    const [rating, setRating] = useState(3);
     // const { id } = useParams();
 
     // const dispatch = useDispatch();
@@ -37,6 +37,14 @@ const ProductDetail = () => {
         setReview('');
         setAddReview(false);
     }
+
+    let reviewSection = (
+        <>
+        <ReviewCard title='Review1' username='User1' desc='Good' rating={5}/>
+        <ReviewCard title='Review2' username='User2' desc='Bad' rating={1}/>
+        <ReviewCard title='Review3' username='User3' desc='Mediocre' rating={3}/>
+        </>
+    )
 
     let addReviewSection = (<button onClick={openAddReview} className='pdt-dtl_add-review-button'>Add Review</button>);
 
@@ -103,9 +111,7 @@ const ProductDetail = () => {
             </div>
             <div className="pdt-dtl__review-container">
                 <h2>User Reviews</h2>
-                <ReviewCard title='Review1' username='User1' desc='Good' rating={5}/>
-                <ReviewCard title='Review2' username='User2' desc='Bad' rating={1}/>
-                <ReviewCard title='Review3' username='User3' desc='Mediocre' rating={3}/>
+                {reviewSection}
                 {addReviewSection}
             </div>
         </div>
