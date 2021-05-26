@@ -252,6 +252,7 @@
     font-size: 16px;
     font-family: 'Times New Roman';
     background-color: white;
+    overflow-y: auto;
 }
 
 .pdt-dtl_add-review-rating{
