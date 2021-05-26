@@ -75,3 +75,28 @@ button {
   border: none;
   padding: 5px;
 }
+
+.close-cart-dropdown {
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.cart-dropdown {
+  position: absolute;
+  top: 75px;
+  right: 10px;
+  border-radius: 3px;
+  height: 500px;
+  width: 400px;
+  background-color: white;
+}
+
+.cart-dropdown-item {
+  display: flex;
+  padding: 10px;
+  border: 1px solid gray;
+  justify-content: space-between;
+}

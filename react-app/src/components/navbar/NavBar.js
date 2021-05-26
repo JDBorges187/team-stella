@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import LogoutButton from "../auth/LogoutButton";
+import CartDropdown from "./CartDropdown";
 import { useSelector } from "react-redux";
 import "./Navbar.css";
 
@@ -8,7 +9,7 @@ const NavBar = () => {
   const user = useSelector((state) => state.session.user);
 
   return (
-    <nav className="nav">
+    <nav className="nav" style={{ zIndex: 2 }}>
       <div className="nav-logo-search">
         <div className="nav-logo">
           <NavLink
@@ -52,10 +53,8 @@ const NavBar = () => {
             <button className="nav-links-btn">Cart</button>
           </NavLink>
         </li>
-        {/* <li>
-          <LogoutButton />
-        </li> */}
       </ul>
+      <CartDropdown />
     </nav>
   );
 };
