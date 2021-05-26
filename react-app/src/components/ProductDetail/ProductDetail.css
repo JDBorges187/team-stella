@@ -106,7 +106,7 @@
     flex-direction: column;
 }
 
-.pdt-dtl_add-review-form textarea{
+.pdt-dtl_add-review-textarea{
     width: 100%;
     font-size: 16px;
     font-family: 'Times New Roman';

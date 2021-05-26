@@ -54,8 +54,13 @@ const ProductDetail = () => {
     else{
         addReviewSection = (
                 <form className='pdt-dtl_add-review-form' onSubmit={submitComment}>
+                    {/* <input
+                        type='text'
+                        className='pdt-dtl_add-review-form'
+                        placeholder='Add title here'
+                        /> */}
                     <textarea
-                        className='pdt-dtl_add-review-form textarea'
+                        className='pdt-dtl_add-review-textarea'
                         value={review}
                         onChange={(e) => setReview(e.target.value)}
                         placeholder='Add review here' />
