@@ -149,6 +149,25 @@
     opacity: 0%;
 }
 
+.review-rating-picker label{
+    position: relative;
+}
+
+.review-rating-picker:not > label:before{
+    content         : '';
+    display         : block;
+    width           : 1.5em;
+    height          : 1.5em;
+    opacity         : 0;
+    transition      : opacity 0.2s linear;
+  }
+
+  .review-rating-picker:not(old) > label:hover:before,
+  .review-rating-picker:not(old) > label:hover ~ label:before,
+  .review-rating-picker:not(:hover) > :checked ~ label:before{
+    opacity : 1;
+  }
+
 .fa-star{
     color: rgb(255, 167, 66);
 }
