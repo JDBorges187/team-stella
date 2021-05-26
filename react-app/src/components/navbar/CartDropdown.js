@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import {useHistory} from 'react-router-dom';
 import "./Navbar.css";
 import usePrevious from "../../utilities/usePrevious";
 import { addCartItem, removeCartItem } from "../../store/cart";
 
 const CartDropdown = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
   const cart = useSelector((state) => state.cart);
   const products = useSelector((state) => state.products);
   const [cartDropdownVisible, setCartDropdownVisible] = useState(false);
@@ -46,6 +48,11 @@ const CartDropdown = () => {
     }
   }, [cart]);
 
+  const goToCheckout = () => {
+    closeCartDropdown();
+    history.push('/checkout')
+  }
+
   return (
     <>
       {cartDropdownVisible && (
@@ -84,7 +91,10 @@ const CartDropdown = () => {
                 );
               })}
             </div>
-            <span style={{ color: "blue" }}>{totalCost.toFixed(2)}</span>
+            <span style={{ color: "blue" }}>
+              {totalCost.toFixed(2)}
+              <button onClick={goToCheckout}>Checkout</button>
+            </span>
           </div>
         </div>
       )}
