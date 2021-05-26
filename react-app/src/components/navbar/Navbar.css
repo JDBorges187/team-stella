@@ -8,6 +8,7 @@ nav {
   min-width: 275px;
   height: 75px;
   position: sticky;
+  top: 0;
   position: -webkit-sticky;
 }
 
