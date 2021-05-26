@@ -148,7 +148,6 @@ const ProductDetail = () => {
                 </button>
                 <div className="pdt-dtl__reviews">
                    <div className="pdt-dtl__review-container">
-                    <h2>User Reviews</h2>
                     {reviewSection}
                     {addReviewSection}
                     </div>
