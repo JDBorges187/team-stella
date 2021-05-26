@@ -4,12 +4,18 @@ import {useSelector} from 'react-redux';
 
 //Will want to get list of products from redux store
 const CheckoutList = () => {
-    let totalPrice = 135.00;
     const cart = useSelector((state) => state.cart);
     const products = useSelector((state) => state.products);
 
-    console.log(products);
     const itemKeys = (cart !== null) ? Object.keys(cart) : [];
+
+    const getTotalCost = () => {
+        const costTotal = Object.keys(cart).reduce(
+          (sum, itemID) => cart[itemID] * products[itemID].price + sum,
+          0
+        );
+        return costTotal;
+    };
 
     return (
         <>
@@ -33,7 +39,7 @@ const CheckoutList = () => {
                     <tr>
                         <th>Total: </th>
                         <td>
-                            <span>${totalPrice.toFixed(2)}</span>
+                            <span>${getTotalCost().toFixed(2)}</span>
                         </td>
                     </tr>
                 </tbody>
