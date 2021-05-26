@@ -79,7 +79,7 @@ button {
 .close-cart-dropdown {
   height: 100vh;
   width: 100vw;
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
 }
@@ -128,4 +128,9 @@ button {
   padding: 10px;
   border: 1px solid gray;
   justify-content: space-between;
+}
+
+.cart-dropdown-item-container {
+  overflow-y: scroll;
+  height: 270px;
 }
