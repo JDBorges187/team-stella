@@ -9,5 +9,5 @@ class Review(db.Model):
     rating = db.Column(db.Integer)
     review = db.Column(db.String(200), nullable = False)
 
-    user = db.relationship("User", back_populates="reviews")
-    product = db.relationship("Product", back_populates="reviews")
+    # user = db.relationship("User", back_populates="user_reviews")
+    product = db.relationship("Product", back_populates="product_reviews")
