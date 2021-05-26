@@ -17,7 +17,12 @@ export const removeCartItem = (item) => {
   };
 };
 
-const CartReducer = (state = {}, action) => {
+let initialState = {};
+if (storage.getItem('cart')){
+  initialState = JSON.parse(storage.getItem('cart'));
+}
+
+const CartReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_ITEM: {
       const itemID = action.item.id.toString();

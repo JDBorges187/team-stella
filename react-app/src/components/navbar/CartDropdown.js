@@ -13,6 +13,7 @@ const CartDropdown = () => {
   const [cartDropdownVisible, setCartDropdownVisible] = useState(false);
   const [cartCloseClass, setCartCloseClass] = useState(false);
   const [totalCost, setTotalCost] = useState(0);
+
   const closeCartDropdown = () => {
     setCartCloseClass(true);
     setTimeout(() => setCartDropdownVisible(false), 500);
@@ -23,7 +24,12 @@ const CartDropdown = () => {
 
   const getTotalCost = (cart, products) => {
     const costTotal = Object.keys(cart).reduce(
-      (sum, itemID) => cart[itemID] * products[itemID].price + sum,
+      (sum, itemID) => {
+        if(products[itemID]){
+          return cart[itemID] * products[itemID].price + sum;
+        }
+        return sum;
+      },
       0
     );
     setTotalCost(costTotal);
