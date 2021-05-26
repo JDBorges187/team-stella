@@ -27,11 +27,12 @@ def get_all_reviews():
 
 @review_routes.route('/', methods=['POST'])
 def add_new_review():
-    form = ReviewForm(meta={'csrf': False})
-    # form['csrf_token'].data = request.cookies['csrf_token']
+    form = ReviewForm() #meta={'csrf': False})
+    form['csrf_token'].data = request.cookies['csrf_token']
     if current_user.is_authenticated:
-        userId = current_user.to_dict().id
-        form['userId'] = userId
+        userId = current_user.to_dict()
+        print(userId)
+        form['userId'].data = userId['id']
         if form.validate_on_submit():
             review = Review(
                 userId=form.data['userId'],
