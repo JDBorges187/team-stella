@@ -140,3 +140,7 @@
     flex-grow: 1;
     padding: 5px;
 }
+
+.fa-star{
+    color: rgb(255, 167, 66);
+}
