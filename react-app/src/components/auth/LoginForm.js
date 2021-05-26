@@ -41,8 +41,8 @@ const LoginForm = () => {
           ))}
         </div>
         <div>
-          <label htmlFor="email">Email</label>
-          <input
+          <label className="auth-form-label" htmlFor="email">Email</label>
+          <input className="auth-form-input"
             name="email"
             type="text"
             placeholder="Email"
@@ -51,8 +51,8 @@ const LoginForm = () => {
           />
         </div>
         <div>
-          <label htmlFor="password">Password</label>
-          <input
+          <label className="auth-form-label" htmlFor="password">Password</label>
+          <input className="auth-form-input"
             name="password"
             type="password"
             placeholder="Password"
