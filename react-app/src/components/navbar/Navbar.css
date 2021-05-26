@@ -86,9 +86,10 @@ button {
 
 .cart-dropdown {
   position: absolute;
-  top: 0;
-  right: 0;
-  height: 600px;
+  top: 75px;
+  right: 0px;
+  border-radius: 3px;
+  height: 500px;
   width: 400px;
-  background-color: lightcoral;
+  background-color: white;
 }

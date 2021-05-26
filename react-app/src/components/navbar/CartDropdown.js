@@ -5,6 +5,7 @@ import usePrevious from "../../utilities/usePrevious";
 
 const CartDropdown = () => {
   const cart = useSelector((state) => state.cart);
+  const products = useSelector((state) => state.products);
   const [cartDropdownVisible, setCartDropdownVisible] = useState(false);
   const closeCartDropdown = () => {
     setCartDropdownVisible(false);
@@ -28,7 +29,9 @@ const CartDropdown = () => {
       {cartDropdownVisible && (
         <div className="close-cart-dropdown" onClick={closeCartDropdown}>
           <div className="cart-dropdown" onClick={(e) => e.stopPropagation()}>
-            DROPDOWN TEST
+            {Object.entries(cart).map(([key, value]) => {
+              return <div key={key}>{`${products[key].name} = ${value}`}</div>;
+            })}
           </div>
         </div>
       )}

@@ -11,7 +11,7 @@ const Featured = () => {
     <div className="featured">
       {featuredProducts.map((product) => {
         return (
-          <div className="featured-product">
+          <div key={product.id} className="featured-product">
             <div className="featured-product-img">
               <img src={merchImg}></img>
             </div>
