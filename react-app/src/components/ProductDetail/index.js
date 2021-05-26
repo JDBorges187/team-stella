@@ -9,7 +9,7 @@ import './ProductDetail.css';
 const ProductDetail = () => {
     const [addReview, setAddReview] = useState(false);
     const [review, setReview] = useState('');
-    const [rating, setRating] = useState('5');
+    const [rating, setRating] = useState(5);
     // const { id } = useParams();
 
     // const dispatch = useDispatch();
@@ -52,23 +52,12 @@ const ProductDetail = () => {
                         onChange={(e) => setReview(e.target.value)}
                         placeholder='Add review here' />
                     <StarSpan mutable={true} rating={rating} setRating={setRating}/>
-                    {/* <select
-                    className='pdt-dtl_add-review-rating'
-                    value={rating}
-                    onChange={(e) => setRating(e.target.value)}>
-                        <option>Select a rating</option>
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                    </select> */}
                     <div className='review-form_btn-row'>
                         <button className='review-form_submit-btn' type='submit'>Submit Review</button>
                         <button className='review-form_cancel-btn'
                         onClick={() => {
                             setAddReview(false);
-                            setRating('5');
+                            setRating(5);
                         }}>Cancel</button>
                     </div>
                 </form>
