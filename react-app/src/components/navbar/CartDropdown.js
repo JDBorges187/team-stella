@@ -15,8 +15,8 @@ const CartDropdown = () => {
   const [totalCost, setTotalCost] = useState(0);
 
   const closeCartDropdown = () => {
-    setCartCloseClass(true);
-    setTimeout(() => setCartDropdownVisible(false), 500);
+      setCartCloseClass(true);
+      setTimeout(() => setCartDropdownVisible(false), 500);
   };
 
   const getTotalItems = (cart) =>
