@@ -1,6 +1,7 @@
 from flask import Blueprint, jsonify
 from app.models import Order, OrderItem, User
 from app import db
+from flask_login import current_user
 
 order_routes = Blueprint("orders", __name__)
 
@@ -11,3 +12,13 @@ def get_order_items(id):
     order_d = order.to_dict()
 
     return order_d
+
+
+@order_routes.route('')
+def get_all_orders():
+    userId = current_user.get_id()
+    orders = Order.query.filter(Order.userId == userId).all()
+
+    return {
+        "orders": [order.to_dict() for order in orders]
+    }

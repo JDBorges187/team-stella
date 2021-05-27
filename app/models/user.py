@@ -32,3 +32,6 @@ class User(db.Model, UserMixin):
             "firstname": self.firstname,
             "email": self.email
         }
+
+    def get_id(self):
+        return str(self.id)
