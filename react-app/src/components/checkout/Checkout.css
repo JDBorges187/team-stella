@@ -72,7 +72,7 @@
     box-sizing: border-box;
 }
 
-.return-cart-button{
+.return-home-button{
     background-color: #e7e7e7;
     padding: 10px 10px;
     border-radius: 5px;
@@ -103,6 +103,7 @@
     background-color: #e0e0e0;
     position: relative;
     border: 1px rgba(0,0,0,.1) solid;
+    background-size: 100% 100%;
 }
 
 .checkout-item_quantity{

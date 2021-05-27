@@ -1,25 +1,36 @@
-import React from "react";
+import React, {useState} from "react";
+import {useHistory} from 'react-router-dom'
 import { useDispatch } from "react-redux";
 import { addCartItem } from "../../store/cart";
 import {NavLink} from "react-router-dom";
 
 const ProductCard = ({ product }) => {
+  const history = useHistory();
+  const [showAdd, setShowAdd] = useState(false);
   const dispatch = useDispatch();
-  const onPurchase = () => {
+  const onPurchase = (e) => {
+    e.stopPropagation();
     dispatch(addCartItem(product));
   };
 
+  const goToProductPage = (e) => {
+    e.stopPropagation();
+    history.push(`/products/${product.id}`);
+  }
+
   return (
-    <NavLink className="productLink" key={product.name} exact to={`/products/${product.id}`}>
-      <div className="card-container" onClick={onPurchase}>
-        <div className="card-image">
-          Image
-          <img></img> {/* src={`${product.image}`} */}
-        </div>
-        <div className="card-title">{product.name}</div>
-        <div className="card-price">{`$${product.price.toFixed(2)}`}</div>
-      </div>
-    </NavLink>
+    <div className="card-container"
+      onClick={(e) => goToProductPage(e)}
+      onMouseOver={() => setShowAdd(true)}
+      onMouseLeave={() => setShowAdd(false)}
+    >
+      <i onClick={(e) => onPurchase(e)}
+        className={'fas fa-plus-circle fa-2x card-container_add-cart' + (showAdd ? '' : ' hide-add')}
+      />
+      <div className="card-image" style={{backgroundImage: `url(${product.image})`}} />
+      <div className="card-title">{product.name}</div>
+      <div className="card-price">{`$${product.price.toFixed(2)}`}</div>
+    </div>
   );
 };
 

@@ -40,6 +40,8 @@ const ProductDetail = () => {
 
     const reviews = useSelector(state => state.reviews.detail);
 
+    window.scrollTo(0,0);
+
     if (!product) {
         return null;
     }
