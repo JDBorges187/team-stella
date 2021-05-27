@@ -18,7 +18,9 @@ def get_order_items(id):
 def get_all_orders():
     userId = current_user.get_id()
     orders = Order.query.filter(Order.userId == userId).all()
+    orders_lst = [order.to_dict() for order in orders]
+    orders_dic = {}
+    for order in orders_lst:
+        orders_dic[order['id']] = order
 
-    return {
-        "orders": [order.to_dict() for order in orders]
-    }
+    return orders_dic
