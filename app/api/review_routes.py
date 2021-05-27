@@ -25,7 +25,7 @@ def get_all_reviews():
     return {"reviews": [review.to_dict() for review in reviews]}
 
 
-@review_routes.route('/', methods=['POST'])
+@review_routes.route('', methods=['POST'])
 def add_new_review():
     form = ReviewForm() #meta={'csrf': False})
     form['csrf_token'].data = request.cookies['csrf_token']
