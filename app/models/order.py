@@ -1,4 +1,5 @@
 from .db import db
+import json
 
 
 class Order(db.Model):
@@ -7,10 +8,11 @@ class Order(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     userId = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
 
-    order_items = db.relationship("OrderItem", backref="order", lazy=True)
+    order_items = db.relationship("OrderItem", backref="order", lazy="joined")
 
     def to_dict(self):
         return {
             "id": self.id,
             "userId": self.userId,
+            "order_items": [order_item.to_dict() for order_item in self.order_items],
         }
