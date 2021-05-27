@@ -1,17 +1,52 @@
-import React from 'react'
-import CheckoutItem from './CheckoutItem'
+import React, {useEffect} from 'react';
+import CheckoutItem from './CheckoutItem';
+import {useSelector, useDispatch} from 'react-redux';
+import { getAllProducts } from "../../store/products";
 
 //Will want to get list of products from redux store
 const CheckoutList = () => {
-    let totalPrice = 135.00;
+    // const cart = useSelector((state) => state.cart);
+    const cart = JSON.parse(window.sessionStorage.getItem("cart"));
+    const products = useSelector((state) => state.products);
+
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(getAllProducts());
+    }, [dispatch]);
+
+    const itemKeys = (cart !== null) ? Object.keys(cart) : [];
+
+    const getTotalCost = () => {
+        const costTotal = Object.keys(cart).reduce(
+          (sum, itemID) => {
+              if(products[itemID]){
+                  return cart[itemID] * products[itemID].price + sum;
+              }
+              return sum;
+            },
+          0
+        );
+        return costTotal;
+    };
+
     return (
         <>
             <ul className='checkout-list'>
-                {/* Add a loop through products here*/}
-                <li><CheckoutItem name='Product 1' quantity={1} price={20.00}/></li>
-                <li><CheckoutItem name='Product 2' quantity={2} price={25.00}/></li>
-                <li><CheckoutItem name='Product 3' quantity={1} price={35.00}/></li>
-                <li><CheckoutItem name='Product 4' quantity={2} price={15.00}/></li>
+                {itemKeys.map((item, idx) => {
+                    let product = products[item];
+                    console.log(product);
+                    console.log(products);
+                    if(product){
+                        return (<li key={idx}>
+                            <CheckoutItem
+                                image={product.image}
+                                name={product.name}
+                                quantity={cart[item]}
+                                price={product.price * cart[item]}/>
+                        </li>)
+                    }
+                })}
             </ul>
 
             <div className='divider'/>
@@ -21,7 +56,7 @@ const CheckoutList = () => {
                     <tr>
                         <th>Total: </th>
                         <td>
-                            <span>${totalPrice.toFixed(2)}</span>
+                            <span>${getTotalCost().toFixed(2)}</span>
                         </td>
                     </tr>
                 </tbody>
