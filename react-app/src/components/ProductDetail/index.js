@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { getOneProduct } from '../../store/products';
+import { getOneProduct, getAllProducts } from '../../store/products';
 import { getProductReviews, newReview } from '../../store/reviews'
 import { addCartItem } from '../../store/cart'
 import ReviewCard from './ReviewCard'
@@ -16,11 +16,12 @@ const ProductDetail = () => {
     const dispatch = useDispatch();
 
     const { id } = useParams();
-    console.log("********************");
-    console.log(id);
+    // console.log("********************");
+    // console.log(id);
 
     useEffect(async () => {
-        await dispatch(getOneProduct(id));
+        // await dispatch(getOneProduct(id));
+        // await dispatch(getAllProducts())
         await dispatch(getProductReviews(id));
     }, [dispatch, id]);
 
@@ -28,7 +29,9 @@ const ProductDetail = () => {
     const reviews = useSelector(state => state.reviews.detail)
 
     if (!product) {
-        return null;
+        dispatch(getAllProducts())
+        return <h1>LOADING!!!</h1>;
+
     }
 
 
@@ -49,9 +52,10 @@ const ProductDetail = () => {
 
     let reviewSection = (
         <>
-            {reviews && reviews.map((review,i)=>{
+            {reviews && reviews.map((review, i) => {
+                const username = review.user.firstname
                 return (
-                    <ReviewCard key={i} title='Title' username='User' desc={review.review} rating={review.rating} />
+                    <ReviewCard key={i} title='Title' username={username} desc={review.review} rating={review.rating} />
                 )
             })}
         </>
@@ -155,8 +159,8 @@ const ProductDetail = () => {
                 </button>
                 <div className="pdt-dtl__reviews">
                     <div className="pdt-dtl__review-container">
-                        {reviewSection}
                         {addReviewSection}
+                        {reviewSection}
                     </div>
                 </div>
             </div>
