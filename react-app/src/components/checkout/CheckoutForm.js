@@ -35,12 +35,24 @@ const CheckoutForm = () => {
         return newErrors;
     }
 
-    const submitCheckout = (e) => {
+    const submitCheckout = async (e) => {
         e.preventDefault();
         let newErrors = checkErrors();
         if(newErrors.length === 0){
             history.push('/')
         } else{
+            // const response = await fetch('/api/orders', {
+            //     method: 'POST',
+            //     headers: {
+            //       'Content-Type': 'application/json'
+            //     },
+            //     body: JSON.stringify({
+            //       city,
+            //       country
+            //     })
+            // });
+            // const success = await response.json();
+
             setErrors(newErrors);
         }
     }

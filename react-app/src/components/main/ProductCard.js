@@ -4,12 +4,14 @@ import { addCartItem } from "../../store/cart";
 
 const ProductCard = ({ product }) => {
   const dispatch = useDispatch();
-  const onPurchase = () => {
+  const onPurchase = (e) => {
+    e.stopPropagation();
+    console.log("Reach")
     dispatch(addCartItem(product));
   };
 
   return (
-    <div className="card-container" onClick={onPurchase}>
+    <div className="card-container" onClick={(e) => onPurchase(e)}>
       <div className="card-image">
         Image
         <img></img> {/* src={`${product.image}`} */}
