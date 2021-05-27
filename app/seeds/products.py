@@ -12,51 +12,51 @@ def seed_products():
 
     category2 = Category(name="Hat")
     product2 = Product(name='Racing Cap', price=85.99,
-                       description='A cap.', image='put url here',
+                       description='A cap.', image='/images/racing-cap.jpg',
                        categoryId=2)
 
     product3 = Product(name='Sun Visor', price=55.99,
-                       description='A visor.', image='put url here',
+                       description='A visor.', image='/images/sun-visor.jpg',
                        categoryId=2)
     product4 = Product(name='Red Bull Hat', price=19.99,
-                       description='A cap.', image='put url here',
+                       description='A cap.', image='/images/red-bull-hat.jpg',
                        categoryId=2)
 
     product5 = Product(name='Sombrero', price=50.99,
-                       description='A visor.', image='put url here',
+                       description='A visor.', image='/images/sombrero.jpg',
                        categoryId=2)
     category3 = Category(name="Shirt")
     product6 = Product(name='Red Bull shirt', price=34.99,
-                       description='Racing shirt', image='put url here',
+                       description='Racing shirt', image='/images/red-bull-shirt.jpg',
                        categoryId=3)
 
     product7 = Product(name='SClassic Racing Shirt', price=34.99,
-                       description='Racing shirt', image='put url here',
+                       description='Racing shirt', image='/images/sclassic-racing-shirt.jpg',
                        categoryId=3)
     product8 = Product(name='Monster Shirt', price=24.99,
-                       description='Racing shirt', image='put url here',
+                       description='Racing shirt', image='/images/monster-shirt.jpeg',
                        categoryId=3)
 
     product9 = Product(name='Team Yamaha Shirt', price=56.99,
-                       description='Racing shirt', image='put url here',
+                       description='Racing shirt', image='/images/team-yamaha-shirt.jpg',
                        categoryId=3)
     product10 = Product(name='Fox Racing Shirt', price=17.99,
-                        description='Racing shirt', image='put url here',
+                        description='Racing shirt', image='/images/fox-racing-shirt.jpg',
                         categoryId=3)
 
     product11 = Product(name='Honda Shirt', price=13.99,
-                        description='Racing shirt', image='put url here',
+                        description='Racing shirt', image='/images/honda-shirt.jpeg',
                         categoryId=3)
     product12 = Product(name='Kawasaki Shirt', price=9.99,
-                        description='Racing shirt', image='put url here',
+                        description='Racing shirt', image='/images/kawasaki-shirt.jpg',
                         categoryId=3)
 
     product13 = Product(name='Suzuki Shirt', price=10.99,
-                        description='Racing shirt', image='put url here',
+                        description='Racing shirt', image='/images/suzuki-shirt.jpg',
                         categoryId=3)
 
     product14 = Product(name='MotoGP Shirt', price=13.99,
-                        description='Racing shirt', image='put url here',
+                        description='Racing shirt', image='/images/motogp-shirt.jpg',
                         categoryId=3)
 
     db.session.add(category1)
