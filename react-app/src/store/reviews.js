@@ -63,7 +63,7 @@ export default (state = initialState, { type, payload }) => {
             return { ...state, detail: payload }
         
         case ADD_REVIEW:
-            return {...state, detail: [...state.detail, payload] }
+            return {...state, detail: [payload,...state.detail] }
 
         default:
             return state
