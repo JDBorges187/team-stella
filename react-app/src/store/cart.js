@@ -1,8 +1,8 @@
 const ADD_ITEM = "cart/ADD_ITEM";
 const REMOVE_ITEM = "cart/REMOVE_ITEM";
-const CLEAR_CART = "cart/CLEAR_CART"
+const CLEAR_CART = "cart/CLEAR_CART";
 
-const storage = window.sessionStorage;
+const storage = window.localStorage;
 
 export const addCartItem = (item) => {
   return {
@@ -20,13 +20,13 @@ export const removeCartItem = (item) => {
 
 export const clearCart = () => {
   return {
-    type: CLEAR_CART
-  }
-}
+    type: CLEAR_CART,
+  };
+};
 
 let initialState = {};
-if (storage.getItem('cart')){
-  initialState = JSON.parse(storage.getItem('cart'));
+if (storage.getItem("cart")) {
+  initialState = JSON.parse(storage.getItem("cart"));
 }
 
 const CartReducer = (state = initialState, action) => {
@@ -34,7 +34,10 @@ const CartReducer = (state = initialState, action) => {
     case ADD_ITEM: {
       const itemID = action.item.id.toString();
       const count = state[itemID] || 0;
-      storage.setItem("cart", JSON.stringify({...state, [itemID]: count + 1}));
+      storage.setItem(
+        "cart",
+        JSON.stringify({ ...state, [itemID]: count + 1 })
+      );
       return {
         ...state,
         [itemID]: count + 1,
@@ -51,7 +54,10 @@ const CartReducer = (state = initialState, action) => {
           ...state,
         };
       } else {
-        storage.setItem("cart", JSON.stringify({...state, [itemID]: count - 1}));
+        storage.setItem(
+          "cart",
+          JSON.stringify({ ...state, [itemID]: count - 1 })
+        );
         return {
           ...state,
           [itemID]: count - 1,
