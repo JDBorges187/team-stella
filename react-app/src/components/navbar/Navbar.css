@@ -89,6 +89,7 @@ button {
   top: 75px;
   right: 15px;
   border-radius: 3px;
+  border: 1px solid black;
   height: 300px;
   width: 360px;
   background-color: white;

@@ -15,14 +15,20 @@ const ProductDetail = () => {
     const dispatch = useDispatch();
 
     const { id } = useParams();
+    //**********************************
+    const cartObj = useSelector(state => state.cart);
+    const cartItemIds = Object.keys(cartObj);
+    const storedProducts = useSelector(state => Object.keys(state.products));
+    const productsNeeded = cartItemIds.filter((itemId) => !storedProducts.includes(itemId));
     console.log("********************");
-    console.log(id);
-
-    useEffect(() => {
-        dispatch(getOneProduct(id));
-    }, [dispatch, id]);
-
+    console.log(productsNeeded);
+    //**********************************
     const product = useSelector(state => state.products[id]);
+    if (!product) {
+
+      dispatch(getOneProduct(id));
+
+    }
 
     if (!product) {
         return null;
