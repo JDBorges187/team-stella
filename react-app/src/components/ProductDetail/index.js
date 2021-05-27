@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { getOneProduct } from '../../store/products';
+import { getOneProduct, getAllProducts } from '../../store/products';
+import { getProductReviews, newReview } from '../../store/reviews'
 import { addCartItem } from '../../store/cart'
 import ReviewCard from './ReviewCard'
 import StarSpan from './StarSpan'
@@ -15,18 +16,24 @@ const ProductDetail = () => {
     const dispatch = useDispatch();
 
     const { id } = useParams();
-    console.log("********************");
-    console.log(id);
+    // console.log("********************");
+    // console.log(id);
 
-    useEffect(() => {
-        dispatch(getOneProduct(id));
+    useEffect(async () => {
+        // await dispatch(getOneProduct(id));
+        // await dispatch(getAllProducts())
+        await dispatch(getProductReviews(id));
     }, [dispatch, id]);
 
     const product = useSelector(state => state.products[id]);
+    const reviews = useSelector(state => state.reviews.detail)
 
     if (!product) {
-        return null;
+        dispatch(getAllProducts())
+        return <h1>LOADING!!!</h1>;
+
     }
+
 
     const openAddReview = (e) => {
         e.preventDefault();
@@ -36,6 +43,7 @@ const ProductDetail = () => {
     const submitComment = (e) => {
         e.preventDefault();
         //Send to db
+        dispatch(newReview(id, review, rating))
         console.log("Review: ", review);
         console.log("Rating: ", rating)
         setReview('');
@@ -44,40 +52,43 @@ const ProductDetail = () => {
 
     let reviewSection = (
         <>
-        <ReviewCard title='Review1' username='User1' desc='Good' rating={5}/>
-        <ReviewCard title='Review2' username='User2' desc='Bad' rating={1}/>
-        <ReviewCard title='Review3' username='User3' desc='Mediocre' rating={3}/>
+            {reviews && reviews.map((review, i) => {
+                const username = review.user.firstname
+                return (
+                    <ReviewCard key={i} title='Title' username={username} desc={review.review} rating={review.rating} />
+                )
+            })}
         </>
     )
 
     let addReviewSection = (<button onClick={openAddReview} className='pdt-dtl_add-review-button'>Add Review</button>);
 
-    if(!addReview){
+    if (!addReview) {
         addReviewSection = <button onClick={openAddReview} className='pdt-dtl_add-review-button'>Add Review</button>;
     }
-    else{
+    else {
         addReviewSection = (
-                <form className='pdt-dtl_add-review-form' onSubmit={submitComment}>
-                    {/* <input
+            <form className='pdt-dtl_add-review-form' onSubmit={submitComment}>
+                {/* <input
                         type='text'
                         className='pdt-dtl_add-review-form'
                         placeholder='Add title here'
                         /> */}
-                    <textarea
-                        className='pdt-dtl_add-review-textarea'
-                        value={review}
-                        onChange={(e) => setReview(e.target.value)}
-                        placeholder='Add review here' />
-                    <StarSpan mutable={true} rating={rating} setRating={setRating}/>
-                    <div className='review-form_btn-row'>
-                        <button className='review-form_submit-btn' type='submit'>Submit Review</button>
-                        <button className='review-form_cancel-btn'
+                <textarea
+                    className='pdt-dtl_add-review-textarea'
+                    value={review}
+                    onChange={(e) => setReview(e.target.value)}
+                    placeholder='Add review here' />
+                <StarSpan mutable={true} rating={rating} setRating={setRating} />
+                <div className='review-form_btn-row'>
+                    <button className='review-form_submit-btn' type='submit'>Submit Review</button>
+                    <button className='review-form_cancel-btn'
                         onClick={() => {
                             setAddReview(false);
                             setRating(5);
                         }}>Cancel</button>
-                    </div>
-                </form>
+                </div>
+            </form>
         )
     }
 
@@ -93,16 +104,16 @@ const ProductDetail = () => {
         dispatch(addCartItem(product));
     };
 
-    const showHideDesc = (infoClass, arrowClass, buttonClass) =>{
+    const showHideDesc = (infoClass, arrowClass, buttonClass) => {
         let chev = document.querySelector(arrowClass);
         let btn = document.querySelector(buttonClass);
 
-        if (document.querySelector(infoClass).style.display !== "block"){
+        if (document.querySelector(infoClass).style.display !== "block") {
             document.querySelector(infoClass).style.display = "block";
             chev.style.transform = "rotate(180deg)";
             btn.style.borderBottom = "none";
         }
-        else{
+        else {
             document.querySelector(infoClass).style.display = "none";
             chev.style.transform = "rotate(-360deg)";
             btn.style.borderBottom = "1px solid darkgray"
@@ -125,7 +136,7 @@ const ProductDetail = () => {
                         <p>Free returns</p>
                         <p>Secure payments</p>
                     </div>
-                    <button onClick={ onPurchase } className="pdt-dtl__add-to-cart">
+                    <button onClick={onPurchase} className="pdt-dtl__add-to-cart">
                         Add to cart
                     </button>
                     <button className="pdt-dtl__buy-it-now">
@@ -142,14 +153,14 @@ const ProductDetail = () => {
                     <i className="fas fa-chevron-down pdt-dtl__desc-chevron"></i>
                 </button>
                 <div className="pdt-dtl__desc">{product.description}</div>
-                <button onClick={() => showHideDesc(".pdt-dtl__reviews", ".pdt-dtl__reviews-chevron", ".reviews-btn" )} className="pdt-dtl__xtra-info-btn reviews-btn">
+                <button onClick={() => showHideDesc(".pdt-dtl__reviews", ".pdt-dtl__reviews-chevron", ".reviews-btn")} className="pdt-dtl__xtra-info-btn reviews-btn">
                     <span className="pdt-dtl__xtra-info-title">Reviews</span>
                     <i className="fas fa-chevron-down pdt-dtl__reviews-chevron"></i>
                 </button>
                 <div className="pdt-dtl__reviews">
-                   <div className="pdt-dtl__review-container">
-                    {reviewSection}
-                    {addReviewSection}
+                    <div className="pdt-dtl__review-container">
+                        {addReviewSection}
+                        {reviewSection}
                     </div>
                 </div>
             </div>
