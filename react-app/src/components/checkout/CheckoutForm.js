@@ -59,9 +59,9 @@ const CheckoutForm = () => {
         }
     }
 
-    const returnCart = (e) => {
+    const returnHome = (e) => {
         e.preventDefault();
-        history.push('/cart')
+        history.push('/')
     }
 
     return (
@@ -95,7 +95,7 @@ const CheckoutForm = () => {
                     </div>
                     <div className='checkout-form-buttons'>
                         <button className='checkout-button' type='submit'>Checkout</button>
-                        <button className='return-cart-button' onClick={returnCart}>Return to Cart</button>
+                        <button className='return-home-button' onClick={returnHome}>Return to Home</button>
                     </div>
                 </form>
             </div>
