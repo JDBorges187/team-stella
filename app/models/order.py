@@ -1,5 +1,6 @@
 from .db import db
 import json
+from datetime import datetime
 
 
 class Order(db.Model):
@@ -7,6 +8,7 @@ class Order(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     userId = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+    createdAt = db.Column(db.DateTime, default=datetime.utcnow)
 
     order_items = db.relationship("OrderItem", backref="order", lazy="joined")
 
@@ -15,4 +17,5 @@ class Order(db.Model):
             "id": self.id,
             "userId": self.userId,
             "order_items": [order_item.to_dict() for order_item in self.order_items],
+            "createdAt": self.createdAt,
         }

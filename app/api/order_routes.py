@@ -18,9 +18,34 @@ def get_order_items(id):
 def get_all_orders():
     userId = current_user.get_id()
     orders = Order.query.filter(Order.userId == userId).all()
-    orders_lst = [order.to_dict() for order in orders]
     orders_dic = {}
-    for order in orders_lst:
+    for order in [order.to_dict() for order in orders]:
         orders_dic[order['id']] = order
 
     return orders_dic
+
+
+@order_routes.route('', methods=['POST'])
+def post_order():
+    userId = current_user.get_id()
+    print("USER IDENTITY ====>", userId)
+    order = Order(
+        userId=userId,
+    )
+
+    db.session.add(order)
+    db.session.commit()
+
+    order_items = OrderItem(
+        orderId=order.id,
+        productId=2,
+        quantity=3
+    )
+    db.session.add(order_items)
+    db.session.commit()
+
+    order_dic = order.to_dict()
+
+    print("AFTER-ORDER-DICT ====>", order_dic)
+
+    return {}
