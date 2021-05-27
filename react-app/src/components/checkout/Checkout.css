@@ -109,7 +109,7 @@
     position: absolute;
     right: -.75em;
     top: -.75em;
-    z-index: 2;
+    z-index: 1;
     background-color: #888888;
     height: 1.5em;
     width: 1.5em;

@@ -1,17 +1,30 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import CheckoutItem from './CheckoutItem';
-import {useSelector} from 'react-redux';
+import {useSelector, useDispatch} from 'react-redux';
+import { getAllProducts } from "../../store/products";
 
 //Will want to get list of products from redux store
 const CheckoutList = () => {
-    const cart = useSelector((state) => state.cart);
+    // const cart = useSelector((state) => state.cart);
+    const cart = JSON.parse(window.sessionStorage.getItem("cart"));
     const products = useSelector((state) => state.products);
+
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(getAllProducts());
+    }, [dispatch]);
 
     const itemKeys = (cart !== null) ? Object.keys(cart) : [];
 
     const getTotalCost = () => {
         const costTotal = Object.keys(cart).reduce(
-          (sum, itemID) => cart[itemID] * products[itemID].price + sum,
+          (sum, itemID) => {
+              if(products[itemID]){
+                  return cart[itemID] * products[itemID].price + sum;
+              }
+              return sum;
+            },
           0
         );
         return costTotal;
@@ -23,13 +36,16 @@ const CheckoutList = () => {
                 {itemKeys.map((item, idx) => {
                     let product = products[item];
                     console.log(product);
-                    return (<li key={idx}>
-                        <CheckoutItem
-                            image={product.image}
-                            name={product.name}
-                            quantity={cart[item]}
-                            price={product.price * cart[item]}/>
-                    </li>)
+                    console.log(products);
+                    if(product){
+                        return (<li key={idx}>
+                            <CheckoutItem
+                                image={product.image}
+                                name={product.name}
+                                quantity={cart[item]}
+                                price={product.price * cart[item]}/>
+                        </li>)
+                    }
                 })}
             </ul>
 
