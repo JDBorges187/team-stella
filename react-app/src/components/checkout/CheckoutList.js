@@ -6,7 +6,7 @@ import { getAllProducts } from "../../store/products";
 //Will want to get list of products from redux store
 const CheckoutList = () => {
     // const cart = useSelector((state) => state.cart);
-    const cart = JSON.parse(window.sessionStorage.getItem("cart"));
+    const cart = JSON.parse(window.localStorage.getItem("cart"));
     const products = useSelector((state) => state.products);
 
     const dispatch = useDispatch();

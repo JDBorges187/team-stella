@@ -11,6 +11,8 @@ const CheckoutForm = () => {
     const [zipcode, setZipcode] = useState("")
     const history = useHistory();
 
+    // const cart = JSON.parse(window.sessionStorage.getItem("cart"));
+
     const checkErrors = () => {
         let newErrors = [];
         if(address.length === 0){
@@ -35,19 +37,31 @@ const CheckoutForm = () => {
         return newErrors;
     }
 
-    const submitCheckout = (e) => {
+    const submitCheckout = async (e) => {
         e.preventDefault();
         let newErrors = checkErrors();
         if(newErrors.length === 0){
             history.push('/')
         } else{
+            // const response = await fetch('/api/orders', {
+            //     method: 'POST',
+            //     headers: {
+            //       'Content-Type': 'application/json'
+            //     },
+            //     body: JSON.stringify({
+            //       city,
+            //       country
+            //     })
+            // });
+            // const success = await response.json();
+
             setErrors(newErrors);
         }
     }
 
-    const returnCart = (e) => {
+    const returnHome = (e) => {
         e.preventDefault();
-        history.push('/cart')
+        history.push('/')
     }
 
     return (
@@ -81,7 +95,7 @@ const CheckoutForm = () => {
                     </div>
                     <div className='checkout-form-buttons'>
                         <button className='checkout-button' type='submit'>Checkout</button>
-                        <button className='return-cart-button' onClick={returnCart}>Return to Cart</button>
+                        <button className='return-home-button' onClick={returnHome}>Return to Home</button>
                     </div>
                 </form>
             </div>

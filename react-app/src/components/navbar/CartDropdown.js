@@ -14,9 +14,9 @@ const CartDropdown = () => {
   const [cartCloseClass, setCartCloseClass] = useState(false);
   const [totalCost, setTotalCost] = useState(0);
 
-  const closeCartDropdown = () => {
-    setCartCloseClass(true);
-    setTimeout(() => setCartDropdownVisible(false), 500);
+  const closeCartDropdown = (e) => {
+      setCartCloseClass(true);
+      setTimeout(() => setCartDropdownVisible(false), 500);
   };
 
   const getTotalItems = (cart) =>
@@ -63,7 +63,7 @@ const CartDropdown = () => {
   return (
     <>
       {cartDropdownVisible && (
-        <div className="close-cart-dropdown" onClick={closeCartDropdown}>
+        <div className="close-cart-dropdown" onClick={(e) => closeCartDropdown(e)}>
           <div
             className={
               (cartDropdownVisible ? "cart-dropdown " : "") +
