@@ -1,8 +1,10 @@
 import React, {useState} from "react";
+import {useHistory} from 'react-router-dom'
 import { useDispatch } from "react-redux";
 import { addCartItem } from "../../store/cart";
 
 const ProductCard = ({ product }) => {
+  const history = useHistory();
   const [showAdd, setShowAdd] = useState(false);
   const dispatch = useDispatch();
   const onPurchase = (e) => {
@@ -10,8 +12,14 @@ const ProductCard = ({ product }) => {
     dispatch(addCartItem(product));
   };
 
+  const goToProductPage = (e) => {
+    e.stopPropagation();
+    history.push(`/products/${product.id}`);
+  }
+
   return (
     <div className="card-container"
+      onClick={(e) => goToProductPage(e)}
       onMouseOver={() => setShowAdd(true)}
       onMouseLeave={() => setShowAdd(false)}
     >
