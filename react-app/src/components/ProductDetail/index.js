@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { getOneProduct, getAllProducts } from '../../store/products';
+import { getOneProduct, getAllProducts, getProductGroup } from '../../store/products';
 import { getProductReviews, newReview } from '../../store/reviews'
 import { addCartItem } from '../../store/cart'
 import ReviewCard from './ReviewCard'
@@ -16,26 +16,35 @@ const ProductDetail = () => {
     const dispatch = useDispatch();
 
     const { id } = useParams();
-    // console.log("********************");
-    // console.log(id);
+    //**********************************
+    const cartObj = useSelector(state => state.cart);
+    const cartItemIds = Object.keys(cartObj);
+    const storedProducts = useSelector(state => Object.keys(state.products));
+    const productsNeeded = cartItemIds.filter((itemId) => !storedProducts.includes(itemId));
+    if(productsNeeded.length > 0){
+      let group = `${productsNeeded[0]},${id}`;
 
-    useEffect(async () => {
-        // await dispatch(getOneProduct(id));
-        // await dispatch(getAllProducts())
-        await dispatch(getProductReviews(id));
+      for(let i = 1; i < productsNeeded.length; i++){
+        group += `,${productsNeeded[i]}`;
+      }
+
+      dispatch(getProductGroup(group));
+    }
+
+    //**********************************
+    const product = useSelector(state => state.products[id]);
+
+    useEffect( () => {
+        dispatch(getProductReviews(id));
     }, [dispatch, id]);
 
-    const product = useSelector(state => state.products[id]);
-    const reviews = useSelector(state => state.reviews.detail)
+    const reviews = useSelector(state => state.reviews.detail);
 
     window.scrollTo(0,0);
 
     if (!product) {
-        dispatch(getAllProducts())
-        return <h1>LOADING!!!</h1>;
-
+        return null;
     }
-
 
     const openAddReview = (e) => {
         e.preventDefault();

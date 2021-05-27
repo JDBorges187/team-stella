@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import {useHistory} from 'react-router-dom'
 import { useDispatch } from "react-redux";
 import { addCartItem } from "../../store/cart";
+import {NavLink} from "react-router-dom";
 
 const ProductCard = ({ product }) => {
   const history = useHistory();
