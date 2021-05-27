@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { getOneProduct } from '../../store/products';
+import { getOneProduct, getAllProducts, getProductGroup } from '../../store/products';
 import { getProductReviews, newReview } from '../../store/reviews'
 import { addCartItem } from '../../store/cart'
 import ReviewCard from './ReviewCard'
@@ -21,26 +21,28 @@ const ProductDetail = () => {
     const cartItemIds = Object.keys(cartObj);
     const storedProducts = useSelector(state => Object.keys(state.products));
     const productsNeeded = cartItemIds.filter((itemId) => !storedProducts.includes(itemId));
-    console.log("********************");
-    console.log(productsNeeded);
+    if(productsNeeded.length > 0){
+      let group = `${productsNeeded[0]},${id}`;
+
+      for(let i = 1; i < productsNeeded.length; i++){
+        group += `,${productsNeeded[i]}`;
+      }
+
+      dispatch(getProductGroup(group));
+    }
+
     //**********************************
     const product = useSelector(state => state.products[id]);
-    if (!product) {
 
-      dispatch(getOneProduct(id));
-
-    }
-    useEffect(async () => {
-        await dispatch(getProductReviews(id));
+    useEffect( () => {
+        dispatch(getProductReviews(id));
     }, [dispatch, id]);
 
-    // const product = useSelector(state => state.products[id]);
-    const reviews = useSelector(state => state.reviews.detail)
+    const reviews = useSelector(state => state.reviews.detail);
 
     if (!product) {
         return null;
     }
-
 
     const openAddReview = (e) => {
         e.preventDefault();
@@ -59,9 +61,10 @@ const ProductDetail = () => {
 
     let reviewSection = (
         <>
-            {reviews && reviews.map((review,i)=>{
+            {reviews && reviews.map((review, i) => {
+                const username = review.user.firstname
                 return (
-                    <ReviewCard key={i} title='Title' username='User' desc={review.review} rating={review.rating} />
+                    <ReviewCard key={i} title='Title' username={username} desc={review.review} rating={review.rating} />
                 )
             })}
         </>
@@ -165,8 +168,8 @@ const ProductDetail = () => {
                 </button>
                 <div className="pdt-dtl__reviews">
                     <div className="pdt-dtl__review-container">
-                        {reviewSection}
                         {addReviewSection}
+                        {reviewSection}
                     </div>
                 </div>
             </div>

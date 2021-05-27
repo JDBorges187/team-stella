@@ -4,7 +4,7 @@ const LOAD = 'products/LOAD';
 
 const FILTER = 'products/FILTER';
 
-const GETGROUP = 'products/GETGROUP';
+// const GETGROUP = 'products/GETGROUP';
 
 const addOne = list => ({
   type: ADDONE,
@@ -22,10 +22,10 @@ const filter = (low, high) => ({
     high,
 });
 
-  const getGroup = ids => ({
-    type: GETGROUP,
-    ids,
-});
+//   const getGroup = ids => ({
+//     type: GETGROUP,
+//     ids,
+// });
 
 export const filterByPrice = (low, high) => (dispatch) => {
     dispatch(filter(low, high));
@@ -77,6 +77,7 @@ const productsReducer = (state = initialState, action) => {
       //   currentList.push(action.list[0]);
       return {
         [action.list[0].id]: action.list[0],
+        ...state,
         list: [...action.list],
       }
     }

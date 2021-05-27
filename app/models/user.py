@@ -12,7 +12,7 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
 
-    user_reviews = db.relationship('Review', backref='user', lazy='select')
+    reviews = db.relationship('Review', back_populates='user', lazy='select')
     orders = db.relationship("Order", backref="user", lazy=True)
 
     @property
@@ -32,3 +32,6 @@ class User(db.Model, UserMixin):
             "firstname": self.firstname,
             "email": self.email
         }
+
+    def get_id(self):
+        return str(self.id)

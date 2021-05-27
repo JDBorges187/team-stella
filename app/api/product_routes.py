@@ -19,12 +19,12 @@ def get_product(id):
 #id refers to productId
 @product_routes.route('/<id>/reviews')
 def get_product_reviews(id):
-    reviews = Review.query.filter(Review.productId == id).all()
+    reviews = Review.query.filter(Review.productId == id).order_by(Review.id.desc()).all()
     # print(dir(reviews.product_reviews))
     return {"reviews": [review.to_dict() for review in reviews]}
 
 
-@product_routes.route('/group/:<group>')
+@product_routes.route('/group/<group>')
 def get_product_group(group):
     productList = group.split(',')
     products = Product.query.filter(Product.id.in_(productList)).all()
