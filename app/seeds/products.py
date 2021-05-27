@@ -7,7 +7,7 @@ def seed_products():
 
     category1 = Category(name="Vehicle")
     product1 = Product(name='Car', price=2550.01,
-                       description='A car.', image='put url here',
+                       description='A car.', image='/images/car-1.jpg',
                        categoryId=1)
 
     category2 = Category(name="Hat")

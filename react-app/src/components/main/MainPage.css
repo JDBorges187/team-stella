@@ -142,11 +142,13 @@
   flex-direction: column;
   justify-content: center;
   margin: 10px;
+  z-index: 1;
 }
 
 .card-image {
   border: 1px solid red;
   height: 60%;
+  background-size: 100% 100%;
 }
 
 .card-title {

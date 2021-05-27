@@ -11,6 +11,8 @@ const CheckoutForm = () => {
     const [zipcode, setZipcode] = useState("")
     const history = useHistory();
 
+    // const cart = JSON.parse(window.sessionStorage.getItem("cart"));
+
     const checkErrors = () => {
         let newErrors = [];
         if(address.length === 0){
