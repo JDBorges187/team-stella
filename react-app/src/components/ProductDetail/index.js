@@ -28,6 +28,8 @@ const ProductDetail = () => {
     const product = useSelector(state => state.products[id]);
     const reviews = useSelector(state => state.reviews.detail)
 
+    window.scrollTo(0,0);
+
     if (!product) {
         dispatch(getAllProducts())
         return <h1>LOADING!!!</h1>;
