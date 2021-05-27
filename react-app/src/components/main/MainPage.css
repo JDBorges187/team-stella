@@ -135,20 +135,25 @@
 }
 
 .card-container {
-  border: 1px solid lightcoral;
+  border: 1px solid #ff9696;
   height: 300px;
   width: 200px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   margin: 10px;
-  background-color: #dadada;
+  background-color: #a7d7ff;
   border-radius: 5px;
   position: relative;
 }
 
+.card-container:hover{
+  box-shadow: 0px 0px 10px 1px rgb(223, 168, 168);
+}
+
 .card-image {
-  border: 1px solid red;
+  border: 1px solid rgb(51, 48, 95);
+  box-shadow: 0px 0px 5px 1px rgb(146, 141, 206);
   height: 60%;
   background-size: 100% 100%;
 }
