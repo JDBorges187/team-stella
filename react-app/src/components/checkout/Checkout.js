@@ -3,6 +3,7 @@ import './Checkout.css'
 import CheckoutForm from './CheckoutForm'
 import CheckoutList from './CheckoutList'
 const Checkout = () => {
+    window.scrollTo(0,0);
     return (
         <>
             <div className='checkout-main-container'>
