@@ -9,7 +9,8 @@ export const getOneProduct = (id) => async (dispatch) => {
   const response = await fetch(`/api/products/${id}`);
   if (response.ok){
     const data = await response.json();
-    return data;
+    const list = [data.product];
+    dispatch(load(list));
   }
 };
 

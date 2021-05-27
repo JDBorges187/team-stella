@@ -1,16 +1,19 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 import "./Navbar.css";
 import usePrevious from "../../utilities/usePrevious";
-import { addCartItem, removeCartItem } from "../../store/cart";
+import { addCartItem, removeCartItem, clearCart } from "../../store/cart";
 
 const CartDropdown = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
   const cart = useSelector((state) => state.cart);
   const products = useSelector((state) => state.products);
   const [cartDropdownVisible, setCartDropdownVisible] = useState(false);
   const [cartCloseClass, setCartCloseClass] = useState(false);
   const [totalCost, setTotalCost] = useState(0);
+
   const closeCartDropdown = () => {
     setCartCloseClass(true);
     setTimeout(() => setCartDropdownVisible(false), 500);
@@ -20,10 +23,12 @@ const CartDropdown = () => {
     Object.keys(cart).reduce((sum, itemID) => cart[itemID] + sum, 0);
 
   const getTotalCost = (cart, products) => {
-    const costTotal = Object.keys(cart).reduce(
-      (sum, itemID) => cart[itemID] * products[itemID].price + sum,
-      0
-    );
+    const costTotal = Object.keys(cart).reduce((sum, itemID) => {
+      if (products[itemID]) {
+        return cart[itemID] * products[itemID].price + sum;
+      }
+      return sum;
+    }, 0);
     setTotalCost(costTotal);
   };
 
@@ -45,6 +50,15 @@ const CartDropdown = () => {
       setCartDropdownVisible(true);
     }
   }, [cart]);
+
+  const goToCheckout = () => {
+    closeCartDropdown();
+    history.push("/checkout");
+  };
+
+  const clearShoppingCart = () => {
+    dispatch(clearCart());
+  };
 
   return (
     <>
@@ -93,6 +107,8 @@ const CartDropdown = () => {
                   padding: 4,
                 }}
               >{`Total: $${totalCost.toFixed(2)}`}</span>
+              <button onClick={goToCheckout}>Checkout</button>
+              <button onClick={clearShoppingCart}>Clear</button>
             </div>
           </div>
         </div>
