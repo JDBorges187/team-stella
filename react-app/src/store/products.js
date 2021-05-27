@@ -4,6 +4,8 @@ const LOAD = 'products/LOAD';
 
 const FILTER = 'products/FILTER';
 
+const GETGROUP = 'products/GETGROUP';
+
 const addOne = list => ({
   type: ADDONE,
   list,
@@ -18,7 +20,12 @@ const filter = (low, high) => ({
     type: FILTER,
     low,
     high,
-  });
+});
+
+  const getGroup = ids => ({
+    type: GETGROUP,
+    ids,
+});
 
 export const filterByPrice = (low, high) => (dispatch) => {
     dispatch(filter(low, high));
@@ -36,6 +43,15 @@ export const getOneProduct = (id) => async (dispatch) => {
 export const getAllProducts = () => async (dispatch) => {
   const response = await fetch("/api/products/");
   if (response.ok) {
+    const data = await response.json();
+    const list = data.products;
+    dispatch(load(list));
+  }
+};
+
+export const getProductGroup = (ids) => async (dispatch) => {
+  const response = await fetch(`/api/products/group/${ids}`);
+  if (response.ok){
     const data = await response.json();
     const list = data.products;
     dispatch(load(list));
