@@ -31,7 +31,14 @@ const orderDateFormat = (dateTime) => {
     let date = dateTime.getDate();
     let month = months[dateTime.getMonth()];
 
-    return `${day}, ${month} ${date}, ${year}`;
+    let hour = ((dateTime.getHours()) % 12);
+    if(hour == 0){
+        hour = 12;
+    }
+    let minutes = dateTime.getMinutes().toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false})
+    let ampm = dateTime.getHours < 12 ? "am" : "pm";
+
+    return `${day}, ${month} ${date}, ${year} ${hour}:${minutes} ${ampm}`;
 }
 
 export default orderDateFormat;

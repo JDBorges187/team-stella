@@ -1,6 +1,6 @@
 import React from 'react';
 import orderDateFormat from '../../utilities/timeFormatter'
-const OrderSelect = ({orders, orderId, setOrderId}) => {
+const OrderSelect = ({orders, setOrderId}) => {
 
     return (
         <div className='order-select-sidebar'>
