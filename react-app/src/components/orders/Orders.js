@@ -1,11 +1,14 @@
 import React, {useState, useEffect} from 'react'
+import {useDispatch} from 'react-redux'
 import OrderSelect from './OrderSelect'
 import OrderSummary from './OrderSummary'
+import {getAllProducts} from '../../store/products'
 import './Orders.css'
 
 const Orders = () => {
     const [orders, setOrders] = useState([])
     const [orderId, setOrderId] = useState(-1);
+    const dispatch = useDispatch();
 
     const getOrders = async () => {
         let response = await fetch('/api/orders');
@@ -16,7 +19,8 @@ const Orders = () => {
 
     useEffect( () => {
         getOrders();
-    }, []);
+        dispatch(getAllProducts());
+    }, [dispatch]);
 
     return (
         <>
