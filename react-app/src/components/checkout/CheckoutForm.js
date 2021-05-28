@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
-import {useSelector} from "react-redux"
+import {useSelector, useDispatch} from "react-redux"
+import {clearCart} from "../../store/cart"
 
 //Form is mostly just for show, db functionality would be a bonus?
 const CheckoutForm = () => {
@@ -11,6 +12,7 @@ const CheckoutForm = () => {
   const [state, setState] = useState("");
   const [zipcode, setZipcode] = useState("");
   const history = useHistory();
+  const dispatch = useDispatch();
   const cart = useSelector(state => state.cart)
 
   // const cart = JSON.parse(window.sessionStorage.getItem("cart"));
@@ -54,6 +56,7 @@ const CheckoutForm = () => {
 
       const order = await res.json()
       console.log(order)
+      dispatch(clearCart())
     } else {
       // const response = await fetch('/api/orders', {
       //     method: 'POST',
