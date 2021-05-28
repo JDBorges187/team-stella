@@ -30,7 +30,7 @@ def post_order():
     userId = current_user.get_id()
     print("USER IDENTITY ====>", userId)
     order = Order(
-        userId=1,
+        userId=userId,
     )
 
     db.session.add(order)
