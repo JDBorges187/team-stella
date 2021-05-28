@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useParams, NavLink } from "react-router-dom";
+import { useParams, NavLink, useHistory } from "react-router-dom";
 import {
   getOneProduct,
   getAllProducts,
@@ -13,6 +13,7 @@ import StarSpan from "./StarSpan";
 import "./ProductDetail.css";
 
 const ProductDetail = () => {
+  const history = useHistory();
   const [addReview, setAddReview] = useState(false);
   const [review, setReview] = useState("");
   const [rating, setRating] = useState(3);
@@ -146,6 +147,11 @@ const ProductDetail = () => {
     dispatch(addCartItem(product));
   };
 
+  const onBuyNow = () => {
+    dispatch(addCartItem(product));
+    history.push("/checkout")
+  }
+
   const showHideDesc = (infoClass, arrowClass, buttonClass) => {
     let chev = document.querySelector(arrowClass);
     let btn = document.querySelector(buttonClass);
@@ -180,11 +186,9 @@ const ProductDetail = () => {
           <button onClick={onPurchase} className="pdt-dtl__add-to-cart">
             Add to cart
           </button>
-          <NavLink to={`/checkout`}>
-            <button onClick={onPurchase} className="pdt-dtl__buy-it-now">
+            <button onClick={onBuyNow} className="pdt-dtl__buy-it-now">
               Buy it now
             </button>
-          </NavLink>
           <div className="pdt-dtl__shipping-time">
             Ships in 1-3 business days
           </div>
