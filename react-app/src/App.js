@@ -50,9 +50,9 @@ function App() {
         <Route path="/checkout" exact={true}>
           <Checkout />
         </Route>
-        <Route path="/orders" exact={true}>
+        <ProtectedRoute path="/orders" exact={true}>
           <Orders />
-        </Route>
+        </ProtectedRoute>
         <ProtectedRoute path="/users" exact={true}>
           <UsersList />
         </ProtectedRoute>
