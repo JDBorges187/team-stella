@@ -43,6 +43,11 @@ const CartDropdown = () => {
     dispatch(removeCartItem(product));
   };
 
+  const onClickCart = () => {
+    setCartCloseClass(false);
+    setCartDropdownVisible(true);
+  }
+
   useEffect(() => {
     const totalCount = getTotalItems(cart);
     getTotalCost(cart, products);
@@ -63,6 +68,7 @@ const CartDropdown = () => {
 
   return (
     <>
+      <button onClick={onClickCart} className="nav-links-btn">Cart</button>
       {cartDropdownVisible && (
         <div
           className="close-cart-dropdown"
