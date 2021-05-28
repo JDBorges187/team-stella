@@ -56,17 +56,17 @@ const NavBar = () => {
           </NavLink>
         </li>
         <li>
-          <NavLink
+          {/* <NavLink
             to="/cart"
             exact={true}
             activeClassName="active"
             className="nav-link"
           >
             <button className="nav-links-btn">Cart</button>
-          </NavLink>
+          </NavLink> */}
+          <CartDropdown />
         </li>
       </ul>
-      <CartDropdown />
     </nav>
   );
 };
