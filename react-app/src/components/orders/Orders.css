@@ -1,5 +1,5 @@
 .order-page-container{
-    height: 80vh;
+    height: 100vh;
     display: flex;
 }
 .order-select-sidebar{
@@ -7,7 +7,7 @@
     background-color: #d7f7ff;
     display: flex;
     flex-direction: column;
-    overflow-y: auto;
+    overflow-y: scroll;
 }
 
 .order-list-item{
@@ -19,4 +19,13 @@
 .order-summary-container{
     flex-grow: 1;
     background-color: rgba(255, 251, 233, 0.667);
+    display: flex;
+}
+
+.order-product-card{
+    height: 200px;
+    width: 300px;
+    border: 1px solid black;
+    background-color: aquamarine;
+    margin: 10px;
 }

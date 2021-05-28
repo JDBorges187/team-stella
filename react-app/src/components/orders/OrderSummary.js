@@ -1,10 +1,17 @@
 import React from 'react';
+import { useSelector } from "react-redux";
+import OrderProductCard from './OrderProductCard'
 
 const OrderSummary = ({order}) => {
+    const products = useSelector((state) => state.products.list);
     console.log(order)
     return (
         <div className='order-summary-container'>
-            {order && (<div>{order.createdAt}</div>)}
+            {order && (
+                order.order_items.map((item, idx) => {
+                    return <OrderProductCard key={idx} item={item} products={products}/>;
+                })
+            )}
         </div>
     )
 }
