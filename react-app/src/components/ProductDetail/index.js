@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useParams, NavLink } from "react-router-dom";
 import {
   getOneProduct,
   getAllProducts,
@@ -30,7 +30,7 @@ const ProductDetail = () => {
       productsNeeded.push(itemId);
     }
   }
-  console.log(productsNeeded);
+
   if (productsNeeded.length > 0) {
     let group = `${productsNeeded[0]},${id}`;
 
@@ -180,7 +180,11 @@ const ProductDetail = () => {
           <button onClick={onPurchase} className="pdt-dtl__add-to-cart">
             Add to cart
           </button>
-          <button className="pdt-dtl__buy-it-now">Buy it now</button>
+          <NavLink to={`/checkout`}>
+            <button onClick={onPurchase} className="pdt-dtl__buy-it-now">
+              Buy it now
+            </button>
+          </NavLink>
           <div className="pdt-dtl__shipping-time">
             Ships in 1-3 business days
           </div>

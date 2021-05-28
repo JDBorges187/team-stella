@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 import "./Navbar.css";
 import usePrevious from "../../utilities/usePrevious";
 import { addCartItem, removeCartItem, clearCart } from "../../store/cart";
 
 const CartDropdown = () => {
+  const location = useLocation();
   const dispatch = useDispatch();
   const history = useHistory();
   const cart = useSelector((state) => state.cart);
@@ -15,8 +16,8 @@ const CartDropdown = () => {
   const [totalCost, setTotalCost] = useState(0);
 
   const closeCartDropdown = (e) => {
-      setCartCloseClass(true);
-      setTimeout(() => setCartDropdownVisible(false), 500);
+    setCartCloseClass(true);
+    setTimeout(() => setCartDropdownVisible(false), 500);
   };
 
   const getTotalItems = (cart) =>
@@ -45,7 +46,7 @@ const CartDropdown = () => {
   useEffect(() => {
     const totalCount = getTotalItems(cart);
     getTotalCost(cart, products);
-    if (totalCount > prevTotalItems) {
+    if (totalCount > prevTotalItems && location.pathname !== "/checkout") {
       setCartCloseClass(false);
       setCartDropdownVisible(true);
     }
@@ -63,7 +64,10 @@ const CartDropdown = () => {
   return (
     <>
       {cartDropdownVisible && (
-        <div className="close-cart-dropdown" onClick={(e) => closeCartDropdown(e)}>
+        <div
+          className="close-cart-dropdown"
+          onClick={(e) => closeCartDropdown(e)}
+        >
           <div
             className={
               (cartDropdownVisible ? "cart-dropdown " : "") +
