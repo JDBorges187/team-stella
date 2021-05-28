@@ -1,5 +1,5 @@
 import React from 'react';
-
+import orderDateFormat from '../../utilities/timeFormatter'
 const OrderSelect = ({orders, orderId, setOrderId}) => {
 
     return (
@@ -9,7 +9,7 @@ const OrderSelect = ({orders, orderId, setOrderId}) => {
                     <div className='order-list-item' key={idx}
                     onClick={() => setOrderId(idx)}
                     >
-                        {order.createdAt}
+                        {orderDateFormat(new Date(order.createdAt))}
                     </div>
                 )
             }) }
