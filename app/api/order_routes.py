@@ -30,7 +30,7 @@ def post_order():
     userId = current_user.get_id()
     print("USER IDENTITY ====>", userId)
     order = Order(
-        userId=userId,
+        userId=1,
     )
 
     db.session.add(order)
@@ -38,16 +38,13 @@ def post_order():
 
     data = request.json
 
-    order_items = OrderItem(
-        orderId=order.id,
-        productId=data["productId"],
-        quantity=data["quantity"],
-    )
-    db.session.add(order_items)
+    for item in data["order_items"]:
+        order_item = OrderItem(
+            orderId=order.id,
+            productId=item["productId"],
+            quantity=item["quantity"],
+        )
+        db.session.add(order_item)
     db.session.commit()
 
-    order_dic = order.to_dict()
-
-    print("AFTER-ORDER-DICT ====>", order_dic)
-
-    return {}
+    return order.to_dict()
