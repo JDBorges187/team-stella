@@ -1,9 +1,9 @@
 import React from 'react';
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
 import OrderProductCard from './OrderProductCard'
 
-const OrderSummary = ({order}) => {
-    const products = useSelector((state) => state.products.list);
+const OrderSummary = ({order, products}) => {
+    // const products = useSelector((state) => state.products.list);
     console.log(order)
     return (
         <div className='order-summary-container'>

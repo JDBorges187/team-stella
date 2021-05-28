@@ -37,8 +37,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     border-radius: 5px;
     margin-top: 8px;
+}
+
+.order-list-item p{
+    margin: 10px;
 }
 
 .order-list-item:hover{
@@ -73,5 +78,8 @@
 }
 
 .order-product-card-title{
+    padding-top: 20px;
     font-weight: 500;
+    font-size: 20px;
+    padding-bottom: 10px;
 }

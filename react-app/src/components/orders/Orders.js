@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import {useDispatch} from 'react-redux'
+import {useDispatch, useSelector} from 'react-redux'
 import OrderSelect from './OrderSelect'
 import OrderSummary from './OrderSummary'
 import {getAllProducts} from '../../store/products'
@@ -8,6 +8,8 @@ import './Orders.css'
 const Orders = () => {
     const [orders, setOrders] = useState([])
     const [orderId, setOrderId] = useState(-1);
+    const products = useSelector((state) => state.products.list);
+
     const dispatch = useDispatch();
 
     const getOrders = async () => {
@@ -25,8 +27,8 @@ const Orders = () => {
     return (
         <>
             <div className='order-page-container'>
-                <OrderSelect orders={orders} setOrderId={setOrderId} orderId={orderId}/>
-                <OrderSummary order={orderId >= 0 ? orders[orderId] : null}/>
+                <OrderSelect orders={orders} setOrderId={setOrderId} orderId={orderId} products={products}/>
+                <OrderSummary order={orderId >= 0 ? orders[orderId] : null} products={products}/>
             </div>
         </>
     )
