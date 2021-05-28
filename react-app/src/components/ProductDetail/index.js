@@ -36,11 +36,10 @@ const ProductDetail = () => {
 
     useEffect( () => {
         dispatch(getProductReviews(id));
+        window.scrollTo(0,0);
     }, [dispatch, id]);
 
     const reviews = useSelector(state => state.reviews.detail);
-
-    window.scrollTo(0,0);
 
     if (!product) {
         return null;
