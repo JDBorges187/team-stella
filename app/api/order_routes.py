@@ -1,4 +1,4 @@
-from flask import Blueprint, jsonify
+from flask import Blueprint, jsonify, request
 from app.models import Order, OrderItem, User
 from app import db
 from flask_login import current_user
@@ -36,10 +36,12 @@ def post_order():
     db.session.add(order)
     db.session.commit()
 
+    data = request.json
+
     order_items = OrderItem(
         orderId=order.id,
-        productId=2,
-        quantity=3
+        productId=data["productId"],
+        quantity=data["quantity"],
     )
     db.session.add(order_items)
     db.session.commit()
