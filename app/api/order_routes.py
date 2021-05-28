@@ -30,7 +30,7 @@ def post_order():
     userId = current_user.get_id()
     print("USER IDENTITY ====>", userId)
     order = Order(
-        userId=userId,
+        userId=1,
     )
 
     db.session.add(order)
@@ -38,11 +38,11 @@ def post_order():
 
     data = request.json
 
-    for item in data["order_items"]:
+    for itemId, quantity in data.items():
         order_item = OrderItem(
             orderId=order.id,
-            productId=item["productId"],
-            quantity=item["quantity"],
+            productId=itemId,
+            quantity=quantity,
         )
         db.session.add(order_item)
     db.session.commit()
