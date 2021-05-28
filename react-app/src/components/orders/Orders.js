@@ -10,7 +10,7 @@ const Orders = () => {
         let response = await fetch('/api/orders');
         const order_list = await response.json();
         setOrders(order_list);
-        console.log(order_list);
+        console.log(Object.values(order_list)[0].createdAt);
     }
 
     useEffect( () => {
@@ -19,8 +19,7 @@ const Orders = () => {
 
     return (
         <>
-            <div>Hi</div>
-            <OrderSelect orders={orders} setOrderId={setOrderId}/>
+            <OrderSelect orders={orders} setOrderId={setOrderId} orderId={orderId}/>
             <OrderSummary />
         </>
     )
