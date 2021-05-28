@@ -12,6 +12,7 @@ import Account from "./components/navbar/Account";
 import ProductDetail from "./components/ProductDetail";
 import Checkout from "./components/checkout/Checkout";
 import MainPage from "./components/main/MainPage";
+import Orders from "./components/orders/Orders"
 import { authenticate } from "./store/session";
 
 function App() {
@@ -48,6 +49,9 @@ function App() {
         </Route>
         <Route path="/checkout" exact={true}>
           <Checkout />
+        </Route>
+        <Route path="/orders" exact={true}>
+          <Orders />
         </Route>
         <ProtectedRoute path="/users" exact={true}>
           <UsersList />

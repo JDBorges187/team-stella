@@ -1,9 +1,14 @@
 import React from 'react';
 
-const OrderSelect = () => {
+const OrderSelect = ({orders, setOrderId}) => {
+
     return (
         <div>
+            <form>
+                <select>
 
+                </select>
+            </form>
         </div>
     )
 }
