@@ -66,7 +66,7 @@ const ProductDetail = () => {
             {reviews && reviews.map((review, i) => {
                 const username = review.user.firstname
                 return (
-                    <ReviewCard key={i} title='Title' user={review.user} desc={review.review} rating={review.rating} />
+                    <ReviewCard key={i} rvwId={review.id} user={review.user} desc={review.review} rating={review.rating} />
                 )
             })}
         </>
