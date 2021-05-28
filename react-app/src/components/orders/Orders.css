@@ -1,0 +1,22 @@
+.order-page-container{
+    height: 80vh;
+    display: flex;
+}
+.order-select-sidebar{
+    width: 400px;
+    background-color: #d7f7ff;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+.order-list-item{
+    height: 150px;
+    font-size: 20px;
+    border: 1px solid black;
+}
+
+.order-summary-container{
+    flex-grow: 1;
+    background-color: rgba(255, 251, 233, 0.667);
+}

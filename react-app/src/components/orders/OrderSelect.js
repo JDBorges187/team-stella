@@ -3,17 +3,16 @@ import React from 'react';
 const OrderSelect = ({orders, orderId, setOrderId}) => {
 
     return (
-        <div>
-            <form>
-                <select>
-                    <option>Select an order...</option>
-                    {orders && Object.values(orders).map((order, idx) => {
-                        return (
-                            <option key={idx}>{order.createdAt}</option>
-                        )
-                    }) }
-                </select>
-            </form>
+        <div className='order-select-sidebar'>
+            {orders && orders.map((order, idx) => {
+                return (
+                    <div className='order-list-item' key={idx}
+                    onClick={() => setOrderId(idx)}
+                    >
+                        {order.createdAt}
+                    </div>
+                )
+            }) }
         </div>
     )
 }

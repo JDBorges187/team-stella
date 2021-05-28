@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import OrderSelect from './OrderSelect'
 import OrderSummary from './OrderSummary'
+import './Orders.css'
 
 const Orders = () => {
     const [orders, setOrders] = useState([])
@@ -9,8 +10,8 @@ const Orders = () => {
     const getOrders = async () => {
         let response = await fetch('/api/orders');
         const order_list = await response.json();
-        setOrders(order_list);
-        console.log(Object.values(order_list)[0].createdAt);
+        setOrders(Object.values(order_list));
+        // console.log(order_list[0])
     }
 
     useEffect( () => {
@@ -19,8 +20,10 @@ const Orders = () => {
 
     return (
         <>
-            <OrderSelect orders={orders} setOrderId={setOrderId} orderId={orderId}/>
-            <OrderSummary />
+            <div className='order-page-container'>
+                <OrderSelect orders={orders} setOrderId={setOrderId} orderId={orderId}/>
+                <OrderSummary order={orderId >= 0 ? orders[orderId] : null}/>
+            </div>
         </>
     )
 }
