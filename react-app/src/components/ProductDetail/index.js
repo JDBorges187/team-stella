@@ -1,11 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useParams, NavLink, useHistory } from "react-router-dom";
-import {
-  getOneProduct,
-  getAllProducts,
-  getProductGroup,
-} from "../../store/products";
+import { useParams, useHistory } from "react-router-dom";
+import { getProductGroup } from "../../store/products";
 import { getProductReviews, newReview, changeReview } from "../../store/reviews";
 import { addCartItem } from "../../store/cart";
 import ReviewCard from "./ReviewCard";
@@ -66,8 +62,6 @@ const ProductDetail = () => {
 
   // window.scrollTo(0,0);
 
-
-
   if (!product) {
     return null;
   }
@@ -75,7 +69,6 @@ const ProductDetail = () => {
   const openAddReview = (e) => {
     e.preventDefault();
     setAddReview(true);
-
   }
 
   const submitComment = (e) => {
@@ -127,7 +120,7 @@ const ProductDetail = () => {
                         className='pdt-dtl_add-review-form'
                         placeholder='Add title here'
                         /> */}
-{ editReview && <p>Edit your review:</p> }
+              { editReview && <p>Edit your review:</p> }
                 <textarea
                     className='pdt-dtl_add-review-textarea'
                     value={review}
@@ -147,98 +140,96 @@ const ProductDetail = () => {
         )
   }
 
+  const onPurchase = () => {
+      dispatch(addCartItem(product));
+  };
 
-const onPurchase = () => {
-  dispatch(addCartItem(product));
-};
-
-const onBuyNow = () => {
-  dispatch(addCartItem(product));
-  history.push("/checkout")
-}
-
-const showHideDesc = (infoClass, arrowClass, buttonClass) => {
-  let chev = document.querySelector(arrowClass);
-  let btn = document.querySelector(buttonClass);
-
-  if (document.querySelector(infoClass).style.display !== "block") {
-    document.querySelector(infoClass).style.display = "block";
-    btn.scrollIntoView({ behavior: "smooth" });
-    chev.style.transform = "rotate(180deg)";
-    btn.style.borderBottom = "none";
+  const onBuyNow = () => {
+    dispatch(addCartItem(product));
+    history.push("/checkout")
   }
-  else {
-    document.querySelector(infoClass).style.display = "none";
-    chev.style.transform = "rotate(-360deg)";
-    btn.style.borderBottom = "1px solid darkgray"
+
+  const showHideDesc = (infoClass, arrowClass, buttonClass) => {
+    let chev = document.querySelector(arrowClass);
+    let btn = document.querySelector(buttonClass);
+
+    if (document.querySelector(infoClass).style.display !== "block") {
+      document.querySelector(infoClass).style.display = "block";
+      btn.scrollIntoView({ behavior: "smooth" });
+      chev.style.transform = "rotate(180deg)";
+      btn.style.borderBottom = "none";
+    }
+    else {
+      document.querySelector(infoClass).style.display = "none";
+      chev.style.transform = "rotate(-360deg)";
+      btn.style.borderBottom = "1px solid darkgray"
+    }
   }
-}
 
-
-return (
-  <div className="pdt-dtl__cntnr">
-    <div className="pdt-dtl__display">
-      <div className="pdt-dtl__img-cntnr">
-        <img className="pdt-dtl__img" src={product.image} alt="Product " />
-      </div>
-      <div className="pdt-dtl__main-info">
-        <div className="pdt-dtl__name">{product.name}</div>
-        <div className="pdt-dtl__label">Price</div>
-        <div className="pdt-dtl__price">{`$${product.price.toFixed(2)}`}</div>
-        <div className="pdt-dtl__stock">In stock now!</div>
-        <div className="pdt-dtl__policies">
-          <p>Free shipping</p>
-          <p>Free returns</p>
-          <p>Secure payments</p>
+  return (
+    <div className="pdt-dtl__cntnr">
+      <div className="pdt-dtl__display">
+        <div className="pdt-dtl__img-cntnr">
+          <img className="pdt-dtl__img" src={product.image} alt="Product " />
         </div>
-        <button onClick={onPurchase} className="pdt-dtl__add-to-cart">
-          Add to cart
-          </button>
-        <button onClick={onBuyNow} className="pdt-dtl__buy-it-now">
-          Buy it now
-            </button>
-        <div className="pdt-dtl__shipping-time">
-          Ships in 1-3 business days
+        <div className="pdt-dtl__main-info">
+          <div className="pdt-dtl__name">{product.name}</div>
+          <div className="pdt-dtl__label">Price</div>
+          <div className="pdt-dtl__price">{`$${product.price.toFixed(2)}`}</div>
+          <div className="pdt-dtl__stock">In stock now!</div>
+          <div className="pdt-dtl__policies">
+            <p>Free shipping</p>
+            <p>Free returns</p>
+            <p>Secure payments</p>
           </div>
+          <button onClick={onPurchase} className="pdt-dtl__add-to-cart">
+            Add to cart
+            </button>
+          <button onClick={onBuyNow} className="pdt-dtl__buy-it-now">
+            Buy it now
+              </button>
+          <div className="pdt-dtl__shipping-time">
+            Ships in 1-3 business days
+            </div>
+        </div>
       </div>
-    </div>
-    <div className="pdt-dtl__xtra-info">
-      <button
-        onClick={() =>
-          showHideDesc(
-            ".pdt-dtl__desc",
-            ".pdt-dtl__desc-chevron",
-            ".desc-btn"
-          )
-        }
-        className="pdt-dtl__xtra-info-btn desc-btn"
-      >
-        <span className="pdt-dtl__xtra-info-title">Description</span>
-        <i className="fas fa-chevron-down pdt-dtl__desc-chevron"></i>
-      </button>
-      <div className="pdt-dtl__desc">{product.description}</div>
-      <button
-        onClick={() =>
-          showHideDesc(
-            ".pdt-dtl__reviews",
-            ".pdt-dtl__reviews-chevron",
-            ".reviews-btn"
-          )
-        }
-        className="pdt-dtl__xtra-info-btn reviews-btn"
-      >
-        <span className="pdt-dtl__xtra-info-title">Reviews</span>
-        <i className="fas fa-chevron-down pdt-dtl__reviews-chevron"></i>
-      </button>
-      <div className="pdt-dtl__reviews">
-        <div className="pdt-dtl__review-container">
-          {addReviewSection}
-          {reviewSection}
+      <div className="pdt-dtl__xtra-info">
+        <button
+          onClick={() =>
+            showHideDesc(
+              ".pdt-dtl__desc",
+              ".pdt-dtl__desc-chevron",
+              ".desc-btn"
+            )
+          }
+          className="pdt-dtl__xtra-info-btn desc-btn"
+        >
+          <span className="pdt-dtl__xtra-info-title">Description</span>
+          <i className="fas fa-chevron-down pdt-dtl__desc-chevron"></i>
+        </button>
+        <div className="pdt-dtl__desc">{product.description}</div>
+        <button
+          onClick={() =>
+            showHideDesc(
+              ".pdt-dtl__reviews",
+              ".pdt-dtl__reviews-chevron",
+              ".reviews-btn"
+            )
+          }
+          className="pdt-dtl__xtra-info-btn reviews-btn"
+        >
+          <span className="pdt-dtl__xtra-info-title">Reviews</span>
+          <i className="fas fa-chevron-down pdt-dtl__reviews-chevron"></i>
+        </button>
+        <div className="pdt-dtl__reviews">
+          <div className="pdt-dtl__review-container">
+            {addReviewSection}
+            {reviewSection}
+          </div>
         </div>
       </div>
     </div>
-  </div>
-);
+  );
 };
 
 export default ProductDetail;

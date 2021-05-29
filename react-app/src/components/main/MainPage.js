@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import motorcycle from "../../pictures/fast-moto.jpg";
+import React, { useEffect } from "react";
+import { useDispatch } from "react-redux";
 import fans from "../../pictures/moto-fans.jpg";
 import Featured from "./Featured";
 import Filter from "./Filter";
@@ -18,7 +17,7 @@ const MainPage = () => {
   return (
     <div className="main">
       <div className="main-banner">
-        <img className="main-banner-img" src={fans}></img>
+        <img className="main-banner-img" src={fans} alt="racing fans cheering"></img>
         <div className="main-banner-msg">
           <span id="banner-msg-title">Get the latest merch!</span>
           <button>Shop All</button>

@@ -1,10 +1,11 @@
 import React from "react";
 import ProductCard from "./ProductCard";
+import Sort from "./Sort";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 
 const ProductGrid = () => {
-  const products = useSelector((state) => state.products.list);
+  const products = useSelector((state) => state.products.filteredProducts);
   const [currentPage, setCurrentPage] = useState(1);
   const [numberOfPages, setNumberOfPages] = useState(1);
   const [displayProducts, setDisplayProducts] = useState(products);
@@ -16,6 +17,7 @@ const ProductGrid = () => {
 
   useEffect(() => {
     setNumberOfPages(Math.ceil(displayProducts.length / productsPerPage));
+    setCurrentPage(1);
   }, [displayProducts]);
 
   const lastProductIndex = currentPage * productsPerPage;
@@ -29,6 +31,7 @@ const ProductGrid = () => {
   return (
     <>
       <div className="products-container">
+        <Sort/>
         <div className="products">
           {currentProducts.map((product) => {
             return <ProductCard key={product.id} product={product} />;

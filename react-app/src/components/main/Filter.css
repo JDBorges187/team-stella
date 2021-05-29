@@ -1,0 +1,104 @@
+
+
+.filter_main-cntnr{
+  width: 62%;
+  display: grid;
+  grid-template-rows: auto;
+  justify-items: center;
+  margin: auto;
+  padding: 12px;
+}
+
+.Prices {
+  display: none;
+}
+
+.Categories {
+  display: none;
+}
+
+.filter_btn {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border: none;
+  border-bottom: 1px solid darkgray;
+  background-color: rgb(228, 246, 250);
+  width: 62%;
+  height: 42px;
+  padding: 12px;
+  margin: auto;
+}
+
+.filter__title {
+  justify-self: start;
+  align-self: start;
+  font-size: 18px;
+}
+
+.filter__chevron {
+  justify-self: end;
+  align-self: start;
+  margin-top: 2px;
+  padding: 3px;
+}
+
+.filter_cntnr {
+  display: block;
+  position: relative;
+  padding-left: 27px;
+  margin-bottom: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.filter_cntnr input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.check {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 16px;
+  width: 16px;
+  border: 1px solid rgba(77, 77, 110, .5);
+  border-radius: 3px;
+}
+
+.filter_cntnr:hover input ~ .check {
+  background-color: rgba(25, 25, 112, 0.5);
+}
+
+.filter_cntnr input:checked ~ .check {
+  background-color: rgba(25, 25, 112, 0.9);
+}
+
+.check:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.filter_cntnr input:checked ~ .check:after {
+  display: block;
+}
+
+.filter_cntnr .check:after {
+  left: 4px;
+  top: 3px;
+  width: 3px;
+  height: 5px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
