@@ -14,6 +14,14 @@ class Review(db.Model):
     user = db.relationship("User", back_populates="reviews")
     product = db.relationship("Product", back_populates="product_reviews")
 
+    @property
+    def user_id(self):
+        return self.userId
+
+    @property
+    def product_id(self):
+        return self.productId
+
     def to_dict(self):
         return {
             "id": self.id,

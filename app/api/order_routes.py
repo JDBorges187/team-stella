@@ -1,4 +1,4 @@
-from flask import Blueprint, jsonify
+from flask import Blueprint, jsonify, request
 from app.models import Order, OrderItem, User
 from app import db
 from flask_login import current_user
@@ -18,7 +18,33 @@ def get_order_items(id):
 def get_all_orders():
     userId = current_user.get_id()
     orders = Order.query.filter(Order.userId == userId).all()
+    orders_dic = {}
+    for order in [order.to_dict() for order in orders]:
+        orders_dic[order['id']] = order
 
-    return {
-        "orders": [order.to_dict() for order in orders]
-    }
+    return orders_dic
+
+
+@order_routes.route('', methods=['POST'])
+def post_order():
+    userId = current_user.get_id()
+    print("USER IDENTITY ====>", userId)
+    order = Order(
+        userId=1,
+    )
+
+    db.session.add(order)
+    db.session.commit()
+
+    data = request.json
+
+    for itemId, quantity in data.items():
+        order_item = OrderItem(
+            orderId=order.id,
+            productId=itemId,
+            quantity=quantity,
+        )
+        db.session.add(order_item)
+    db.session.commit()
+
+    return order.to_dict()

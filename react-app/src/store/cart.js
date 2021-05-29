@@ -1,12 +1,20 @@
 const ADD_ITEM = "cart/ADD_ITEM";
 const REMOVE_ITEM = "cart/REMOVE_ITEM";
 const CLEAR_CART = "cart/CLEAR_CART";
+const ADD_BUY_NOW_ITEM = "cart/ADD_BUY_NOW_ITEM";
 
 const storage = window.localStorage;
 
 export const addCartItem = (item) => {
   return {
     type: ADD_ITEM,
+    item,
+  };
+};
+
+export const addBuyNowItem = (item) => {
+  return {
+    type: ADD_BUY_NOW_ITEM,
     item,
   };
 };
@@ -41,6 +49,12 @@ const CartReducer = (state = initialState, action) => {
       return {
         ...state,
         [itemID]: count + 1,
+      };
+    }
+
+    case ADD_BUY_NOW_ITEM: {
+      return {
+        ...state,
       };
     }
 
