@@ -219,6 +219,7 @@
 
 .pdt-dtl_review-card{
     width: 100%;
+    /* background: red; */
     display: flex;
     flex-direction: column;
     margin-bottom: 10px;
@@ -226,8 +227,23 @@
     border-top: 2px solid #8d8d8d;
 }
 
+.pdt-dtl_review-card > div {
+    display:flex;
+    justify-content: start;
+    align-items: center;
+}
+
+.pdt-dtl_review-card button {
+    border: none;
+    padding: 4px;
+    margin: 0 4px;
+    font-size: large;
+    width: 25px;
+    justify-self: flex-end;
+}
+
 .pdt-dtl_add-review-button{
-    margin: 0 auto;
+    margin: 10px auto;
     padding: 5px 30px;
     background-color: midnightblue;
     color: white;
