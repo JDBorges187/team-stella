@@ -55,23 +55,24 @@ export const newReview = (productId, review, rating) => async (dispatch) => {
 }
 
 
-export const editReview = (reviewId, review, rating) => async (dispatch) => {
-    // TODO: const res = await fetch("/api/reviews", {
-    //     method: 'POST',
-    //     headers: {
-    //         'Content-Type': 'application/json'
-    //     },
-    //     body: JSON.stringify({
-    //         productId,
-    //         review,
-    //         rating
-    //     })
-    // })
+export const changeReview = (reviewId, review, rating) => async (dispatch) => {
+    const res = await fetch("/api/reviews/" + reviewId, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            reviewId,
+            review,
+            rating
+        })
+    })
 
-    // if (res.ok) {
-    //     const data = await res.json();
-    //     dispatch(addReview(data))
-    // }
+    if (res.ok) {
+        const data = await res.json();
+        dispatch(removeReview(data))
+        dispatch(addReview(data))
+    }
 }
 
 export const deleteReview = (reviewId) => async (dispatch) => {
@@ -104,7 +105,8 @@ export default (state = initialState, { type, payload }) => {
             return { ...state, detail: [payload, ...state.detail] }
 
         case REMOVE_REVIEW:
-            return { ...state,
+            return {
+                ...state,
                 detail: state.detail.filter((review) => review.id !== payload.id)
             }
 

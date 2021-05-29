@@ -18,6 +18,10 @@ class Review(db.Model):
     def user_id(self):
         return self.userId
 
+    @property
+    def product_id(self):
+        return self.productId
+
     def to_dict(self):
         return {
             "id": self.id,

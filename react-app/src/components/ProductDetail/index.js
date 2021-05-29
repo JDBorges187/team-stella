@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { getOneProduct, getAllProducts, getProductGroup } from '../../store/products';
-import { getProductReviews, newReview } from '../../store/reviews'
+import { getProductReviews, newReview , changeReview} from '../../store/reviews'
 import { addCartItem } from '../../store/cart'
 import ReviewCard from './ReviewCard'
 import StarSpan from './StarSpan'
@@ -10,6 +10,8 @@ import './ProductDetail.css';
 
 const ProductDetail = () => {
     const [addReview, setAddReview] = useState(false);
+    const [editReview, setEditReview] = useState(false);
+    const [reviewId, setReviewId] = useState(null)
     const [review, setReview] = useState('');
     const [rating, setRating] = useState(3);
 
@@ -21,26 +23,38 @@ const ProductDetail = () => {
     const cartItemIds = Object.keys(cartObj);
     const storedProducts = useSelector(state => Object.keys(state.products));
     const productsNeeded = cartItemIds.filter((itemId) => !storedProducts.includes(itemId));
-    if(productsNeeded.length > 0){
-      let group = `${productsNeeded[0]},${id}`;
+    if (productsNeeded.length > 0) {
+        let group = `${productsNeeded[0]},${id}`;
 
-      for(let i = 1; i < productsNeeded.length; i++){
-        group += `,${productsNeeded[i]}`;
-      }
+        for (let i = 1; i < productsNeeded.length; i++) {
+            group += `,${productsNeeded[i]}`;
+        }
 
-      dispatch(getProductGroup(group));
+        dispatch(getProductGroup(group));
     }
 
     //**********************************
     const product = useSelector(state => state.products[id]);
 
-    useEffect( () => {
+    useEffect(() => {
         dispatch(getProductReviews(id));
     }, [dispatch, id]);
 
     const reviews = useSelector(state => state.reviews.detail);
+    const currentUser = useSelector(state => state.session.user);
 
-    window.scrollTo(0,0);
+    const reviewedAlready = reviews.some((review) => review.user.id == currentUser.id)
+    
+
+    // JB: Sorts Reviews so that users review is up top
+    reviews.sort(function (x, y) {
+        return x.user.id == currentUser.id ? -1 :
+            y.user.id == currentUser.id ? 1 : 0
+    });
+
+    // window.scrollTo(0,0);
+
+
 
     if (!product) {
         return null;
@@ -49,24 +63,37 @@ const ProductDetail = () => {
     const openAddReview = (e) => {
         e.preventDefault();
         setAddReview(true);
+        
     }
 
     const submitComment = (e) => {
         e.preventDefault();
         //Send to db
-        dispatch(newReview(id, review, rating))
-        console.log("Review: ", review);
-        console.log("Rating: ", rating)
+        if (editReview) dispatch(changeReview(reviewId, review, rating))
+        else dispatch(newReview(id, review, rating));
         setReview('');
         setAddReview(false);
+        setEditReview(false);
     }
 
     let reviewSection = (
         <>
             {reviews && reviews.map((review, i) => {
-                const username = review.user.firstname
+                const reviewUser = review.user
                 return (
-                    <ReviewCard key={i} rvwId={review.id} user={review.user} desc={review.review} rating={review.rating} />
+                    <ReviewCard
+                        key={i}
+                        setReview={setReview}
+                        setRating={setRating}
+                        setReviewId={setReviewId}
+                        editReview={editReview}
+                        setEditReview={setEditReview}
+                        setAddReview={setAddReview}
+                        rvwId={review.id}
+                        user={reviewUser}
+                        desc={review.review}
+                        rating={review.rating}
+                        showEdit={currentUser.id === reviewUser.id} />
                 )
             })}
         </>
@@ -75,9 +102,12 @@ const ProductDetail = () => {
     let addReviewSection //= (<button onClick={openAddReview} className='pdt-dtl_add-review-button'>Add Review</button>);
 
     if (!addReview) {
-        addReviewSection = <button onClick={openAddReview} className='pdt-dtl_add-review-button'>Add Review</button>;
-    }
-    else {
+        if (reviewedAlready) {
+            addReviewSection = null
+        } else {
+            addReviewSection = <button onClick={openAddReview} className='pdt-dtl_add-review-button'>Add Review</button>;
+        }
+    } else {
         addReviewSection = (
             <form className='pdt-dtl_add-review-form' onSubmit={submitComment}>
                 {/* <input
@@ -85,6 +115,7 @@ const ProductDetail = () => {
                         className='pdt-dtl_add-review-form'
                         placeholder='Add title here'
                         /> */}
+                {editReview && <p>Edit your review:</p>}
                 <textarea
                     className='pdt-dtl_add-review-textarea'
                     value={review}
@@ -96,6 +127,7 @@ const ProductDetail = () => {
                     <button className='review-form_cancel-btn'
                         onClick={() => {
                             setAddReview(false);
+                            setEditReview(false);
                             setRating(5);
                         }}>Cancel</button>
                 </div>
@@ -121,6 +153,7 @@ const ProductDetail = () => {
 
         if (document.querySelector(infoClass).style.display !== "block") {
             document.querySelector(infoClass).style.display = "block";
+            btn.scrollIntoView({behavior: "smooth"});
             chev.style.transform = "rotate(180deg)";
             btn.style.borderBottom = "none";
         }

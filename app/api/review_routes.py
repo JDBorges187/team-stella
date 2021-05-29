@@ -52,6 +52,29 @@ def get_one_review(id):
     review = Review.query.get(id)
     return {"reviews": review.to_dict()}
 
+@review_routes.route('/<id>', methods=['PUT'])
+def modify_review(id):
+    form = ReviewForm() #meta={'csrf': False})
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if current_user.is_authenticated:
+        print("enters authenticated")
+        review = Review.query.get(id)
+        review_user = str(review.user_id)
+        if current_user.get_id() == review_user:
+            print("enters user = users")
+            form['userId'].data = review_user
+            form['productId'].data = review.product_id
+            if form.validate_on_submit():
+                print("enters form validated")
+                review.review = form.data['review']
+                review.rating = form.data['rating']
+                db.session.add(review)
+                db.session.commit()
+                return review.to_dict()
+            return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+        return {'errors': ['Unauthorized']}, 403    
+    return Response("You must be logged in", 401)
+
 @review_routes.route('/<id>', methods=['DELETE'])
 def delete_review(id):
     if current_user.is_authenticated:
