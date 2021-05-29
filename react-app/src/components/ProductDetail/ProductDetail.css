@@ -4,10 +4,8 @@
 
 .pdt-dtl__display {
     display: grid;
-    /* grid-template-columns: 55% 45%; */
 
     margin: 35px auto;
-    /* border-style: solid; */
     min-height: 500px;
 }
 
@@ -33,7 +31,6 @@
     grid-template-rows: fit-content(15%) 8% 7% 7% 35% 10% 10% 8%;
     grid-row-gap: 5px;
     margin: 25px 0px 25px 25px;
-    /* border-style: solid; */
     padding: 0 10px;
 }
 
@@ -210,7 +207,6 @@
 }
 
 .pdt-dtl__review-container{
-    /* margin: 20px auto; */
     padding: 10px;
     width: 100%;
     display: flex;

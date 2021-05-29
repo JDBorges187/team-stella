@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { getOneProduct, getAllProducts, getProductGroup } from '../../store/products';
+import { getProductGroup } from '../../store/products';
 import { getProductReviews, newReview } from '../../store/reviews'
 import { addCartItem } from '../../store/cart'
+import showHideDesc from '../ShowHide';
 import ReviewCard from './ReviewCard'
 import StarSpan from './StarSpan'
 import './ProductDetail.css';
@@ -103,33 +104,9 @@ const ProductDetail = () => {
         )
     }
 
-    // const product = {
-    //     id: 1,
-    //     name: 'Replica Monster Energy Yamaha Team 2021 T-shirt',
-    //     price: 56.00,
-    //     description: 'Official replica of the polo shirt that will be worn by the Yamaha Monster Energy Team and its official riders: the Spanish Maverick Viñales and the Frenchman Fabio Quartararo in the 2021 season. It is made of technical fabric.',
-    //     image: 'https://res.cloudinary.com/dpf7crjn5/image/upload/v1621893530/test%20data/teamMonsterShirt_d1mhot.jpg',
-    // }
-
     const onPurchase = () => {
         dispatch(addCartItem(product));
     };
-
-    const showHideDesc = (infoClass, arrowClass, buttonClass) => {
-        let chev = document.querySelector(arrowClass);
-        let btn = document.querySelector(buttonClass);
-
-        if (document.querySelector(infoClass).style.display !== "block") {
-            document.querySelector(infoClass).style.display = "block";
-            chev.style.transform = "rotate(180deg)";
-            btn.style.borderBottom = "none";
-        }
-        else {
-            document.querySelector(infoClass).style.display = "none";
-            chev.style.transform = "rotate(-360deg)";
-            btn.style.borderBottom = "1px solid darkgray"
-        }
-    }
 
     return (
         <div className="pdt-dtl__cntnr">

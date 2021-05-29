@@ -1,0 +1,20 @@
+.sort-cntnr {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.sort__select {
+  font-size: 18px;
+  border: none;
+  background-color: rgb(228, 246, 250);
+  margin: 7px;
+  margin-right: 38px;
+  justify-self: end;
+  outline: 0px;
+}
+
+select.sort__option {
+  border: 0px solid rgb(228, 246, 250);
+  outline: 0px;
+}
