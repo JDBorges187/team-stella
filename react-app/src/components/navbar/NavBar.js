@@ -33,6 +33,18 @@ const NavBar = () => {
         </div>
       </div>
       <ul className="nav-links">
+        {user && (
+          <li>
+            <NavLink
+              to={"/orders"}
+              exact={true}
+              activeClassName="active"
+              className="nav-link"
+              >
+              <button className="nav-links-btn">Orders</button>
+            </NavLink>
+          </li>
+        )}
         <li>
           <NavLink
             to={user ? "/account" : "/login"}
@@ -44,17 +56,17 @@ const NavBar = () => {
           </NavLink>
         </li>
         <li>
-          <NavLink
+          {/* <NavLink
             to="/cart"
             exact={true}
             activeClassName="active"
             className="nav-link"
           >
             <button className="nav-links-btn">Cart</button>
-          </NavLink>
+          </NavLink> */}
+          <CartDropdown />
         </li>
       </ul>
-      <CartDropdown />
     </nav>
   );
 };
