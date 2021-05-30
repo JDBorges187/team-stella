@@ -9,6 +9,7 @@ const Featured = () => {
 
   return (
     <div className="featured">
+      <h2>Top Picks</h2>
       {featuredProducts.map((product) => {
         return (
           <div key={product.id} className="featured-product">

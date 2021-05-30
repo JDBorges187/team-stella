@@ -6,7 +6,7 @@
   grid-template-rows: auto;
   justify-items: center;
   margin: auto;
-  padding: 12px;
+  padding: 8px;
 }
 
 .Prices {
@@ -48,7 +48,7 @@
   padding-left: 27px;
   margin-bottom: 8px;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 14px;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
