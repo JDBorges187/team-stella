@@ -24,8 +24,9 @@ const ProductCard = ({ product }) => {
       onMouseOver={() => setShowAdd(true)}
       onMouseLeave={() => setShowAdd(false)}
     >
-      <i onClick={(e) => onPurchase(e)}
+      <div onClick={(e) => onPurchase(e)}
         className={'fas fa-plus-circle fa-2x card-container_add-cart' + (showAdd ? '' : ' hide-add')}
+        title='Add to cart'
       />
       <div className="card-image" style={{backgroundImage: `url(${product.image})`}} />
       <div className="card-title">{product.name}</div>

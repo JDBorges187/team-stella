@@ -5,14 +5,14 @@ import "./Navbar.css";
 import usePrevious from "../../utilities/usePrevious";
 import { addCartItem, removeCartItem, clearCart } from "../../store/cart";
 
-const CartDropdown = () => {
+const CartDropdown = ({cartDropdownVisible, setCartDropdownVisible, cartCloseClass, setCartCloseClass}) => {
   const location = useLocation();
   const dispatch = useDispatch();
   const history = useHistory();
   const cart = useSelector((state) => state.cart);
   const products = useSelector((state) => state.products);
-  const [cartDropdownVisible, setCartDropdownVisible] = useState(false);
-  const [cartCloseClass, setCartCloseClass] = useState(false);
+  // const [cartDropdownVisible, setCartDropdownVisible] = useState(false);
+  // const [cartCloseClass, setCartCloseClass] = useState(false);
   const [totalCost, setTotalCost] = useState(0);
 
   const closeCartDropdown = (e) => {
@@ -43,7 +43,8 @@ const CartDropdown = () => {
     dispatch(removeCartItem(product));
   };
 
-  const onClickCart = () => {
+  const onClickCart = (e) => {
+    e.stopPropagation();
     setCartCloseClass(false);
     setCartDropdownVisible(true);
   }
@@ -68,12 +69,12 @@ const CartDropdown = () => {
 
   return (
     <>
-      <button onClick={onClickCart} className="nav-links-btn">Cart</button>
+      <button onClick={(e) => onClickCart(e)} className="nav-links-btn">Cart</button>
       {cartDropdownVisible && (
-        <div
-          className="close-cart-dropdown"
-          onClick={(e) => closeCartDropdown(e)}
-        >
+        // <div
+        //   className="close-cart-dropdown"
+        //   onClick={(e) => closeCartDropdown(e)}
+        // >
           <div
             className={
               (cartDropdownVisible ? "cart-dropdown " : "") +
@@ -121,7 +122,7 @@ const CartDropdown = () => {
               <button onClick={clearShoppingCart}>Clear</button>
             </div>
           </div>
-        </div>
+        // </div>
       )}
     </>
   );
