@@ -5,7 +5,7 @@ import CartDropdown from "./CartDropdown";
 import { useSelector } from "react-redux";
 import "./Navbar.css";
 
-const NavBar = () => {
+const NavBar = ({cartDropdownVisible, setCartDropdownVisible, cartCloseClass, setCartCloseClass}) => {
   const user = useSelector((state) => state.session.user);
 
   return (
@@ -64,7 +64,7 @@ const NavBar = () => {
           >
             <button className="nav-links-btn">Cart</button>
           </NavLink> */}
-          <CartDropdown />
+          <CartDropdown cartDropdownVisible={cartDropdownVisible} setCartDropdownVisible={setCartDropdownVisible} cartCloseClass={cartCloseClass} setCartCloseClass={setCartCloseClass}/>
         </li>
       </ul>
     </nav>
