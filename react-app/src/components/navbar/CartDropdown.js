@@ -86,27 +86,30 @@ const CartDropdown = ({cartDropdownVisible, setCartDropdownVisible, cartCloseCla
               {Object.entries(cart).map(([key, value]) => {
                 return (
                   <div className="cart-dropdown-item" key={key}>
-                    {`${products[key].name}`}
-                    <div>
+                    <div className="cart-item-title">
+                      {`${products[key].name}`}
+                    </div>
+                    <div className="item-quantity">
                       <button
                         style={{ padding: 6 }}
                         onClick={() => addOne(products[key])}
                         className="add-one"
                       >
-                        &#8593;
+                        +
                       </button>
-                      <span style={{ padding: 6 }}>{value}</span>
+                      <div style={{ padding: 6 }}>{value}</div>
                       <button
                         style={{ padding: 6 }}
                         onClick={() => removeOne(products[key])}
                         className="remove-one"
                       >
-                        &#8595;
+                        -
                       </button>
                     </div>
-                    <span>{`$${(products[key].price * value).toFixed(
+                    <div className="cart-item-price">{`$${(products[key].price * value).toFixed(
                       2
-                    )}`}</span>
+                      )}`}
+                    </div>
                   </div>
                 );
               })}
@@ -118,8 +121,10 @@ const CartDropdown = ({cartDropdownVisible, setCartDropdownVisible, cartCloseCla
                   padding: 4,
                 }}
               >{`Total: $${totalCost.toFixed(2)}`}</span>
-              <button onClick={goToCheckout}>Checkout</button>
-              <button onClick={clearShoppingCart}>Clear</button>
+              <div>
+                <button id="checkout-cart-btn" onClick={goToCheckout}>Checkout</button>
+                <button id="clear-cart-btn" onClick={clearShoppingCart}>Clear</button>
+              </div>
             </div>
           </div>
         // </div>
