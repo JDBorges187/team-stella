@@ -18,7 +18,14 @@ import { authenticate } from "./store/session";
 function App() {
   const user = useSelector((state) => state.session.user);
   const [loaded, setLoaded] = useState(false);
+  const [cartDropdownVisible, setCartDropdownVisible] = useState(false);
+  const [cartCloseClass, setCartCloseClass] = useState(false);
   const dispatch = useDispatch();
+
+  const closeCartDropdown = (e) => {
+    setCartCloseClass(true);
+    setTimeout(() => setCartDropdownVisible(false), 500);
+  };
 
   useEffect(() => {
     (async () => {
@@ -33,39 +40,41 @@ function App() {
 
   return (
     <BrowserRouter>
-      <NavBar />
-      <Switch>
-        <Route path="/login" exact={true}>
-          <LoginForm />
-        </Route>
-        <Route path="/sign-up" exact={true}>
-          <SignUpForm />
-        </Route>
-        <Route path="/cart" exact={true}>
-          <Cart />
-        </Route>
-        <Route path="/account" exact={true}>
-          <Account />
-        </Route>
-        <Route path="/checkout" exact={true}>
-          <Checkout />
-        </Route>
-        <ProtectedRoute path="/orders" exact={true}>
-          <Orders />
-        </ProtectedRoute>
-        <ProtectedRoute path="/users" exact={true}>
-          <UsersList />
-        </ProtectedRoute>
-        <ProtectedRoute path="/users/:userId" exact={true}>
-          <User />
-        </ProtectedRoute>
-        <Route path="/" exact={true}>
-          <MainPage />
-        </Route>
-        <Route path="/products/:id" exact={true}>
-          <ProductDetail />
-        </Route>
-      </Switch>
+      <div onClick={(e) => closeCartDropdown(e)} className="close-cart-dropdown">
+        <NavBar cartDropdownVisible={cartDropdownVisible} setCartDropdownVisible={setCartDropdownVisible} cartCloseClass={cartCloseClass} setCartCloseClass={setCartCloseClass}/>
+        <Switch>
+          <Route path="/login" exact={true}>
+            <LoginForm />
+          </Route>
+          <Route path="/sign-up" exact={true}>
+            <SignUpForm />
+          </Route>
+          <Route path="/cart" exact={true}>
+            <Cart />
+          </Route>
+          <Route path="/account" exact={true}>
+            <Account />
+          </Route>
+          <Route path="/checkout" exact={true}>
+            <Checkout />
+          </Route>
+          <ProtectedRoute path="/orders" exact={true}>
+            <Orders />
+          </ProtectedRoute>
+          <ProtectedRoute path="/users" exact={true}>
+            <UsersList />
+          </ProtectedRoute>
+          <ProtectedRoute path="/users/:userId" exact={true}>
+            <User />
+          </ProtectedRoute>
+          <Route path="/" exact={true}>
+            <MainPage />
+          </Route>
+          <Route path="/products/:id" exact={true}>
+            <ProductDetail />
+          </Route>
+        </Switch>
+      </div>
     </BrowserRouter>
   );
 }
