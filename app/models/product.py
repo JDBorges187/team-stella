@@ -1,3 +1,5 @@
+from sqlalchemy.ext.hybrid import hybrid_property
+from statistics import mean
 from .db import db
 
 
@@ -15,6 +17,11 @@ class Product(db.Model):
     product_reviews = db.relationship("Review", back_populates="product")
     product_orders = db.relationship("OrderItem", backref="product", lazy=True)
 
+    @hybrid_property
+    def avg_rating(self):
+        ratings = [r.rating for r in self.product_reviews]
+        return mean(ratings) if len(ratings) else float(0)
+
     def to_dict(self):
         return {
             "id": self.id,
@@ -22,5 +29,6 @@ class Product(db.Model):
             "price": self.price,
             "description": self.description,
             "image": self.image,
-            "categoryId": self.categoryId
+            "categoryId": self.categoryId,
+            "avgRating": self.avg_rating
         }
