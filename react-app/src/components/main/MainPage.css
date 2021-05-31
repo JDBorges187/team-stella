@@ -144,8 +144,26 @@
 }
 
 .footer {
+  padding-top: 20px;
   border-top: 1px solid gray;
   grid-area: footer;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.profile-links{
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-links a{
+  color: #3734c0;
+  font-size: 20px;
+}
+
+.profile-links li{
+  padding-top: 10px;
+  list-style: none;
 }
 
 .card-container {
