@@ -216,3 +216,10 @@ button {
 #clear-cart-btn:hover {
   background-color: rgb(233, 201, 96);
 }
+
+.nav-logo-img{
+  height: 70px;
+  width: 140px;
+  background-image: url(/images/stella_logo.png);
+  background-size: 100% 100%;
+}
