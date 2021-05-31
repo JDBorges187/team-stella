@@ -30,7 +30,7 @@ const ProductGrid = () => {
 
   return (
     <>
-      <div className="products-container">
+      <div id="productsid" className="products-container">
         <Sort/>
         <div className="products">
           {currentProducts.map((product) => {

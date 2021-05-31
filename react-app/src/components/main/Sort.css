@@ -7,7 +7,7 @@
 .sort__select {
   font-size: 18px;
   border: none;
-  background-color: rgb(228, 246, 250);
+  background-color: white;
   margin: 7px;
   margin-right: 38px;
   justify-self: end;
@@ -15,6 +15,6 @@
 }
 
 select.sort__option {
-  border: 0px solid rgb(228, 246, 250);
+  border: 0px solid white;
   outline: 0px;
 }
