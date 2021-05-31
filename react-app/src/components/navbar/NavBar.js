@@ -3,10 +3,13 @@ import { NavLink } from "react-router-dom";
 import LogoutButton from "../auth/LogoutButton";
 import CartDropdown from "./CartDropdown";
 import { useSelector } from "react-redux";
+import { useSearch} from "../../context/SearchContext";
 import "./Navbar.css";
 
 const NavBar = ({cartDropdownVisible, setCartDropdownVisible, cartCloseClass, setCartCloseClass}) => {
   const user = useSelector((state) => state.session.user);
+  const { searchInput, setSearchInput } = useSearch();
+  console.log(searchInput)
 
   return (
     <nav className="nav" style={{ zIndex: 2 }}>
@@ -26,6 +29,8 @@ const NavBar = ({cartDropdownVisible, setCartDropdownVisible, cartCloseClass, se
             placeholder="Search"
             type="text"
             className="nav-search-input"
+            onChange={(e) => setSearchInput(e.target.value)}
+            value={searchInput}
           />
           <button id="nav-search-btn" className="nav-btn" type="button">
             <i className="fas fa-search"></i>
