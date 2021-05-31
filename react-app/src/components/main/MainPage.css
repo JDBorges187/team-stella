@@ -55,12 +55,12 @@
   height: 100%;
   width: 100%;
   display: grid;
-  grid-template: 220px auto 100px / 1fr 5fr;
+  grid-template: 220px auto /*100px*/ / 1fr 5fr;
   gap: 5px;
   grid-template-areas:
     "featured featured"
-    "filter products-container"
-    "footer footer";
+    "filter products-container";
+    /* "footer footer"; */
 
   min-width: 860px;
 }
