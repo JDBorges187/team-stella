@@ -144,8 +144,35 @@
 }
 
 .footer {
+  padding-top: 20px;
   border-top: 1px solid gray;
   grid-area: footer;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.profile-image{
+  background-size: 100% 100%;
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+  margin: 10px auto;
+}
+
+.profile-links{
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-links a{
+  color: #3734c0;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.profile-links li{
+  padding-top: 10px;
+  list-style: none;
 }
 
 .card-container {
