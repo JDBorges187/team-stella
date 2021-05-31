@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 import { useSearch} from "../../context/SearchContext";
 
 const ProductGrid = () => {
+  const searchTerm = useSelector((state) => state.products.search);
   const products = useSelector((state) => state.products.filteredProducts);
   const { searchInput } = useSearch();
   const [currentPage, setCurrentPage] = useState(1);
@@ -18,6 +19,10 @@ const ProductGrid = () => {
     return product.name.toLowerCase().includes(searchInput.toLowerCase())
     && searchInput.length >= 3
   })
+
+  useEffect(() => {
+    setDisplayProducts(products.filter(product => product.name.toLowerCase().includes(searchTerm.toLowerCase())));
+  }, [products, searchTerm]);
 
   useEffect(() => {
     if (searchedProducts.length) {

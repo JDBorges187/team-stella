@@ -7,6 +7,8 @@ const REMOVEFILTER = 'products/REMOVEFILTER';
 
 const SORT = 'products/SORT';
 
+const SEARCH = 'products/SEARCH';
+
 const load = list => ({
   type: LOAD,
   list,
@@ -28,6 +30,15 @@ const sort = (orderBy) => ({
   type: SORT,
   orderBy,
 });
+
+const search = (value) => ({
+  type: SEARCH,
+  value,
+});
+
+export const editSearchState = (value) => (dispatch) => {
+  dispatch(search(value));
+};
 
 export const sortProducts = (orderBy) => (dispatch) => {
   dispatch(sort(orderBy));
@@ -66,6 +77,7 @@ const initialState = {
     Categories: {},
   },
   sort: "0",
+  search: "",
   filteredProducts: [],
 };
 
@@ -195,6 +207,13 @@ const productsReducer = (state = initialState, action) => {
         ...state,
         sort: action.orderBy,
         filteredProducts: sortedProducts,
+      }
+    }
+
+    case SEARCH: {
+      return {
+        ...state,
+        search: action.value
       }
     }
 
