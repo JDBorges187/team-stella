@@ -11,9 +11,7 @@ const store = configureStore();
 ReactDOM.render(
   <React.StrictMode>
       <Provider store={store}>
-        <SearchProvider>
-          <App />
-        </SearchProvider>
+        <App />
       </Provider>
   </React.StrictMode>,
   document.getElementById('root')

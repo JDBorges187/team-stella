@@ -164,7 +164,6 @@
   opacity: 1;
   animation-name: fadein;
   animation-duration: .7s;
-  border: 1px solid blue;
 }
 
 @keyframes fadein {
