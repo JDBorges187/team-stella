@@ -6,57 +6,57 @@ from app.models import db, Product, Category
 def seed_products():
 
     category1 = Category(name="Vehicle")
-    product1 = Product(name='Car', price=2550.01,
-                       description='A car.', image='/images/car-1.jpg',
+    product1 = Product(name='Car', price=549.00,
+                       description='A car.', image='https://res.cloudinary.com/dpf7crjn5/image/upload/v1622497064/stella/ARA109011_A0_VP96UUS0_nxwfrz.jpg',
                        categoryId=1)
 
     category2 = Category(name="Hat")
-    product2 = Product(name='Racing Cap', price=85.99,
-                       description='A cap.', image='/images/racing-cap.jpg',
+    product2 = Product(name='Jaguar Racing Cap', price=45.99,
+                       description='A cap.', image='https://res.cloudinary.com/dpf7crjn5/image/upload/v1622496023/stella/racing-cap_fczpsp.jpg',
                        categoryId=2)
 
     product3 = Product(name='Sun Visor', price=55.99,
-                       description='A visor.', image='/images/sun-visor.jpg',
+                       description='A visor.', image='https://res.cloudinary.com/dpf7crjn5/image/upload/v1622496062/stella/sun-visor_pxcits.jpg',
                        categoryId=2)
     product4 = Product(name='Red Bull Hat', price=19.99,
-                       description='A cap.', image='/images/red-bull-hat.jpg',
+                       description='A cap.', image='https://res.cloudinary.com/dpf7crjn5/image/upload/v1622496028/stella/red-bull-hat_yw5yty.jpg',
                        categoryId=2)
 
     product5 = Product(name='Sombrero', price=50.99,
-                       description='A visor.', image='/images/sombrero.jpg',
+                       description='A visor.', image='https://res.cloudinary.com/dpf7crjn5/image/upload/v1622496056/stella/sombrero_lgozym.jpg',
                        categoryId=2)
     category3 = Category(name="Shirt")
-    product6 = Product(name='Red Bull shirt', price=34.99,
-                       description='Racing shirt', image='/images/red-bull-shirt.jpg',
+    product6 = Product(name='Red Bull shirt', price=48.99,
+                       description='Racing shirt', image='https://res.cloudinary.com/dpf7crjn5/image/upload/v1622496033/stella/red-bull-shirt_s2fkkv.jpg',
                        categoryId=3)
 
     product7 = Product(name='SClassic Racing Shirt', price=34.99,
-                       description='Racing shirt', image='/images/sclassic-racing-shirt.jpg',
+                       description='Racing shirt', image='https://res.cloudinary.com/dpf7crjn5/image/upload/v1622496038/stella/sclassic-racing-shirt_kiqlgo.jpg',
                        categoryId=3)
     product8 = Product(name='Monster Shirt', price=24.99,
-                       description='Racing shirt', image='/images/monster-shirt.jpeg',
+                       description='Racing shirt', image='https://res.cloudinary.com/dpf7crjn5/image/upload/v1622496011/stella/monster-shirt_dwr36u.jpg',
                        categoryId=3)
 
     product9 = Product(name='Team Yamaha Shirt', price=56.99,
-                       description='Racing shirt', image='/images/team-yamaha-shirt.jpg',
+                       description='Racing shirt', image='https://res.cloudinary.com/dpf7crjn5/image/upload/v1622496191/stella/teamMonsterShirt_quqkly.jpg',
                        categoryId=3)
-    product10 = Product(name='Fox Racing Shirt', price=17.99,
-                        description='Racing shirt', image='/images/fox-racing-shirt.jpg',
+    product10 = Product(name='Fox Racing Shirt', price=27.99,
+                        description='Racing shirt', image='https://res.cloudinary.com/dpf7crjn5/image/upload/v1622495993/stella/fox-racing-shirt_qcwlau.jpg',
                         categoryId=3)
 
-    product11 = Product(name='Honda Shirt', price=13.99,
-                        description='Racing shirt', image='/images/honda-shirt.jpeg',
+    product11 = Product(name='Honda Shirt', price=16.99,
+                        description='Racing shirt', image='https://res.cloudinary.com/dpf7crjn5/image/upload/v1622495997/stella/honda-shirt_vozwsw.jpg',
                         categoryId=3)
-    product12 = Product(name='Kawasaki Shirt', price=9.99,
-                        description='Racing shirt', image='/images/kawasaki-shirt.jpg',
-                        categoryId=3)
-
-    product13 = Product(name='Suzuki Shirt', price=10.99,
-                        description='Racing shirt', image='/images/suzuki-shirt.jpg',
+    product12 = Product(name='Kawasaki Shirt', price=14.99,
+                        description='Racing shirt', image='https://res.cloudinary.com/dpf7crjn5/image/upload/v1622496005/stella/kawasaki-shirt_cqslvg.jpg',
                         categoryId=3)
 
-    product14 = Product(name='MotoGP Shirt', price=13.99,
-                        description='Racing shirt', image='/images/motogp-shirt.jpg',
+    product13 = Product(name='Suzuki Shirt', price=15.99,
+                        description='Racing shirt', image='https://res.cloudinary.com/dpf7crjn5/image/upload/v1622496065/stella/suzuki-shirt_jqllif.jpg',
+                        categoryId=3)
+
+    product14 = Product(name='MotoGP Shirt', price=29.99,
+                        description='Racing shirt', image='https://res.cloudinary.com/dpf7crjn5/image/upload/v1622496017/stella/motogp-shirt_uznbel.jpg',
                         categoryId=3)
 
     db.session.add(category1)
