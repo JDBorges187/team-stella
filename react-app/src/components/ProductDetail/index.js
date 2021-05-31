@@ -60,8 +60,6 @@ const ProductDetail = () => {
       y.user.id == currentUser.id ? 1 : 0
   });
 
-  // window.scrollTo(0,0);
-
   if (!product) {
     return null;
   }
@@ -140,7 +138,8 @@ const ProductDetail = () => {
         )
   }
 
-  const onPurchase = () => {
+  const onPurchase = (e) => {
+      e.stopPropagation();
       dispatch(addCartItem(product));
   };
 
@@ -182,7 +181,7 @@ const ProductDetail = () => {
             <p>Free returns</p>
             <p>Secure payments</p>
           </div>
-          <button onClick={onPurchase} className="pdt-dtl__add-to-cart">
+          <button onClick={(e) => onPurchase(e)} className="pdt-dtl__add-to-cart">
             Add to cart
             </button>
           <button onClick={onBuyNow} className="pdt-dtl__buy-it-now">
