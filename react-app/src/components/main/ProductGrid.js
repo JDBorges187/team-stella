@@ -14,8 +14,10 @@ const ProductGrid = () => {
   const productsPerPage = 12;
   console.log(searchInput)
 
-  const searchedProducts = products.filter(product =>
-    product.name.toLowerCase() === searchInput.toLowerCase())
+  const searchedProducts = products.filter(product => {
+    return product.name.toLowerCase().includes(searchInput.toLowerCase())
+    && searchInput.length >= 3
+  })
 
   useEffect(() => {
     if (searchedProducts.length) {
