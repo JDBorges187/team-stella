@@ -151,6 +151,14 @@
   justify-content: space-evenly;
 }
 
+.profile-image{
+  background-size: 100% 100%;
+  height: 100px;
+  width: 100px;
+  border-radius: 3em;
+  margin: 10px auto;
+}
+
 .profile-links{
   display: flex;
   flex-direction: column;
@@ -158,7 +166,8 @@
 
 .profile-links a{
   color: #3734c0;
-  font-size: 20px;
+  font-size: 18px;
+  font-weight: 500;
 }
 
 .profile-links li{
