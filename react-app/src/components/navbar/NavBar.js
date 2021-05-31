@@ -35,7 +35,8 @@ const NavBar = ({cartDropdownVisible, setCartDropdownVisible, cartCloseClass, se
             // activeClassName="active"
             // id="nav-logo-link"
           >
-            <h1 className="nav-logo-h1">Stella</h1>
+            <div className="nav-logo-img" />
+            {/* <h1 className="nav-logo-h1">Stella</h1> */}
           </a>
         </div>
         <div className="nav-search">
