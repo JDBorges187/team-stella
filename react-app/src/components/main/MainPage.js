@@ -20,7 +20,9 @@ const MainPage = () => {
         <img className="main-banner-img" src={fans} alt="racing fans cheering"></img>
         <div className="main-banner-msg">
           <span id="banner-msg-title">Get the latest merch!</span>
-          <button>Shop All</button>
+          <button >
+          <a href="#productsid">Shop All</a>
+          </button>
         </div>
       </div>
       <div className="container-grid">
