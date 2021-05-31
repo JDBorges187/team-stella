@@ -89,8 +89,8 @@ button {
   position: absolute;
   top: 75px;
   right: 0px;
-  border-radius: 3px;
-  border: 1px solid black;
+  border-radius: 1px;
+  border: 1px solid rgb(224, 224, 224);
   height: 300px;
   width: 360px;
   background-color: white;
@@ -98,6 +98,8 @@ button {
   animation-duration: 0.5s;
   animation-fill-mode: forwards;
   overflow: hidden;
+  box-shadow: 0px 3px 7px gray;
+  font-size: 14px;
 }
 
 @keyframes open {
@@ -168,8 +170,9 @@ button {
 .cart-dropdown-item {
   display: flex;
   padding: 10px;
-  border-bottom: 1px solid gray;
+  border-bottom: 1px solid rgb(207, 207, 207);
   justify-content: space-between;
+  align-items: center;
 }
 
 .cart-dropdown-item-container {
@@ -180,14 +183,21 @@ button {
 .total-cost-container {
   display: flex;
   justify-content: space-between;
-  height: 40px;
+  height: 50px;
   align-items: flex-end;
+  background-color: white;
+  padding: 5px;
+  border-top: 1px solid rgb(231, 231, 231);
+}
+
+.total-cost-container span {
+  padding: 5px;
 }
 
 .total-cost-container button {
   color: white;
   background-color: rgb(90, 148, 255);
-  padding: 5px;
+  padding: 7px;
   margin: 3px;
   border: none;
 }
@@ -198,4 +208,11 @@ button {
 
 #clear-cart-btn {
   background-color: rgb(250, 216, 103);
+
+}#checkout-cart-btn:hover {
+  background-color: rgb(79, 131, 228);
+}
+
+#clear-cart-btn:hover {
+  background-color: rgb(233, 201, 96);
 }

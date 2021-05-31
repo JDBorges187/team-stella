@@ -115,12 +115,7 @@ const CartDropdown = ({cartDropdownVisible, setCartDropdownVisible, cartCloseCla
               })}
             </div>
             <div className="total-cost-container">
-              <span
-                style={{
-                  color: "blue",
-                  padding: 4,
-                }}
-              >{`Total: $${totalCost.toFixed(2)}`}</span>
+              <span>{`Total: $${totalCost.toFixed(2)}`}</span>
               <div>
                 <button id="checkout-cart-btn" onClick={goToCheckout}>Checkout</button>
                 <button id="clear-cart-btn" onClick={clearShoppingCart}>Clear</button>
