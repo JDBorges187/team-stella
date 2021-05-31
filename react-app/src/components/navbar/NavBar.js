@@ -10,7 +10,6 @@ import "./Navbar.css";
 const NavBar = ({cartDropdownVisible, setCartDropdownVisible, cartCloseClass, setCartCloseClass}) => {
   const user = useSelector((state) => state.session.user);
   const { searchInput, setSearchInput } = useSearch();
-  console.log(searchInput)
 
   const dispatch = useDispatch();
 
@@ -30,14 +29,14 @@ const NavBar = ({cartDropdownVisible, setCartDropdownVisible, cartCloseClass, se
     <nav className="nav" style={{ zIndex: 2 }}>
       <div className="nav-logo-search">
         <div className="nav-logo">
-          <NavLink
-            to="/"
-            exact={true}
-            activeClassName="active"
-            id="nav-logo-link"
+          <a
+            href="/"
+            // exact={true}
+            // activeClassName="active"
+            // id="nav-logo-link"
           >
             <h1 className="nav-logo-h1">Stella</h1>
-          </NavLink>
+          </a>
         </div>
         <div className="nav-search">
           <input
@@ -46,8 +45,8 @@ const NavBar = ({cartDropdownVisible, setCartDropdownVisible, cartCloseClass, se
             placeholder="Search"
             type="text"
             className="nav-search-input"
-            onChange={(e) => setSearchInput(e.target.value)}
-            value={searchInput}
+            // onChange={(e) => setSearchInput(e.target.value)}
+            // value={searchInput}
           />
           <NavLink
             to="/"
