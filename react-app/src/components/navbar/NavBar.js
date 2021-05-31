@@ -1,12 +1,27 @@
 import React, { useState, useEffect } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import LogoutButton from "../auth/LogoutButton";
 import CartDropdown from "./CartDropdown";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { editSearchState } from "../../store/products";
 import "./Navbar.css";
 
 const NavBar = ({cartDropdownVisible, setCartDropdownVisible, cartCloseClass, setCartCloseClass}) => {
   const user = useSelector((state) => state.session.user);
+
+  const dispatch = useDispatch();
+
+  const changeSearchTerm = (value) => {
+    dispatch(editSearchState(value));
+  };
+
+  const history = useHistory();
+
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter') {
+      history.push("/");
+    }
+  }
 
   return (
     <nav className="nav" style={{ zIndex: 2 }}>
@@ -23,13 +38,19 @@ const NavBar = ({cartDropdownVisible, setCartDropdownVisible, cartCloseClass, se
         </div>
         <div className="nav-search">
           <input
+            onChange={(e) => changeSearchTerm(e.target.value)}
+            onKeyDown={(e) => handleKeyDown(e)}
             placeholder="Search"
             type="text"
             className="nav-search-input"
           />
-          <button id="nav-search-btn" className="nav-btn" type="button">
-            <i className="fas fa-search"></i>
-          </button>
+          <NavLink
+            to="/"
+          >
+            <button id="nav-search-btn" className="nav-btn" type="button">
+              <i className="fas fa-search"></i>
+            </button>
+          </NavLink>
         </div>
       </div>
       <ul className="nav-links">

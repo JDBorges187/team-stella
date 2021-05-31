@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 
 const ProductGrid = () => {
+  const searchTerm = useSelector((state) => state.products.search);
   const products = useSelector((state) => state.products.filteredProducts);
   const [currentPage, setCurrentPage] = useState(1);
   const [numberOfPages, setNumberOfPages] = useState(1);
@@ -12,8 +13,8 @@ const ProductGrid = () => {
   const productsPerPage = 12;
 
   useEffect(() => {
-    setDisplayProducts(products);
-  }, [products]);
+    setDisplayProducts(products.filter(product => product.name.toLowerCase().includes(searchTerm.toLowerCase())));
+  }, [products, searchTerm]);
 
   useEffect(() => {
     setNumberOfPages(Math.ceil(displayProducts.length / productsPerPage));
