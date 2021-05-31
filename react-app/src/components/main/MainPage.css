@@ -161,6 +161,21 @@
   position: relative;
   box-shadow: 0px 3px 7px gray;
   cursor: pointer;
+  opacity: 1;
+  animation-name: fadein;
+  animation-duration: .7s;
+  border: 1px solid blue;
+}
+
+@keyframes fadein {
+  0% {
+    opacity: 0.5;
+    transform: translateY(30px);
+  }
+
+ 100% {
+    opacity: 1;
+  }
 }
 
 .card-container:hover{
