@@ -5,6 +5,7 @@ import CartDropdown from "./CartDropdown";
 import { useSelector, useDispatch } from "react-redux";
 import { editSearchState } from "../../store/products";
 import { useSearch} from "../../context/SearchContext";
+import { login } from "../../store/session";
 import logo from "../../pictures/stella_logo.png"
 import "./Navbar.css";
 
@@ -26,8 +27,8 @@ const NavBar = ({cartDropdownVisible, setCartDropdownVisible, cartCloseClass, se
     }
   }
 
-  const loginDemo = () => {
-    
+  const loginDemo = async () => {
+    const data = await dispatch(login("demo@aa.io", "password"));
   }
 
   return (
