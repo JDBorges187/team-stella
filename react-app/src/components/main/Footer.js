@@ -57,6 +57,9 @@ const Footer = () => {
         <li>
           <Link to="https://github.com/OndreWilliams">Github</Link>
         </li>
+        <li>
+          <Link to="https://www.linkedin.com/in/ondre-williams-289b26132/">LinkedIn</Link>
+        </li>
       </ul>
     </div>
   </div>;
