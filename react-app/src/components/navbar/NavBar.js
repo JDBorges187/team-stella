@@ -5,6 +5,7 @@ import CartDropdown from "./CartDropdown";
 import { useSelector, useDispatch } from "react-redux";
 import { editSearchState } from "../../store/products";
 import { useSearch} from "../../context/SearchContext";
+import logo from "../../pictures/stella_logo.png"
 import "./Navbar.css";
 
 const NavBar = ({cartDropdownVisible, setCartDropdownVisible, cartCloseClass, setCartCloseClass}) => {
@@ -35,7 +36,7 @@ const NavBar = ({cartDropdownVisible, setCartDropdownVisible, cartCloseClass, se
             // activeClassName="active"
             // id="nav-logo-link"
           >
-            <div className="nav-logo-img" />
+            <img className="nav-logo-img" src={logo}/>
             {/* <h1 className="nav-logo-h1">Stella</h1> */}
           </a>
         </div>
