@@ -14,6 +14,7 @@ const CartDropdown = ({cartDropdownVisible, setCartDropdownVisible, cartCloseCla
   // const [cartDropdownVisible, setCartDropdownVisible] = useState(false);
   // const [cartCloseClass, setCartCloseClass] = useState(false);
   const [totalCost, setTotalCost] = useState(0);
+  const [cartIsEmpty, setCartIsEmpty] = useState(true)
 
   const closeCartDropdown = (e) => {
     setCartCloseClass(true);
@@ -56,6 +57,11 @@ const CartDropdown = ({cartDropdownVisible, setCartDropdownVisible, cartCloseCla
       setCartCloseClass(false);
       setCartDropdownVisible(true);
     }
+    if (totalCount < 1) {
+      setCartIsEmpty(true)
+    } else {
+      setCartIsEmpty(false)
+    }
   }, [cart]);
 
   const goToCheckout = () => {
@@ -83,6 +89,7 @@ const CartDropdown = ({cartDropdownVisible, setCartDropdownVisible, cartCloseCla
             onClick={(e) => e.stopPropagation()}
           >
             <div className="cart-dropdown-item-container">
+              {cartIsEmpty && <span style={{padding:6}}>Cart is empty.</span>}
               {Object.entries(cart).map(([key, value]) => {
                 return (
                   <div className="cart-dropdown-item" key={key}>
