@@ -5,8 +5,8 @@ const OrderSelect = ({orders, setOrderId, products}) => {
     const totalOrderPrice = (orderIdx) => {
         console.log("Orders", orders[0].order_items)
         return orders[orderIdx].order_items.reduce((sum, item) => {
-            if(products[item.productId]){
-                return sum + (products[item.productId].price * item.quantity)
+            if(products[item.productId - 1]){
+                return sum + (products[item.productId - 1].price * item.quantity)
             }
             return sum;
         }, 0)
