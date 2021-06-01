@@ -43,6 +43,7 @@ const CheckoutForm = () => {
   const submitCheckout = async (e) => {
     e.preventDefault();
     let newErrors = checkErrors();
+    console.log(cart);
     if (newErrors.length === 0) {
       history.push("/");
 

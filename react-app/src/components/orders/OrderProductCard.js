@@ -2,7 +2,7 @@ import React from 'react'
 import {useHistory} from 'react-router-dom';
 
 const OrderProductCard = ({item, products}) => {
-    let product = products[item.productId]
+    let product = products[item.productId - 1]
     const history = useHistory();
     const goToProduct = () => {
         history.push(`/products/${item.productId}`)
