@@ -5,7 +5,7 @@ import merchImg from "../../pictures/merch-stock.jpg";
 
 const Featured = () => {
   const featuredProducts = useSelector((state) =>
-    state.products.list.slice(3,8)
+    state.products.list.slice(9,14)
   );
 
   return (
