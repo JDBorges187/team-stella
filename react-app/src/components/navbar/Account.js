@@ -6,7 +6,7 @@ const Account = () => {
   const user = useSelector(state => state.session.user)
 
   return (
-    <div className="account-holder">
+    <div className="form-holder">
       <h1>Hello {(user) ? user.firstname : "Friend"}!</h1>
       <LogoutButton />
     </div>

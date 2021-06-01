@@ -78,7 +78,7 @@ const NavBar = ({cartDropdownVisible, setCartDropdownVisible, cartCloseClass, se
             activeClassName="active"
             className="nav-link"
           >
-            <button className="nav-links-btn">Account</button>
+            <button className="nav-links-btn">{user?"Signout":"Login"}</button>
           </NavLink>
         </li>
         <li>
