@@ -12,6 +12,7 @@ import Account from "./components/navbar/Account";
 import ProductDetail from "./components/ProductDetail";
 import Checkout from "./components/checkout/Checkout";
 import MainPage from "./components/main/MainPage";
+import Footer from "./components/main/Footer";
 import Orders from "./components/orders/Orders"
 import SearchProvider from "../src/context/SearchContext"
 import { authenticate } from "./store/session";
@@ -76,6 +77,7 @@ function App() {
               <ProductDetail />
             </Route>
           </Switch>
+          <Footer />
         </div>
       </SearchProvider>
     </BrowserRouter>

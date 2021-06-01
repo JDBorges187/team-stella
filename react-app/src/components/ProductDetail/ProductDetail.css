@@ -89,7 +89,8 @@
     display: grid;
     grid-template-rows: auto;
     justify-items: center;
-    position: absolute;
+    /* position: absolute; */
+    
 }
 
 .pdt-dtl__xtra-info-btn{

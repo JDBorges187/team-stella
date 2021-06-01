@@ -5,7 +5,7 @@ import merchImg from "../../pictures/merch-stock.jpg";
 
 const Featured = () => {
   const featuredProducts = useSelector((state) =>
-    state.products.list.slice(-5)
+    state.products.list.slice(3,8)
   );
 
   return (
@@ -16,7 +16,7 @@ const Featured = () => {
           <div key={product.id} className="featured-product">
             <Link to={`/products/${product.id}`}>
             <div className="featured-product-img">
-              <img src={merchImg}></img>
+              <img src={product.image}></img>
             </div>
             </Link>
             <h3>{product.name}</h3>

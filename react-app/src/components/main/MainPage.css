@@ -55,12 +55,12 @@
   height: 100%;
   width: 100%;
   display: grid;
-  grid-template: 220px auto 100px / 1fr 5fr;
+  grid-template: 220px auto /*100px*/ / 1fr 5fr;
   gap: 5px;
   grid-template-areas:
     "featured featured"
-    "filter products-container"
-    "footer footer";
+    "filter products-container";
+    /* "footer footer"; */
 
   min-width: 860px;
 }
@@ -89,6 +89,7 @@
   overflow: hidden;
   display: flex;
   justify-content: center;
+  align-items: center;
   box-shadow: 0px 3px 7px gray;
   transition: all 0.3s ease-in-out;
   cursor: pointer;
@@ -99,6 +100,10 @@
   box-shadow: 0px 8px 10px gray;
 }
 
+.featured-product-img >img{
+  width: 80%;
+  height: 80%;
+}
 
 .filter {
   /* border: 2px solid yellow; */

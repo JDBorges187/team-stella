@@ -12,6 +12,10 @@
   align-items: center;
 }
 
+.auth-form * {
+  /* background: red; */
+}
+
 .form-title {
   margin: 20px 0;
 }

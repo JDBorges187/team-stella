@@ -29,7 +29,7 @@ const MainPage = () => {
         <Featured />
         <Filter />
         <ProductGrid />
-        <Footer />
+        {/*<Footer />*/}
       </div>
     </div>
   );

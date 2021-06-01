@@ -90,21 +90,21 @@ const CartDropdown = ({cartDropdownVisible, setCartDropdownVisible, cartCloseCla
                       {`${products[key].name}`}
                     </div>
                     <div className="item-quantity">
-                      <button
-                        style={{ padding: 6 }}
-                        onClick={() => addOne(products[key])}
-                        className="add-one"
-                      >
-                        +
-                      </button>
-                      <div style={{ padding: 6 }}>{value}</div>
-                      <button
-                        style={{ padding: 6 }}
-                        onClick={() => removeOne(products[key])}
-                        className="remove-one"
-                      >
-                        -
-                      </button>
+                    <button
+                    style={{ padding: 6 }}
+                    onClick={() => removeOne(products[key])}
+                    className="remove-one"
+                    >
+                    -
+                    </button>
+                    <div style={{ padding: 6 }}>{value}</div>
+                    <button
+                      style={{ padding: 6 }}
+                      onClick={() => addOne(products[key])}
+                      className="add-one"
+                    >
+                      +
+                    </button>
                     </div>
                     <div className="cart-item-price">{`$${(products[key].price * value).toFixed(
                       2
