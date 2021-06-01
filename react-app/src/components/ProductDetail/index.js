@@ -118,7 +118,7 @@ const ProductDetail = () => {
             user={reviewUser}
             desc={review.review}
             rating={review.rating}
-            showEdit={currentUser.id === reviewUser.id} />
+            showEdit={currentUser && currentUser.id === reviewUser.id} />
         )
       })}
     </>
