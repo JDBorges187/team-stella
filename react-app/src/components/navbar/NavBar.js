@@ -5,6 +5,7 @@ import CartDropdown from "./CartDropdown";
 import { useSelector, useDispatch } from "react-redux";
 import { editSearchState } from "../../store/products";
 import { useSearch} from "../../context/SearchContext";
+import { login } from "../../store/session";
 import logo from "../../pictures/stella_logo.png"
 import "./Navbar.css";
 
@@ -24,6 +25,10 @@ const NavBar = ({cartDropdownVisible, setCartDropdownVisible, cartCloseClass, se
     if (e.key === 'Enter') {
       history.push("/");
     }
+  }
+
+  const loginDemo = async () => {
+    const data = await dispatch(login("demo@aa.io", "password"));
   }
 
   return (
@@ -70,6 +75,11 @@ const NavBar = ({cartDropdownVisible, setCartDropdownVisible, cartCloseClass, se
               >
               <button className="nav-links-btn">Orders</button>
             </NavLink>
+          </li>
+        )}
+        {!user && (
+          <li>
+            <div className='demo-btn' onClick={loginDemo}>Demo</div>
           </li>
         )}
         <li>

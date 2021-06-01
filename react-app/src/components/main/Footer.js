@@ -1,10 +1,16 @@
 import React from "react";
+import alexImage from '../../pictures/alex-headshot-placeholder.jpg'
+import brianImage from '../../pictures/brian-headshot.png'
+import jorgeImage from '../../pictures/jorge-headshot.png'
+import ondreImage from '../../pictures/ondre-headshot.jpeg'
 import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return <div className="footer">
     <div className="profile-section">
-      <div className="profile-image" style={{ backgroundImage: "url(/images/alex-headshot-placeholder.jpg)" }} />
+      <div className='profile-image-container'>
+        <img className="profile-image" src={alexImage} />
+      </div>
       <h2>Alex Rodriguez</h2>
       <ul className="profile-links">
         <li>
@@ -13,7 +19,9 @@ const Footer = () => {
       </ul>
     </div>
     <div className="profile-section">
-      <div className="profile-image" style={{ backgroundImage: "url(/images/brian-headshot.png)" }} />
+      <div className='profile-image-container'>
+        <img className="profile-image" src={brianImage} />
+      </div>
       <h2>Brian Xue</h2>
       <ul className="profile-links">
         <li>
@@ -25,7 +33,9 @@ const Footer = () => {
       </ul>
     </div>
     <div className="profile-section">
-      <div className="profile-image" style={{ backgroundImage: "url(/images/jorge-headshot.png)" }} />
+      <div className='profile-image-container'>
+        <img className="profile-image" src={jorgeImage} />
+      </div>
       <h2>Jorge Borges</h2>
       <ul className="profile-links">
         <li>
@@ -35,11 +45,13 @@ const Footer = () => {
           <a href="https://www.linkedin.com/in/jorge-engineer/">LinkedIn</a>
         </li>
 
-          
+
         </ul>
     </div>
     <div className="profile-section">
-      <div className="profile-image" style={{ backgroundImage: "url(/images/ondre-headshot.jpeg)" }} />
+      <div className='profile-image-container'>
+        <img className="profile-image" src={ondreImage} />
+      </div>
       <h2>Ondre Williams</h2>
       <ul className="profile-links">
         <li>
