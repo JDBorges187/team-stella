@@ -55,7 +55,6 @@ const CheckoutForm = () => {
       });
 
       const order = await res.json()
-      console.log(order)
       dispatch(clearCart())
     } else {
       // const response = await fetch('/api/orders', {
