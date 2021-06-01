@@ -30,35 +30,57 @@ const ProductDetail = () => {
     }
   }
 
-  if (productsNeeded.length > 0) {
-    let group = `${productsNeeded[0]},${id}`;
+  // console.log(productsNeeded)
 
-    for (let i = 1; i < productsNeeded.length; i++) {
-      group += `,${productsNeeded[i]}`;
-    }
+  // if (productsNeeded.length > 0) {
+  //   let group = `${productsNeeded[0]},${id}`;
 
-    dispatch(getProductGroup(group));
-  }
+  //   for (let i = 1; i < productsNeeded.length; i++) {
+  //     group += `,${productsNeeded[i]}`;
+  //   }
+
+  //   dispatch(getProductGroup(group));
+  // } else {
+  //   dispatch(getProductGroup(id));
+  // }
 
   //**********************************
 
   const product = useSelector((state) => state.products[id]);
+  // console.log(product)
 
   useEffect(() => {
+    if (productsNeeded.length > 0) {
+      let group = `${productsNeeded[0]},${id}`;
+  
+      for (let i = 1; i < productsNeeded.length; i++) {
+        group += `,${productsNeeded[i]}`;
+      }
+  
+      dispatch(getProductGroup(group));
+    } else {
+      dispatch(getProductGroup(id));
+    }
+    
     dispatch(getProductReviews(id));
+
   }, [dispatch, id]);
 
   const reviews = useSelector(state => state.reviews.detail);
   const currentUser = useSelector(state => state.session.user);
-
-  const reviewedAlready = reviews.some((review) => review.user.id == currentUser.id)
+  
+  let reviewedAlready = false;
+  
+  if (currentUser) {
+    reviewedAlready = reviews.some((review) => review.user.id == currentUser.id)
+    reviews.sort(function (x, y) {
+      return x.user.id == currentUser.id ? -1 :
+        y.user.id == currentUser.id ? 1 : 0
+    });
+  }
 
 
   // JB: Sorts Reviews so that users review is up top
-  reviews.sort(function (x, y) {
-    return x.user.id == currentUser.id ? -1 :
-      y.user.id == currentUser.id ? 1 : 0
-  });
 
   if (!product) {
     return null;
