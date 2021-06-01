@@ -26,6 +26,10 @@ const NavBar = ({cartDropdownVisible, setCartDropdownVisible, cartCloseClass, se
     }
   }
 
+  const loginDemo = () => {
+    
+  }
+
   return (
     <nav className="nav" style={{ zIndex: 2 }}>
       <div className="nav-logo-search">
@@ -70,6 +74,11 @@ const NavBar = ({cartDropdownVisible, setCartDropdownVisible, cartCloseClass, se
               >
               <button className="nav-links-btn">Orders</button>
             </NavLink>
+          </li>
+        )}
+        {!user && (
+          <li>
+            <div className='demo-btn' onClick={loginDemo}>Demo</div>
           </li>
         )}
         <li>
