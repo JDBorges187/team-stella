@@ -1,5 +1,5 @@
 import React from "react";
-import alexImage from '../../pictures/alex-headshot-placeholder.jpg'
+import alexImage from '../../pictures/alex-headshot.jpg'
 import brianImage from '../../pictures/brian-headshot.png'
 import jorgeImage from '../../pictures/jorge-headshot.png'
 import ondreImage from '../../pictures/ondre-headshot.jpeg'
