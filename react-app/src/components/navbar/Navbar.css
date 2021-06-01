@@ -236,3 +236,13 @@ button {
   color: white;
   cursor: pointer;
 }
+
+.form-holder{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form-holder *{
+  margin-bottom: 10px;
+}
