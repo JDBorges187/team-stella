@@ -43,7 +43,6 @@ const CheckoutForm = () => {
   const submitCheckout = async (e) => {
     e.preventDefault();
     let newErrors = checkErrors();
-    console.log(cart);
     if (newErrors.length === 0) {
       history.push("/");
 
@@ -56,7 +55,6 @@ const CheckoutForm = () => {
       });
 
       const order = await res.json()
-      console.log(order)
       dispatch(clearCart())
     } else {
       // const response = await fetch('/api/orders', {
