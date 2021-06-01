@@ -16,6 +16,9 @@ const Footer = () => {
         <li>
           <a href="https://github.com/alex-therookie">Github</a>
         </li>
+        <li>
+          <a href="https://www.linkedin.com/in/alex-rodriguez-8a8aa1146/">LinkedIn</a>
+        </li>
       </ul>
     </div>
     <div className="profile-section">
@@ -56,6 +59,9 @@ const Footer = () => {
       <ul className="profile-links">
         <li>
           <Link to="https://github.com/OndreWilliams">Github</Link>
+        </li>
+        <li>
+          <Link to="https://www.linkedin.com/in/ondre-williams-289b26132/">LinkedIn</Link>
         </li>
       </ul>
     </div>

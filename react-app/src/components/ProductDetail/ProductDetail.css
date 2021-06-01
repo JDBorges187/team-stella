@@ -89,8 +89,9 @@
     display: grid;
     grid-template-rows: auto;
     justify-items: center;
+    margin-bottom: 100px;
     /* position: absolute; */
-    
+
 }
 
 .pdt-dtl__xtra-info-btn{
