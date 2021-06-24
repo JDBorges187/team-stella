@@ -35,8 +35,8 @@ const CheckoutList = () => {
             <ul className='checkout-list'>
                 {itemKeys.map((item, idx) => {
                     let product = products[item];
-                    console.log(product);
-                    console.log(products);
+                    // console.log(product);
+                    // console.log(products);
                     if(product){
                         return (<li key={idx}>
                             <CheckoutItem

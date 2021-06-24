@@ -25,7 +25,7 @@ const days = [
 ]
 
 const orderDateFormat = (dateTime) => {
-    console.log("Test: ", dateTime)
+    // console.log("Test: ", dateTime)
     let year = dateTime.getFullYear();
     let day = days[dateTime.getDay()]
     let date = dateTime.getDate();

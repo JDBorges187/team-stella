@@ -4,7 +4,7 @@ import OrderProductCard from './OrderProductCard'
 
 const OrderSummary = ({order, products}) => {
     // const products = useSelector((state) => state.products.list);
-    console.log(order)
+    // console.log(order)
     return (
         <div className='order-summary-container'>
             {order && (
