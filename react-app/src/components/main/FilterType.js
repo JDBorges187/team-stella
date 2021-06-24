@@ -11,7 +11,7 @@ const FilterType = (props) => {
   const handlePriceFilter = (e) => {
     const target = e.target;
     const value = target.value;
-    console.log(value);
+    // console.log(value);
     target.checked ? dispatch(applyFilter(props.type, value)) : dispatch(deleteFilter(props.type, value));
   }
 
