@@ -50,27 +50,28 @@ const ProductDetail = () => {
   // console.log(product)
 
   useEffect(() => {
+    window.scrollTo(0,0);
     if (productsNeeded.length > 0) {
       let group = `${productsNeeded[0]},${id}`;
-  
+
       for (let i = 1; i < productsNeeded.length; i++) {
         group += `,${productsNeeded[i]}`;
       }
-  
+
       dispatch(getProductGroup(group));
     } else {
       dispatch(getProductGroup(id));
     }
-    
+
     dispatch(getProductReviews(id));
 
   }, [dispatch, id]);
 
   const reviews = useSelector(state => state.reviews.detail);
   const currentUser = useSelector(state => state.session.user);
-  
+
   let reviewedAlready = false;
-  
+
   if (currentUser) {
     reviewedAlready = reviews.some((review) => review.user.id == currentUser.id)
     reviews.sort(function (x, y) {
