@@ -13,12 +13,16 @@ const CheckoutForm = () => {
   const [zipcode, setZipcode] = useState("");
   const history = useHistory();
   const dispatch = useDispatch();
+  const user = useSelector((state) => state.session.user);
   const cart = useSelector(state => state.cart)
 
   // const cart = JSON.parse(window.sessionStorage.getItem("cart"));
 
   const checkErrors = () => {
     let newErrors = [];
+    if(!user){
+      newErrors.push("Must be logged in to place an order.")
+    }
     if (address.length === 0) {
       newErrors.push("Please input an address.");
     }
