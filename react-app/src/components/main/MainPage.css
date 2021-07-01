@@ -180,11 +180,16 @@
   color: #3734c0;
   font-size: 18px;
   font-weight: 500;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
 }
 
 .profile-links li{
   padding-top: 10px;
   list-style: none;
+  display: flex;
+  width: 100%;
 }
 
 .card-container {

@@ -64,12 +64,10 @@ const Footer = () => {
       <h2>Ondre Williams</h2>
       <ul className="profile-links">
         <li>
-          <i class="fab fa-github"></i>
-          <Link to="https://github.com/OndreWilliams">Github</Link>
+          <Link to="https://github.com/OndreWilliams"><div class="profile-link_icon fab fa-github fa-4x"></div></Link>
         </li>
         <li>
-          <i class="fab fa-linkedin"></i>
-          <Link to="https://www.linkedin.com/in/ondre-williams-289b26132/">LinkedIn</Link>
+          <Link to="https://www.linkedin.com/in/ondre-williams-289b26132/"><div class="profile-link_icon fab fa-linkedin fa-3x"></div></Link>
         </li>
       </ul>
     </div>
