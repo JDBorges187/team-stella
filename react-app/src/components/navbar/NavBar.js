@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { NavLink, useHistory } from "react-router-dom";
-import LogoutButton from "../auth/LogoutButton";
+import { logout } from "../../store/session";
 import CartDropdown from "./CartDropdown";
 import { useSelector, useDispatch } from "react-redux";
 import { editSearchState } from "../../store/products";
@@ -36,7 +36,7 @@ const NavBar = ({cartDropdownVisible, setCartDropdownVisible, cartCloseClass, se
       history.push("/login")
     }
     else{
-      history.push("/account")
+      await dispatch(logout());
     }
   }
 
