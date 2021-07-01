@@ -62,14 +62,16 @@ const Footer = () => {
         <img className="profile-image" src={ondreImage} />
       </div>
       <h2>Ondre Williams</h2>
-      <ul className="profile-links">
-        <li>
-          <Link to="https://github.com/OndreWilliams"><div class="profile-link_icon fab fa-github fa-4x"></div></Link>
-        </li>
-        <li>
-          <Link to="https://www.linkedin.com/in/ondre-williams-289b26132/"><div class="profile-link_icon fab fa-linkedin fa-3x"></div></Link>
-        </li>
-      </ul>
+      <div className='profile-links'>
+        <a href="https://github.com/OndreWilliams"><div class="profile-link_icon fab fa-github fa-3x"></div></a>
+        <a href="https://www.linkedin.com/in/ondre-williams-289b26132/"><div class="profile-link_icon fab fa-linkedin fa-3x"></div></a>
+      </div>
+      {/* <ul className="profile-links">
+        <li> */}
+        {/* </li>
+        <li> */}
+        {/* </li>
+      </ul> */}
     </div>
   </div>;
 };
