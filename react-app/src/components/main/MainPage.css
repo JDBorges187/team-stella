@@ -156,6 +156,13 @@
   justify-content: space-evenly;
 }
 
+.profile-section{
+  min-width: 200px;
+  text-align: center;
+}
+
+
+
 .profile-image-container{
   height: 100px;
   width: 100px;
