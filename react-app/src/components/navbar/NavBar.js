@@ -31,6 +31,15 @@ const NavBar = ({cartDropdownVisible, setCartDropdownVisible, cartCloseClass, se
     const data = await dispatch(login("demo@aa.io", "password"));
   }
 
+  const authLogic = async () => {
+    if(!user){
+      history.push("/login")
+    }
+    else{
+      history.push("/account")
+    }
+  }
+
   return (
     <nav className="nav" style={{ zIndex: 2 }}>
       <div className="nav-logo-search">
@@ -83,14 +92,15 @@ const NavBar = ({cartDropdownVisible, setCartDropdownVisible, cartCloseClass, se
           </li>
         )}
         <li>
-          <NavLink
-            to={user ? "/account" : "/login"}
-            exact={true}
+          <div
+            // to={user ? "/account" : "/login"}
+            // exact={true}
             activeClassName="active"
             className="nav-link"
+            onClick={(e) => authLogic(e)}
           >
             <button className="nav-links-btn">{user?"Signout":"Login"}</button>
-          </NavLink>
+          </div>
         </li>
         <li>
           {/* <NavLink
