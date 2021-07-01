@@ -39,7 +39,6 @@ const NavBar = ({cartDropdownVisible, setCartDropdownVisible, cartCloseClass, se
       await dispatch(logout());
     }
   }
-
   return (
     <nav className="nav" style={{ zIndex: 2 }}>
       <div className="nav-logo-search">
@@ -73,7 +72,19 @@ const NavBar = ({cartDropdownVisible, setCartDropdownVisible, cartCloseClass, se
           </NavLink>
         </div>
       </div>
+
       <ul className="nav-links">
+      {user && (
+        <li>
+          <NavLink
+            to={"/account"}
+            exact={true}
+            activeClassName="active"
+            className="nav-link">
+            Logged in as: {user.firstname}
+          </NavLink>
+        </li>
+      )}
         {user && (
           <li>
             <NavLink
