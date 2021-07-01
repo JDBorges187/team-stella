@@ -77,6 +77,10 @@ button {
   padding: 5px;
 }
 
+.login-tag {
+  font-weight: 600;
+}
+
 .close-cart-dropdown {
   height: 100vh;
   width: 100%;

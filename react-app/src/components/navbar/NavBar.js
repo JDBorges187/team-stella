@@ -74,17 +74,6 @@ const NavBar = ({cartDropdownVisible, setCartDropdownVisible, cartCloseClass, se
       </div>
 
       <ul className="nav-links">
-      {user && (
-        <li>
-          <NavLink
-            to={"/account"}
-            exact={true}
-            activeClassName="active"
-            className="nav-link">
-            Logged in as: {user.firstname}
-          </NavLink>
-        </li>
-      )}
         {user && (
           <li>
             <NavLink
@@ -102,6 +91,17 @@ const NavBar = ({cartDropdownVisible, setCartDropdownVisible, cartCloseClass, se
             <div className='demo-btn' onClick={loginDemo}>Demo</div>
           </li>
         )}
+        {user && (
+        <li>
+          <NavLink
+            to={"/account"}
+            exact={true}
+            activeClassName="active"
+            className="nav-link">
+              <button className="nav-links-btn"><span className='login-tag'>Logged in:</span> {user.firstname}</button>
+          </NavLink>
+        </li>
+      )}
         <li>
           <div
             // to={user ? "/account" : "/login"}
@@ -113,6 +113,7 @@ const NavBar = ({cartDropdownVisible, setCartDropdownVisible, cartCloseClass, se
             <button className="nav-links-btn">{user?"Signout":"Login"}</button>
           </div>
         </li>
+
         <li>
           {/* <NavLink
             to="/cart"
