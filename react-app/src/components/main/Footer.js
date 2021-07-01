@@ -14,9 +14,11 @@ const Footer = () => {
       <h2>Alex Rodriguez</h2>
       <ul className="profile-links">
         <li>
+          <i class="fab fa-github"></i>
           <a href="https://github.com/alex-therookie">Github</a>
         </li>
         <li>
+          <i class="fab fa-linkedin"></i>
           <a href="https://www.linkedin.com/in/alex-rodriguez-8a8aa1146/">LinkedIn</a>
         </li>
       </ul>
@@ -28,9 +30,11 @@ const Footer = () => {
       <h2>Brian Xue</h2>
       <ul className="profile-links">
         <li>
+          <i class="fab fa-github"></i>
           <a href="https://github.com/bxue2">Github</a>
         </li>
         <li>
+          <i class="fab fa-linkedin"></i>
           <a href="https://www.linkedin.com/in/brian-xue/">LinkedIn</a>
         </li>
       </ul>
@@ -42,9 +46,11 @@ const Footer = () => {
       <h2>Jorge Borges</h2>
       <ul className="profile-links">
         <li>
+          <i class="fab fa-github"></i>
           <a href="https://github.com/JDBorges187">Github</a>
         </li>
         <li>
+          <i class="fab fa-linkedin"></i>
           <a href="https://www.linkedin.com/in/jorge-engineer/">LinkedIn</a>
         </li>
 
@@ -58,9 +64,11 @@ const Footer = () => {
       <h2>Ondre Williams</h2>
       <ul className="profile-links">
         <li>
+          <i class="fab fa-github"></i>
           <Link to="https://github.com/OndreWilliams">Github</Link>
         </li>
         <li>
+          <i class="fab fa-linkedin"></i>
           <Link to="https://www.linkedin.com/in/ondre-williams-289b26132/">LinkedIn</Link>
         </li>
       </ul>
