@@ -154,6 +154,7 @@
   grid-area: footer;
   display: flex;
   justify-content: space-evenly;
+  background-color: midnightblue;
 }
 
 .profile-section{
@@ -161,7 +162,9 @@
   text-align: center;
 }
 
-
+.footer a{
+  color: white;
+}
 
 .profile-image-container{
   height: 100px;
@@ -192,8 +195,12 @@
   cursor: pointer;
 }
 
+.profile-name{
+  padding-bottom: 10px;
+}
+
 .profile-links a:hover, .profile-name:hover{
-  color: #3734c0;
+  color: #cdccfa;
 }
 
 .profile-links li{
