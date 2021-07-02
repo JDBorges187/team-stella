@@ -154,6 +154,16 @@
   grid-area: footer;
   display: flex;
   justify-content: space-evenly;
+  background-color: midnightblue;
+}
+
+.profile-section{
+  min-width: 200px;
+  text-align: center;
+}
+
+.footer a{
+  color: white;
 }
 
 .profile-image-container{
@@ -173,18 +183,31 @@
 
 .profile-links{
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column; */
+  justify-content: space-evenly;
 }
 
 .profile-links a{
-  color: #3734c0;
   font-size: 18px;
   font-weight: 500;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.profile-name{
+  padding-bottom: 10px;
+}
+
+.profile-links a:hover, .profile-name:hover{
+  color: #cdccfa;
 }
 
 .profile-links li{
   padding-top: 10px;
   list-style: none;
+  display: flex;
+  width: 100%;
 }
 
 .card-container {

@@ -15,7 +15,7 @@ const Sort = () => {
   return(
     <div className="sort-cntnr">
       <select onChange={(e) => handleSort(e)} className="sort__select">
-        <option className="sort__option" value="0">SortProducts</option>
+        <option className="sort__option" value="0">Sort Products</option>
         <option className="sort__option" value="1">Price (low - high)</option>
         <option className="sort__option" value="2">Price (high - low)</option>
         <option className="sort__option" value="3">Alphabetical (A - Z)</option>
