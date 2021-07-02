@@ -192,7 +192,7 @@
   cursor: pointer;
 }
 
-.profile-links a:hover{
+.profile-links a:hover, .profile-name:hover{
   color: #3734c0;
 }
 
