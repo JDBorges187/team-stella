@@ -12,13 +12,14 @@
 .order-select-sidebar-header{
     height: 50px;
     font-size: 20px;
-    font-weight: 500;
+    font-weight: 600;
     display: flex;
     align-items: center;
     border-bottom: 5px double black;
     background-color: white;
     position: sticky;
     padding-left: 10px;
+
 }
 
 .order-select-list{
@@ -72,7 +73,7 @@
 }
 
 .order-product-card:hover{
-    box-shadow: 0 0 2px 2px #BA1200;
+    box-shadow: 0 0 2px 2px #558564;
 }
 
 .order-product-card-image{
