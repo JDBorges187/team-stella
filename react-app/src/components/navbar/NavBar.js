@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { NavLink, useHistory } from "react-router-dom";
-import LogoutButton from "../auth/LogoutButton";
+import { logout } from "../../store/session";
 import CartDropdown from "./CartDropdown";
 import { useSelector, useDispatch } from "react-redux";
 import { editSearchState } from "../../store/products";
@@ -31,6 +31,14 @@ const NavBar = ({cartDropdownVisible, setCartDropdownVisible, cartCloseClass, se
     const data = await dispatch(login("demo@aa.io", "password"));
   }
 
+  const authLogic = async () => {
+    if(!user){
+      history.push("/login")
+    }
+    else{
+      await dispatch(logout());
+    }
+  }
   return (
     <nav className="nav" style={{ zIndex: 2 }}>
       <div className="nav-logo-search">
@@ -64,6 +72,7 @@ const NavBar = ({cartDropdownVisible, setCartDropdownVisible, cartCloseClass, se
           </NavLink>
         </div>
       </div>
+
       <ul className="nav-links">
         {user && (
           <li>
@@ -82,16 +91,29 @@ const NavBar = ({cartDropdownVisible, setCartDropdownVisible, cartCloseClass, se
             <div className='demo-btn' onClick={loginDemo}>Demo</div>
           </li>
         )}
+        {user && (
         <li>
           <NavLink
-            to={user ? "/account" : "/login"}
+            to={"/account"}
             exact={true}
             activeClassName="active"
-            className="nav-link"
-          >
-            <button className="nav-links-btn">{user?"Signout":"Login"}</button>
+            className="nav-link">
+              <button className="nav-links-btn"><span className='login-tag'>Logged in:</span> {user.firstname}</button>
           </NavLink>
         </li>
+      )}
+        <li>
+          <div
+            // to={user ? "/account" : "/login"}
+            // exact={true}
+            activeClassName="active"
+            className="nav-link"
+            onClick={(e) => authLogic(e)}
+          >
+            <button className="nav-links-btn">{user?"Signout":"Login"}</button>
+          </div>
+        </li>
+
         <li>
           {/* <NavLink
             to="/cart"
