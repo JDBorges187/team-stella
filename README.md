@@ -6,7 +6,7 @@ Welcome to Sellta Racings online store. The best place to get your racing gear, 
 
 
 ### Back End
-Err(bnb) was built using Express for the server with a postgreSQL database. The back end structure utilizes RESTful convention and handles user requests through our API and uses JSON and redux to update the front end. Err(bnb) uses token based authentication and BCrypt to safely store user passwords and verify login credentials. 
+Stella Racing was built using Flask Python for the server with a postgreSQL database. The back end structure utilizes RESTful convention and handles user requests through our API and uses JSON and redux to update the front end. Err(bnb) uses token based authentication and BCrypt to safely store user passwords and verify login credentials. 
 ### Front End
 The front end was built using React Components to render the pages with JavaScript and Redux to store stateand make the pages dynamic.
 ### List of Technologies
